@@ -14,7 +14,7 @@ import DropDown
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    var centerContainer: MMDrawerController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Realm Migration
@@ -29,7 +29,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //Set Up Category
         RealmInitializer.setUp()
         
+        //Set Up DropDown
         DropDown.startListeningToKeyboard()
+        
+        //Set Up DrawerMenu
+        let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
+        
+        let centerViewController = mainStoryboard.instantiateViewController(withIdentifier: "ParentWordsView") as! ParentWordsListViewController
+        
+        let leftViewController = mainStoryboard.instantiateViewController(withIdentifier: "PagingMenuVC01") as! PageViewController01
+        let leftSideNav = UINavigationController(rootViewController: leftViewController)
+        let centerNav = UINavigationController(rootViewController: centerViewController)
+        
+        centerContainer = MMDrawerController(center: centerNav, leftDrawerViewController: leftSideNav,rightDrawerViewController:nil)
+        
+        //オープン方法のモード指定
+        centerContainer!.openDrawerGestureModeMask = MMOpenDrawerGestureMode.all
+        
+        //クローズ方法のモード指定
+        centerContainer!.closeDrawerGestureModeMask = MMCloseDrawerGestureMode.all
+        
+        window!.rootViewController = centerContainer
+        window!.makeKeyAndVisible()
         
         return true
     }

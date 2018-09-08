@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="dty-oZ-Xbg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="uTt-At-u0v">
     <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -50,7 +50,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mZC-Bz-5vm" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="c86-vk-QbB" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="986" y="-607"/>
+            <point key="canvasLocation" x="442" y="-607"/>
         </scene>
         <!--Words List View Controller-->
         <scene sceneID="tne-QT-ifu">
@@ -255,6 +255,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="SKE-dN-Mxh"/>
+        <segue reference="HLk-yn-peC"/>
     </inferredMetricsTieBreakers>
 </document>

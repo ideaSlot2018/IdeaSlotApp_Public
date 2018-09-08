@@ -7,6 +7,7 @@ target 'IdeaSlotApp' do
   pod 'RealmSwift'
   pod 'PagingMenuController'
   pod 'DropDown'
+  pod 'MMDrawerController', '~> 0.5.7'
 
   # Pods for IdeaSlotApp
 
@@ -24,7 +25,8 @@ end
 
 swift4_names = [
   'PagingMenuController',
-  'DropDown'
+  'DropDown',
+  'MMDrawerController'
 ]
 
 post_install do |installer|

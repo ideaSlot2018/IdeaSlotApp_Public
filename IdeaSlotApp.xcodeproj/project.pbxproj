@@ -23,6 +23,9 @@
 		CE5E1F43211FFE8800523D96 /* PageViewController03.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E1F42211FFE8800523D96 /* PageViewController03.swift */; };
 		CE66265B211203FF000E73F4 /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE66265A211203FF000E73F4 /* Realm.framework */; };
 		CE66265D21120405000E73F4 /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE66265C21120405000E73F4 /* RealmSwift.framework */; };
+		CE772389213BBBCD00F278F8 /* MMDrawerController.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE772388213BBBCD00F278F8 /* MMDrawerController.framework */; };
+		CE772390213BBC0B00F278F8 /* MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77238B213BBC0A00F278F8 /* MMDrawerController.m */; };
+		CE772391213BBC0B00F278F8 /* UIViewController+MMDrawerController.m in Sources */ = {isa = PBXBuildFile; fileRef = CE77238F213BBC0B00F278F8 /* UIViewController+MMDrawerController.m */; };
 		CE8B79F7210475FF009BD29F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B79F6210475FF009BD29F /* AppDelegate.swift */; };
 		CE8B79F9210475FF009BD29F /* WordsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B79F8210475FF009BD29F /* WordsListViewController.swift */; };
 		CE8B79FC210475FF009BD29F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8B79FA210475FF009BD29F /* Main.storyboard */; };
@@ -32,7 +35,7 @@
 		CE8B7A1721047601009BD29F /* IdeaSlotAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B7A1621047601009BD29F /* IdeaSlotAppUITests.swift */; };
 		CE8FC21021244ED300A628E4 /* ParentWordsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FC20F21244ED300A628E4 /* ParentWordsListViewController.swift */; };
 		CEA40AED213A407900874065 /* DropDownButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEA40AEC213A407900874065 /* DropDownButton.swift */; };
-		CEE7C959213271F700B6886A /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE7C958213271F700B6886A /* DropDown.framework */; };
+		CEE7C959213271F700B6886A /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE7C958213271F700B6886A /* DropDown.framework */; settings = {ATTRIBUTES = (Required, ); }; };
 		CEE7C95B2132766700B6886A /* CategoryDropDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE7C95A2132766700B6886A /* CategoryDropDown.swift */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +78,14 @@
 		CE5E1F42211FFE8800523D96 /* PageViewController03.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageViewController03.swift; sourceTree = "<group>"; };
 		CE66265A211203FF000E73F4 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE66265C21120405000E73F4 /* RealmSwift.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = RealmSwift.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE772381213BAA0800F278F8 /* MMDrawerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MMDrawerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE772383213BAAE200F278F8 /* IdeaSlotApp-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "IdeaSlotApp-Bridging-Header.h"; sourceTree = "<group>"; };
+		CE772388213BBBCD00F278F8 /* MMDrawerController.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = MMDrawerController.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE77238B213BBC0A00F278F8 /* MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MMDrawerController.m; sourceTree = "<group>"; };
+		CE77238C213BBC0A00F278F8 /* UIViewController+MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+MMDrawerController.h"; sourceTree = "<group>"; };
+		CE77238D213BBC0A00F278F8 /* MMDrawerController+Subclass.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "MMDrawerController+Subclass.h"; sourceTree = "<group>"; };
+		CE77238E213BBC0B00F278F8 /* MMDrawerController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MMDrawerController.h; sourceTree = "<group>"; };
+		CE77238F213BBC0B00F278F8 /* UIViewController+MMDrawerController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+MMDrawerController.m"; sourceTree = "<group>"; };
 		CE8B79F3210475FF009BD29F /* IdeaSlotApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaSlotApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8B79F6210475FF009BD29F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CE8B79F8210475FF009BD29F /* WordsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsListViewController.swift; sourceTree = "<group>"; };
@@ -103,6 +114,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE772389213BBBCD00F278F8 /* MMDrawerController.framework in Frameworks */,
 				CEE7C959213271F700B6886A /* DropDown.framework in Frameworks */,
 				CE5E1F3D211FFA2C00523D96 /* PagingMenuController.framework in Frameworks */,
 				CE66265D21120405000E73F4 /* RealmSwift.framework in Frameworks */,
@@ -149,6 +161,7 @@
 				CE8B79F6210475FF009BD29F /* AppDelegate.swift */,
 				CE558587211573E000E66A6C /* ViewController */,
 				CE558586211573D600E66A6C /* View */,
+				CE772383213BAAE200F278F8 /* IdeaSlotApp-Bridging-Header.h */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -185,6 +198,18 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		CE77238A213BBBDD00F278F8 /* DrawerMenu */ = {
+			isa = PBXGroup;
+			children = (
+				CE77238E213BBC0B00F278F8 /* MMDrawerController.h */,
+				CE77238B213BBC0A00F278F8 /* MMDrawerController.m */,
+				CE77238D213BBC0A00F278F8 /* MMDrawerController+Subclass.h */,
+				CE77238C213BBC0A00F278F8 /* UIViewController+MMDrawerController.h */,
+				CE77238F213BBC0B00F278F8 /* UIViewController+MMDrawerController.m */,
+			);
+			path = DrawerMenu;
+			sourceTree = "<group>";
+		};
 		CE78631A2116E54C0053B87B /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -198,6 +223,7 @@
 		CE78631B2116E5570053B87B /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				CE77238A213BBBDD00F278F8 /* DrawerMenu */,
 				CE8B79FD21047601009BD29F /* Assets.xcassets */,
 			);
 			path = Resource;
@@ -276,6 +302,8 @@
 		F44F1094BD83EC84BD744B8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CE772388213BBBCD00F278F8 /* MMDrawerController.framework */,
+				CE772381213BAA0800F278F8 /* MMDrawerController.framework */,
 				CEE7C958213271F700B6886A /* DropDown.framework */,
 				CE5E1F3C211FFA2C00523D96 /* PagingMenuController.framework */,
 				CE66265C21120405000E73F4 /* RealmSwift.framework */,
@@ -449,6 +477,7 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-IdeaSlotApp/Pods-IdeaSlotApp-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/DropDown/DropDown.framework",
+				"${BUILT_PRODUCTS_DIR}/MMDrawerController/MMDrawerController.framework",
 				"${BUILT_PRODUCTS_DIR}/PagingMenuController/PagingMenuController.framework",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
@@ -456,6 +485,7 @@
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/DropDown.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMDrawerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PagingMenuController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -509,6 +539,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8B79F9210475FF009BD29F /* WordsListViewController.swift in Sources */,
+				CE772390213BBC0B00F278F8 /* MMDrawerController.m in Sources */,
 				CE5585832115701600E66A6C /* Idea.swift in Sources */,
 				CE2697F0210DBCA300F59F2B /* WordsItemViewController.swift in Sources */,
 				CEE7C95B2132766700B6886A /* CategoryDropDown.swift in Sources */,
@@ -518,6 +549,7 @@
 				CE8B79F7210475FF009BD29F /* AppDelegate.swift in Sources */,
 				CEA40AED213A407900874065 /* DropDownButton.swift in Sources */,
 				CE5A635B212948BC007E4887 /* CategorySeed.swift in Sources */,
+				CE772391213BBC0B00F278F8 /* UIViewController+MMDrawerController.m in Sources */,
 				CE5E1F43211FFE8800523D96 /* PageViewController03.swift in Sources */,
 				CE5E1F3F211FFE5600523D96 /* PageViewController01.swift in Sources */,
 				CE5A635D21294E99007E4887 /* RealmInitializer.swift in Sources */,
@@ -696,7 +728,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V87P5999FH;
 				INFOPLIST_FILE = IdeaSlotApp/Others/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -704,8 +739,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = grief137.IdeaSlotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				PUBLIC_HEADERS_FOLDER_PATH = MyHeaders;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/Classes/IdeaSlotApp-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 4.0;
@@ -719,7 +756,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=*]" = "iPhone Distribution";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = V87P5999FH;
 				INFOPLIST_FILE = IdeaSlotApp/Others/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -727,8 +767,10 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = grief137.IdeaSlotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_INSTALL_OBJC_HEADER = NO;
-				SWIFT_OBJC_BRIDGING_HEADER = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
+				PUBLIC_HEADERS_FOLDER_PATH = MyHeaders;
+				SWIFT_INSTALL_OBJC_HEADER = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT)/Classes/IdeaSlotApp-Bridging-Header.h";
 				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
 				SWIFT_VERSION = 4.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
