@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="CategoryRegistForm" id="iN0-l3-epB" customClass="CategoryRegistFormView" customModule="IdeaSlotApp" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="235" height="147"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Regist Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dqh-2D-VY5">
+                    <rect key="frame" x="16" y="20" width="110" height="18"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="18" id="vZ7-fd-BgV"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b3Y-xB-bIs">
+                    <rect key="frame" x="16" y="59" width="199" height="30"/>
+                    <nil key="textColor"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2IP-ef-nDl">
+                    <rect key="frame" x="16" y="97" width="199" height="30"/>
+                    <state key="normal" title="Button"/>
+                    <connections>
+                        <action selector="RegistAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="I8x-l5-Xs0"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="dqh-2D-VY5" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="20" symbolic="YES" id="0f3-or-ytW"/>
+                <constraint firstItem="dqh-2D-VY5" firstAttribute="leading" secondItem="b3Y-xB-bIs" secondAttribute="leading" id="5Xy-3U-1b2"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="b3Y-xB-bIs" secondAttribute="trailing" constant="20" id="5pC-Lv-m28"/>
+                <constraint firstItem="b3Y-xB-bIs" firstAttribute="trailing" secondItem="2IP-ef-nDl" secondAttribute="trailing" id="Cf1-fo-h5q"/>
+                <constraint firstItem="b3Y-xB-bIs" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="EHI-HK-ahg"/>
+                <constraint firstItem="b3Y-xB-bIs" firstAttribute="leading" secondItem="2IP-ef-nDl" secondAttribute="leading" id="Hhy-ze-2mF"/>
+                <constraint firstItem="2IP-ef-nDl" firstAttribute="top" secondItem="b3Y-xB-bIs" secondAttribute="bottom" constant="8" symbolic="YES" id="a4m-b6-bZB"/>
+                <constraint firstItem="dqh-2D-VY5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leadingMargin" id="acO-en-WNV"/>
+                <constraint firstItem="b3Y-xB-bIs" firstAttribute="top" secondItem="dqh-2D-VY5" secondAttribute="bottom" constant="21" id="lC9-iu-1N3"/>
+                <constraint firstAttribute="bottom" secondItem="2IP-ef-nDl" secondAttribute="bottom" constant="20" symbolic="YES" id="yQA-XP-FyP"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <connections>
+                <outlet property="registButton" destination="2IP-ef-nDl" id="wzh-DR-OLx"/>
+                <outlet property="textFrom" destination="b3Y-xB-bIs" id="G9f-61-Qdw"/>
+            </connections>
+            <point key="canvasLocation" x="111.2" y="-105.69715142428787"/>
+        </view>
+    </objects>
+</document>

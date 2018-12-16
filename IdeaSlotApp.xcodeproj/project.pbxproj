@@ -39,6 +39,8 @@
 		CEE38EAD2180BAE300BBD07F /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE38EA92180BAE300BBD07F /* RealmSwift.framework */; };
 		CEEDE3ED2143929C00D05F61 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEDE3EC2143929C00D05F61 /* SlideMenuViewController.swift */; };
 		CEEF4A9A21520D28007CFCC1 /* RealmCommonLogic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEF4A9921520D28007CFCC1 /* RealmCommonLogic.swift */; };
+		CEFA63FC21C6480600460E88 /* CategoryRegistFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA63FB21C6480600460E88 /* CategoryRegistFormView.swift */; };
+		CEFA63FE21C6481700460E88 /* CategoryRegistFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFA63FD21C6481700460E88 /* CategoryRegistFormView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -97,6 +99,8 @@
 		CEE38EA92180BAE300BBD07F /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
 		CEEDE3EC2143929C00D05F61 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
 		CEEF4A9921520D28007CFCC1 /* RealmCommonLogic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmCommonLogic.swift; sourceTree = "<group>"; };
+		CEFA63FB21C6480600460E88 /* CategoryRegistFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRegistFormView.swift; sourceTree = "<group>"; };
+		CEFA63FD21C6481700460E88 /* CategoryRegistFormView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryRegistFormView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +156,7 @@
 		CE558586211573D600E66A6C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CEFA63FB21C6480600460E88 /* CategoryRegistFormView.swift */,
 				CE5804762144206B00BEDA1A /* TableViewCell */,
 				CE78EABB21969B0800493969 /* WordItemView.swift */,
 			);
@@ -222,6 +227,7 @@
 		CE78631D2116E5CC0053B87B /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				CEFA63FD21C6481700460E88 /* CategoryRegistFormView.xib */,
 				CE8B79FA210475FF009BD29F /* Main.storyboard */,
 				CE8B79FF21047601009BD29F /* LaunchScreen.storyboard */,
 				CE78EAB9219698C600493969 /* WordItemView.xib */,
@@ -404,6 +410,7 @@
 			files = (
 				CE78EABA219698C600493969 /* WordItemView.xib in Resources */,
 				CE8B7A0121047601009BD29F /* LaunchScreen.storyboard in Resources */,
+				CEFA63FE21C6481700460E88 /* CategoryRegistFormView.xib in Resources */,
 				CE82D30921A97FA2003BE0B0 /* CategoryItemCell.xib in Resources */,
 				CE8B79FE21047601009BD29F /* Assets.xcassets in Resources */,
 				CE8B79FC210475FF009BD29F /* Main.storyboard in Resources */,
@@ -511,6 +518,7 @@
 				CE5A635D21294E99007E4887 /* RealmInitializer.swift in Sources */,
 				CEEF4A9A21520D28007CFCC1 /* RealmCommonLogic.swift in Sources */,
 				CE7497272143F48100F51E91 /* UIViewController.swift in Sources */,
+				CEFA63FC21C6480600460E88 /* CategoryRegistFormView.swift in Sources */,
 				CE78EABC21969B0800493969 /* WordItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
