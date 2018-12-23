@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import SwipeCellKit
+import PopupWindow
 
 class CategoryListViewController: UIViewController {
     
@@ -56,6 +57,10 @@ class CategoryListViewController: UIViewController {
         }
     }
     
+    private func setRegistForm(){
+        
+    }
+    
 }
 
 /**
@@ -65,37 +70,6 @@ extension CategoryListViewController: UITableViewDelegate{
     //did select cell
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         self.performSegue(withIdentifier: "toWordList", sender: nil)
-    }
-    
-//    //can edit table cell
-//    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-//        return true
-//    }
-//
-//    //edit action when swipe cell
-//    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
-//        let editAction: UITableViewRowAction = UITableViewRowAction(style: .default, title: "edit") { (action, index) -> Void in
-//            self.editForCell()
-//        };
-//        editAction.backgroundColor = UIColor.gray
-//        return [editAction]
-//    }
-    
-//    @available(iOS 11.0, *)
-//    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-//        let editAction = UIContextualAction.init(style: UIContextualAction.Style.normal, title: "edit", handler: { (action, view, completion) in
-//            //TODO: Edit
-//            self.editForCell()
-//        })
-//        editAction.backgroundColor = UIColor.gray
-//
-//        let config = UISwipeActionsConfiguration(actions: [editAction])
-//        config.performsFirstActionWithFullSwipe = false
-//        return config
-//    }
-    
-    func editForCell(){
-        print("edit for cell")
     }
 }
 
@@ -135,7 +109,7 @@ extension CategoryListViewController:SwipeTableViewCellDelegate{
         guard orientation == .right else { return nil }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
-            print("swipe cell")
+            self.setRegistForm()
         }
         editAction.transitionDelegate = ScaleTransition.default
         editAction.image = UIImage(named: "Edit")

@@ -7,20 +7,42 @@
 //
 
 import UIKit
+import PopupWindow
 
-class CategoryRegistFormView: UIView {
-    
-    @IBOutlet weak var textFrom: UITextField!
-    @IBOutlet weak var registButton: UIButton!
+class CategoryRegistFormView: UIView ,PopupViewContainable{
     let categoryId:Int? = nil
     
-    @IBAction func RegistAction(_ sender: Any) {
-        registCategory()
+    @IBOutlet weak var containerView: UIView!{
+        didSet{
+            containerView.layer.masksToBounds = true
+        }
     }
+    
+    @IBOutlet weak var textFrom: UITextField!{
+        didSet{
+            textFrom.placeholder = "15 characters"
+        }
+    }
+    
+    @IBOutlet weak var registButton: UIButton!{
+        didSet{
+            registButton.setTitle("Continue", for: .normal)
+            registButton.backgroundColor = UIColor.AppColor.buttonColor
+            registButton.tintColor = UIColor.AppColor.buttonTextColor
+            registButton.layer.cornerRadius = 5.0
+            registButton.layer.masksToBounds = true
+        }
+    }
+    
+    @IBAction func RegistAction(_ sender: Any) {
+        registerButtonTapHandler?()
+    }
+    
+    var registerButtonTapHandler: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setupRegistForm()
+        self.backgroundColor = UIColor.blue
     }
     
     override init(frame: CGRect) {
@@ -29,19 +51,5 @@ class CategoryRegistFormView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-    }
-    
-    public func registCategory(){
-        print("tap regist button :",textFrom.text)
-    }
-
-    private func setupRegistForm(){
-        textFrom.placeholder = "15 characters"
-        
-        registButton.setTitle("Continue", for: .normal)
-        registButton.backgroundColor = UIColor.AppColor.buttonColor
-        registButton.tintColor = UIColor.AppColor.buttonTextColor
-        registButton.layer.cornerRadius = 5.0
-        registButton.layer.masksToBounds = true
     }
 }

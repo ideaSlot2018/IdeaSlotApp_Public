@@ -8,23 +8,17 @@
 import UIKit
 
 open class BaseTableViewCell : UITableViewCell {
-//    class var identifier: String { return String.className(self) }
     class var identifier: String { return String(describing: type(of: self)) }
 
     public required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        setup()
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        setup()
     }
     
     open override func awakeFromNib() {
-    }
-    
-    open func setup() {
     }
     
     open class func height() -> CGFloat {

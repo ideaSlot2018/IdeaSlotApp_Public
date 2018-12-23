@@ -147,6 +147,7 @@ class WordsListViewController: UIViewController{
             }
             if removeWordItemIndex != nil{
                 oldCategory!.words.remove(at: removeWordItemIndex!)
+                realm.create(Category.self, value: oldCategory!, update: true)
             }
         }
     }
@@ -207,12 +208,8 @@ extension WordsListViewController: UITableViewDelegate{
             headerview.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 45)
             item.frame = CGRect(x:0, y:0, width:self.view.frame.size.width, height:44)
         } else {
-            //            headerview.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 100)
-            //            item.frame = CGRect(x:0, y:55, width:self.view.frame.size.width, height:44)
             headerview.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 45)
             item.frame = CGRect(x:0, y:0, width:self.view.frame.size.width, height:44)
-            //            searchController.searchBar.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 50)
-            //            headerview.addSubview(searchController.searchBar)
         }
         headerview.addSubview(item)
         

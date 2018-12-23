@@ -11,7 +11,11 @@ import SwipeCellKit
 
 class CategoryTableViewCell: SwipeTableViewCell {
 
-    @IBOutlet weak var includeWordsCount: UILabel!
+    @IBOutlet weak var includeWordsCount: UILabel!{
+        didSet{
+            includeWordsCount.textColor = UIColor.AppColor.textColor
+        }
+    }
     @IBOutlet weak var categoryTitle: UILabel!
     let nextImage = UIImage(named: "Into")
     
@@ -27,9 +31,7 @@ class CategoryTableViewCell: SwipeTableViewCell {
     
     func setCategoryItem(){
         let imageview = UIImageView(image: nextImage)
-        imageview.frame = CGRect(x:self.frame.width - 20, y:25,
-                                 width:20, height:20)
-        includeWordsCount.textColor = UIColor.AppColor.textColor
+        imageview.frame = CGRect(x:self.frame.width - 20, y:25, width:20, height:20)
         self.addSubview(imageview)
     }
 

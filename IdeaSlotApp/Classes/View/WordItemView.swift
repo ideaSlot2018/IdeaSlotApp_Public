@@ -15,8 +15,22 @@ protocol InputTextDelegate {
 
 class WordItemView: UIView {
     
-    @IBOutlet weak var textfield: UITextField!
-    @IBOutlet weak var categorybutton: UIButton!
+    @IBOutlet weak var textfield: UITextField!{
+        didSet{
+            textfield.placeholder = "+"
+            textfield.delegate = self
+        }
+    }
+    
+    @IBOutlet weak var categorybutton: UIButton!{
+        didSet{
+            categorybutton.setTitle("No Category", for: .normal)
+            categorybutton.backgroundColor = UIColor.AppColor.buttonColor
+            categorybutton.tintColor = UIColor.AppColor.buttonTextColor
+            categorybutton.layer.cornerRadius = 5.0
+            categorybutton.layer.masksToBounds = true
+        }
+    }
     var delegate:InputTextDelegate! = nil
     var categoryName: String? = ""
     var wordId: String? = ""
@@ -31,7 +45,6 @@ class WordItemView: UIView {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        setWordItem()
         setDropDown(button: categorybutton, dropdown: dropdown)
     }
     
@@ -52,16 +65,6 @@ class WordItemView: UIView {
                 self.textFieldDidEndEditing(self.textfield)
             }
         }
-    }
-    
-    func setWordItem(){
-        textfield.placeholder = "+"
-        textfield.delegate = self
-        categorybutton.setTitle("No Category", for: .normal)
-        categorybutton.backgroundColor = UIColor.AppColor.buttonColor
-        categorybutton.tintColor = UIColor.AppColor.buttonTextColor
-        categorybutton.layer.cornerRadius = 5.0
-        categorybutton.layer.masksToBounds = true
     }
 }
 
