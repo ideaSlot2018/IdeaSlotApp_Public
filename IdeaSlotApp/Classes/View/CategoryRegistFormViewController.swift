@@ -14,9 +14,9 @@ class CategoryRegistFormViewController: BasePopupViewController {
         static let popupDuration: TimeInterval = 0.3
         static let transformDuration: TimeInterval = 0.4
         static let maxWidth: CGFloat = 500
-        static let landscapeSize: CGSize = CGSize(width: maxWidth, height: 249)
+        static let landscapeSize: CGSize = CGSize(width: maxWidth, height: 300)
         static let popupOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .bottom, canTapDismiss: true)
-        static let popupCompletionOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .bottom, hasBlur: false)
+        static let popupCompletionOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .card, direction: .bottom, hasBlur: false)
     }
 
     override func viewDidLoad() {
@@ -24,7 +24,7 @@ class CategoryRegistFormViewController: BasePopupViewController {
         var categoryRegistFormView = CategoryRegistFormView()
         categoryRegistFormView = UINib(nibName: "CategoryRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! CategoryRegistFormView
         
-        let popupItem = PopupItem(view: categoryRegistFormView, height: 300, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
+        let popupItem = PopupItem(view: categoryRegistFormView, height: CategoryRegistFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
         configurePopupItem(popupItem)
         
         categoryRegistFormView.registerButtonTapHandler = { [weak self] in
@@ -33,13 +33,13 @@ class CategoryRegistFormViewController: BasePopupViewController {
         }
     }
     
-    private func showCompletionView(formView: UIView) {
-        print("tap tap tap!")
-        let popupItem = PopupItem(view: formView, height: 300, maxWidth: Const.maxWidth, popupOption: Const.popupCompletionOption)
+    private func showCompletionView(formView: CategoryRegistFormView) {
+        print("tap tap tap! :",formView.textFrom.text)
+        let popupItem = PopupItem(view: formView, height: CategoryRegistFormView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupCompletionOption)
         transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
             guard let me = self else { return }
             me.replacePopupView(with: popupItem)
-            DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + 3.0 ) { [weak self] in
+            DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + 0.1) { [weak self] in
                 guard let me = self else { return }
                 me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction) { _ in
                     PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)

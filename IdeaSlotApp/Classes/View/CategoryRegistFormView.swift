@@ -10,6 +10,9 @@ import UIKit
 import PopupWindow
 
 class CategoryRegistFormView: UIView ,PopupViewContainable{
+    enum Const {
+        static let height: CGFloat = 200
+    }
     let categoryId:Int? = nil
     
     @IBOutlet weak var containerView: UIView!{
@@ -33,16 +36,36 @@ class CategoryRegistFormView: UIView ,PopupViewContainable{
             registButton.layer.masksToBounds = true
         }
     }
+    @IBOutlet weak var closeButton: UIButton!{
+        didSet{
+            closeButton.setImage(UIImage(named:"Close"), for: .normal)
+            closeButton.imageView?.tintColor = UIColor.gray
+        }
+    }
     
     @IBAction func RegistAction(_ sender: Any) {
         registerButtonTapHandler?()
+    }
+    
+    @IBAction func CloseAction(_ sender: Any) {
+        print("close")
     }
     
     var registerButtonTapHandler: (() -> Void)?
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.blue
+        self.backgroundColor = UIColor.AppColor.formBackgroundColor
+        let border = CALayer()
+        border.borderColor = UIColor.black.cgColor
+        border.frame = CGRect(x: 0, y: textFrom.frame.size.height - CGFloat(2.0), width: textFrom.frame.size.width, height: 1)
+        border.borderWidth = CGFloat(2.0)
+        
+        print("border : ",textFrom.frame.size.width)
+        print("form view : ",self.frame.size.width)
+        print("button : ",registButton.frame.size.width)
+
+        textFrom.layer.addSublayer(border)
     }
     
     override init(frame: CGRect) {
