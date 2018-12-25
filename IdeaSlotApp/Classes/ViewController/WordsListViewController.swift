@@ -255,7 +255,8 @@ extension WordsListViewController: UITableViewDataSource{
         cell.delegate = self
         
         var itemView = WordItemView()
-        itemView = Bundle.main.loadNibNamed("WordItemView", owner: self, options: nil)!.first! as! WordItemView
+//        itemView = Bundle.main.loadNibNamed("WordItemView", owner: self, options: nil)!.first! as! WordItemView
+        itemView = UINib(nibName: "WordItemView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! WordItemView
         
         if isFiltering(){
             words = filteredWords[indexPath.row]

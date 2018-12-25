@@ -57,7 +57,8 @@ class CategoryListViewController: UIViewController {
         }
     }
     
-    private func setRegistForm(){
+    private func registCategoryItem(){
+        print("regist category item")
         
     }
     
@@ -109,7 +110,8 @@ extension CategoryListViewController:SwipeTableViewCellDelegate{
         guard orientation == .right else { return nil }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
-            self.setRegistForm()
+            PopupWindowManager.shared.changeKeyWindow(rootViewController: CategoryRegistFormViewController())
+            self.registCategoryItem()
         }
         editAction.transitionDelegate = ScaleTransition.default
         editAction.image = UIImage(named: "Edit")
