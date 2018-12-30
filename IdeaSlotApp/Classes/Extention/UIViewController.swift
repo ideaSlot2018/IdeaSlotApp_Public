@@ -82,6 +82,13 @@ extension UIViewController{
         return categoryItem
     }
     
+    func getCategoryMaxId() -> Int {
+        let realm = try!Realm()
+        let categoryMaxId: Int = (realm.objects(Category.self).sorted(byKeyPath: "categoryId", ascending: true).last?.categoryId)! + 1
+        return categoryMaxId
+    }
+
+    
     func setCateoryDropDown(button:UIButton, dropdown:DropDown){
         dropdown.anchorView = button
         dropdown.dataSource = arrayCategoryList()

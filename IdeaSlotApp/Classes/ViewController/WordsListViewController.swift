@@ -83,7 +83,6 @@ class WordsListViewController: UIViewController{
             if category!.count > 0{
                 categoryItem = category?.first
                 item = ["word": text,
-                        //                                       "userId": "test-user",
                     "categoryId": categoryItem!.categoryId,
                     "categoryName": categoryName]
             }
@@ -114,16 +113,16 @@ class WordsListViewController: UIViewController{
             categoryItem = category?.first
             item = ["wordId": wordItem.wordId!,
                     "word": text,
-                    //                                       "userId": "test-user",
-                "updateDate": Date(),
-                "categoryId": category!.first!.categoryId,
-                "categoryName": category!.first!.categoryName]
+                    "categoryId": category!.first!.categoryId,
+                    "categoryName": category!.first!.categoryName,
+                    "createDate":wordItem.createDate
+            ]
         }else{
             item = ["wordId": wordItem.wordId!,
                     "word": text,
-                    //                                       "userId": "test-user",
-                "categoryName": "No Category",
-                "updateDate": Date()]
+                    "categoryName": "No Category",
+                    "createDate":wordItem.createDate
+            ]
         }
         
         var oldCategoryItem:Results<Category>? = nil

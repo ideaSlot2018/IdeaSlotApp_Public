@@ -55,7 +55,12 @@ class CategoryListViewController: UIViewController {
     }
     
     override func rightButtonAction() {
+        setRegistFrom()
+    }
+    
+    func setRegistFrom(){
         PopupWindowManager.shared.changeKeyWindow(rootViewController: CategoryRegistFormViewController())
+        self.tableView.reloadData()
     }
     
 }
@@ -91,6 +96,7 @@ extension CategoryListViewController: UITableViewDataSource{
         cell.categoryTitle.text = categories.categoryName
         cell.categoryTitle.numberOfLines = 0
         cell.categoryTitle.sizeToFit()
+        cell.categoryTitle.lineBreakMode = .byClipping
         cell.includeWordsCount.text = String(categories.words.count)
         
         return cell
@@ -109,7 +115,7 @@ extension CategoryListViewController:SwipeTableViewCellDelegate{
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.category = self.categoryEntities![indexPath.row]
             
-            PopupWindowManager.shared.changeKeyWindow(rootViewController: CategoryRegistFormViewController())
+            self.setRegistFrom()
         }
         editAction.transitionDelegate = ScaleTransition.default
         editAction.image = UIImage(named: "Edit")

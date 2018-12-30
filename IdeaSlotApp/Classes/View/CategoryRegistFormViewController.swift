@@ -8,6 +8,7 @@
 
 import UIKit
 import PopupWindow
+import RealmSwift
 
 class CategoryRegistFormViewController: BasePopupViewController {
     enum Const {
@@ -20,7 +21,9 @@ class CategoryRegistFormViewController: BasePopupViewController {
     }
     
     var category: Category? = nil
+    
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
+    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,38 +50,68 @@ class CategoryRegistFormViewController: BasePopupViewController {
     }
     
     private func showCompletionView(formView: CategoryRegistFormView) {
-        print("tap tap tap! :",formView.textFrom.text)
-        var result:Bool = false
         
         if self.category == nil {
-            category = Category()
-            category?.categoryName = formView.textFrom.text!
+            self.category = Category()
         }
-        result = registCategory(category: self.category!)
+        
+        //Regist Category
+        var result:Bool = false
+        result = registCategory(category: self.category!,formText: formView.textFrom.text!)
+        if result {
+            print("success")
+        }else{
+            print("failure")
+        }
+        
         
         let popupItem = PopupItem(view: formView, height: CategoryRegistFormView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupCompletionOption)
         transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
             guard let me = self else { return }
-//            me.replacePopupView(with: popupItem)
-                me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction) { _ in
-                    PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
-                    self!.appDelegate.category = nil
-
-                }
+            //            me.replacePopupView(with: popupItem)
+            me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction) { _ in
+                PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
+                self!.appDelegate.category = nil
+            }
         }
+        
     }
     
-    func registCategory(category: Category) -> Bool {
+    func registCategory(category: Category, formText: String) -> Bool {
         let item: [String: Any]
         
-        if category.categoryId != nil {
-            print("update")
+        if category.categoryId != 0 {
+            let newWords = self.convertWords(categoryName: formText)
+            item = ["categoryId":category.categoryId,
+                    "categoryName":formText,
+                    "words":newWords,
+                    "createDate":category.createDate
+            ]
         }else{
-            print("insert")
+            item = ["categoryId":getCategoryMaxId(),
+                    "categoryName":formText,
+            ]
+        }
+        
+        let editCategory = Category(value: item)
+        try! realm.write {
+            realm.add(editCategory, update: true)
         }
         
         return true
     }
     
-
+    private func convertWords(categoryName:String) -> Array<Words>{
+        var newWords:Array<Words>? = Array()
+        let words:Results<Words>? = realm.objects(Words.self).filter("categoryId == %@", category!.categoryId)
+        
+        try! realm.write {
+            for word in words! {
+                word.categoryName = categoryName
+                newWords?.append(word)
+            }
+        }
+        return newWords!
+    }
+    
 }
