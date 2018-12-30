@@ -14,6 +14,8 @@ import DropDown
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
+    var category:Category? = nil
+    
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         let userDefaulft = UserDefaults.standard

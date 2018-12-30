@@ -18,10 +18,21 @@ extension UIViewController{
         self.slideMenuController()?.addLeftGestures()
     }
     
-    func removeNavigationBarItem() {
-        self.navigationItem.leftBarButtonItem = nil
-        self.slideMenuController()?.removeLeftGestures()
+    func setNavigationBarRightItem(imageName: String) {
+        let button: UIButton = UIButton(type: .custom)
+        button.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        button.setImage(UIImage(named: imageName), for: .normal)
+        button.addTarget(self, action: #selector(rightButtonAction), for: .touchUpInside)
+        let rightButton = UIBarButtonItem(customView:button)
+        let currWidth = rightButton.customView?.widthAnchor.constraint(equalToConstant: 25)
+        currWidth?.isActive = true
+        let currHeight = rightButton.customView?.heightAnchor.constraint(equalToConstant: 25)
+        currHeight?.isActive = true
+
+        self.navigationItem.rightBarButtonItem = rightButton
     }
+    
+    @objc func rightButtonAction() {}
     
     func setNavigationBarTitle(title: String){
         let navigationTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))

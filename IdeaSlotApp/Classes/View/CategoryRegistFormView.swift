@@ -48,11 +48,12 @@ class CategoryRegistFormView: UIView ,PopupViewContainable{
     }
     
     @IBAction func CloseAction(_ sender: Any) {
-        print("close")
+        closeButtonTapHandler?()
     }
     
     var registerButtonTapHandler: (() -> Void)?
-    
+    var closeButtonTapHandler: (() -> Void)?
+
     override func awakeFromNib() {
         super.awakeFromNib()
         self.backgroundColor = UIColor.AppColor.formBackgroundColor
@@ -61,10 +62,6 @@ class CategoryRegistFormView: UIView ,PopupViewContainable{
         border.frame = CGRect(x: 0, y: textFrom.frame.size.height - CGFloat(2.0), width: textFrom.frame.size.width, height: 1)
         border.borderWidth = CGFloat(2.0)
         
-        print("border : ",textFrom.frame.size.width)
-        print("form view : ",self.frame.size.width)
-        print("button : ",registButton.frame.size.width)
-
         textFrom.layer.addSublayer(border)
     }
     

@@ -22,6 +22,8 @@ class CategoryListViewController: UIViewController {
         super.viewDidLoad()
         self.setNavigationBarItem()
         setNavigationBarTitle(title: "Category")
+        setNavigationBarRightItem(imageName: "Plus")
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.rowHeight = UITableView.automaticDimension
@@ -37,11 +39,6 @@ class CategoryListViewController: UIViewController {
         tableView.reloadData()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        dismiss(animated: animated, completion: nil)
-    }
-    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
@@ -57,9 +54,8 @@ class CategoryListViewController: UIViewController {
         }
     }
     
-    private func registCategoryItem(){
-        print("regist category item")
-        
+    override func rightButtonAction() {
+        PopupWindowManager.shared.changeKeyWindow(rootViewController: CategoryRegistFormViewController())
     }
     
 }
@@ -110,8 +106,10 @@ extension CategoryListViewController:SwipeTableViewCellDelegate{
         guard orientation == .right else { return nil }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
+            let appDelegate = UIApplication.shared.delegate as! AppDelegate
+            appDelegate.category = self.categoryEntities![indexPath.row]
+            
             PopupWindowManager.shared.changeKeyWindow(rootViewController: CategoryRegistFormViewController())
-            self.registCategoryItem()
         }
         editAction.transitionDelegate = ScaleTransition.default
         editAction.image = UIImage(named: "Edit")

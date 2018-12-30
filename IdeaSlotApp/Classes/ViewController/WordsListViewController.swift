@@ -255,7 +255,6 @@ extension WordsListViewController: UITableViewDataSource{
         cell.delegate = self
         
         var itemView = WordItemView()
-//        itemView = Bundle.main.loadNibNamed("WordItemView", owner: self, options: nil)!.first! as! WordItemView
         itemView = UINib(nibName: "WordItemView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! WordItemView
         
         if isFiltering(){
@@ -313,6 +312,7 @@ extension WordsListViewController: UISearchResultsUpdating{
     }
     
     func isFiltering() -> Bool {
+        //Returns true if search bar is active and text is not empty or nil
         return searchController.isActive && !searchBarIsEmpty()
     }
     
