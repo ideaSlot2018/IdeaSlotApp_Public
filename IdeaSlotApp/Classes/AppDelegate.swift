@@ -59,7 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
     }
     
-    fileprivate func createMenuView(){
+    private func createMenuView(){
         // create viewController code...
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         

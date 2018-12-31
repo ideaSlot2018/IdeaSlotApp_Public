@@ -17,20 +17,6 @@
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="IDEA BERG" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXa-CH-7Zh">
-                                <rect key="frame" x="114.5" y="315.5" width="146" height="36"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
-                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                        <color key="backgroundColor" red="0.0019623614375980248" green="0.071724641490895552" blue="0.42883569332335025" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <constraints>
-                            <constraint firstItem="zXa-CH-7Zh" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="2yW-eF-dUn"/>
-                            <constraint firstItem="zXa-CH-7Zh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="eKR-FV-jnw"/>
-                            <constraint firstItem="zXa-CH-7Zh" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="s0f-N1-0eM"/>
-                        </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>

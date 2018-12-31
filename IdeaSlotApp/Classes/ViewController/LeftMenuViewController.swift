@@ -84,7 +84,7 @@ extension LeftMenuViewController: UITableViewDelegate{
         if let menu = LeftMenu(rawValue: indexPath.row){
             switch menu{
             case .words, .categories, .ideas, .slot:
-                return BaseTableViewCell.height()
+                return BaseTableViewCell.Const.height
             }
         }
         return 0

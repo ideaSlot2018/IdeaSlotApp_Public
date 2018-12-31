@@ -21,13 +21,14 @@
 		CE78EABA219698C600493969 /* WordItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE78EAB9219698C600493969 /* WordItemView.xib */; };
 		CE78EABC21969B0800493969 /* WordItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78EABB21969B0800493969 /* WordItemView.swift */; };
 		CE79C6A221CA884B00B3BC63 /* CategoryRegistFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79C6A121CA884B00B3BC63 /* CategoryRegistFormViewController.swift */; };
+		CE7C06F021D9D00C002ECE6E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7C06EF21D9D00C002ECE6E /* Images.xcassets */; };
+		CE7C06F321D9D260002ECE6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C06F121D9D260002ECE6E /* LaunchScreen.storyboard */; };
 		CE82D30921A97FA2003BE0B0 /* CategoryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE82D30821A97FA2003BE0B0 /* CategoryItemCell.xib */; };
 		CE82D30B21A98082003BE0B0 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D30A21A98082003BE0B0 /* CategoryTableViewCell.swift */; };
 		CE8B79F7210475FF009BD29F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B79F6210475FF009BD29F /* AppDelegate.swift */; };
 		CE8B79F9210475FF009BD29F /* WordsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B79F8210475FF009BD29F /* WordsListViewController.swift */; };
 		CE8B79FC210475FF009BD29F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8B79FA210475FF009BD29F /* Main.storyboard */; };
 		CE8B79FE21047601009BD29F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE8B79FD21047601009BD29F /* Assets.xcassets */; };
-		CE8B7A0121047601009BD29F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8B79FF21047601009BD29F /* LaunchScreen.storyboard */; };
 		CE8B7A0C21047601009BD29F /* IdeaSlotAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B7A0B21047601009BD29F /* IdeaSlotAppTests.swift */; };
 		CE8B7A1721047601009BD29F /* IdeaSlotAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B7A1621047601009BD29F /* IdeaSlotAppUITests.swift */; };
 		CE918FE521995B99001C6B95 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE918FE421995B99001C6B95 /* UIColor.swift */; };
@@ -75,6 +76,8 @@
 		CE78EAB9219698C600493969 /* WordItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordItemView.xib; sourceTree = "<group>"; };
 		CE78EABB21969B0800493969 /* WordItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordItemView.swift; sourceTree = "<group>"; };
 		CE79C6A121CA884B00B3BC63 /* CategoryRegistFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegistFormViewController.swift; sourceTree = "<group>"; };
+		CE7C06EF21D9D00C002ECE6E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		CE7C06F221D9D260002ECE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE82D30821A97FA2003BE0B0 /* CategoryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryItemCell.xib; sourceTree = "<group>"; };
 		CE82D30A21A98082003BE0B0 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		CE8B79F3210475FF009BD29F /* IdeaSlotApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaSlotApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -82,7 +85,6 @@
 		CE8B79F8210475FF009BD29F /* WordsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsListViewController.swift; sourceTree = "<group>"; };
 		CE8B79FB210475FF009BD29F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE8B79FD21047601009BD29F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE8B7A0021047601009BD29F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE8B7A0221047601009BD29F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE8B7A0721047601009BD29F /* IdeaSlotAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdeaSlotAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8B7A0B21047601009BD29F /* IdeaSlotAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaSlotAppTests.swift; sourceTree = "<group>"; };
@@ -156,9 +158,8 @@
 		CE558586211573D600E66A6C /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE7E126D21D9186C002C98CE /* RegistForm */,
 				CE5804762144206B00BEDA1A /* TableViewCell */,
-				CE79C6A121CA884B00B3BC63 /* CategoryRegistFormViewController.swift */,
-				CEFA63FB21C6480600460E88 /* CategoryRegistFormView.swift */,
 				CE78EABB21969B0800493969 /* WordItemView.swift */,
 			);
 			path = View;
@@ -227,13 +228,22 @@
 		CE78631D2116E5CC0053B87B /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				CE7C06F121D9D260002ECE6E /* LaunchScreen.storyboard */,
 				CE8B79FA210475FF009BD29F /* Main.storyboard */,
-				CE8B79FF21047601009BD29F /* LaunchScreen.storyboard */,
 				CE78EAB9219698C600493969 /* WordItemView.xib */,
 				CE82D30821A97FA2003BE0B0 /* CategoryItemCell.xib */,
 				CEFA63FD21C6481700460E88 /* CategoryRegistFormView.xib */,
 			);
 			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		CE7E126D21D9186C002C98CE /* RegistForm */ = {
+			isa = PBXGroup;
+			children = (
+				CE79C6A121CA884B00B3BC63 /* CategoryRegistFormViewController.swift */,
+				CEFA63FB21C6480600460E88 /* CategoryRegistFormView.swift */,
+			);
+			path = RegistForm;
 			sourceTree = "<group>";
 		};
 		CE8B79EA210475FF009BD29F = {
@@ -265,6 +275,7 @@
 				CE78631A2116E54C0053B87B /* Model */,
 				CE558585211573B400E66A6C /* Others */,
 				CE5585842115739E00E66A6C /* Classes */,
+				CE7C06EF21D9D00C002ECE6E /* Images.xcassets */,
 			);
 			path = IdeaSlotApp;
 			sourceTree = "<group>";
@@ -409,9 +420,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE78EABA219698C600493969 /* WordItemView.xib in Resources */,
-				CE8B7A0121047601009BD29F /* LaunchScreen.storyboard in Resources */,
 				CEFA63FE21C6481700460E88 /* CategoryRegistFormView.xib in Resources */,
 				CE82D30921A97FA2003BE0B0 /* CategoryItemCell.xib in Resources */,
+				CE7C06F021D9D00C002ECE6E /* Images.xcassets in Resources */,
+				CE7C06F321D9D260002ECE6E /* LaunchScreen.storyboard in Resources */,
 				CE8B79FE21047601009BD29F /* Assets.xcassets in Resources */,
 				CE8B79FC210475FF009BD29F /* Main.storyboard in Resources */,
 			);
@@ -555,20 +567,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CE7C06F121D9D260002ECE6E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE7C06F221D9D260002ECE6E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		CE8B79FA210475FF009BD29F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CE8B79FB210475FF009BD29F /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CE8B79FF21047601009BD29F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE8B7A0021047601009BD29F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -692,6 +704,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -718,6 +731,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				FRAMEWORK_SEARCH_PATHS = (

@@ -8,6 +8,10 @@
 import UIKit
 
 open class BaseTableViewCell : UITableViewCell {
+    enum Const {
+        static let height: CGFloat = 48
+    }
+    
     class var identifier: String { return String(describing: type(of: self)) }
 
     public required init?(coder aDecoder: NSCoder) {
@@ -18,14 +22,11 @@ open class BaseTableViewCell : UITableViewCell {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
     }
     
-    open override func awakeFromNib() {
+    override open func awakeFromNib() {
+        super.awakeFromNib()
     }
     
-    open class func height() -> CGFloat {
-        return 48
-    }
-    
-    open func setData(_ data: Any?) {
+    func setData(_ data: Any?) {
         self.backgroundColor = UIColor.AppColor.leftmenuCellColor
         self.textLabel?.font = UIFont.italicSystemFont(ofSize: 18)
         self.textLabel?.textColor = UIColor.AppColor.textColor
@@ -44,6 +45,7 @@ open class BaseTableViewCell : UITableViewCell {
     
     // ignore the default handling
     override open func setSelected(_ selected: Bool, animated: Bool) {
+        super.setSelected(selected, animated: animated)
     }
   
 }

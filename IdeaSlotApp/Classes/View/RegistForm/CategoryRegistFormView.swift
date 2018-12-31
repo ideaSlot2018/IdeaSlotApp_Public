@@ -73,3 +73,4 @@ class CategoryRegistFormView: UIView ,PopupViewContainable{
         super.init(coder: aDecoder)
     }
 }
+

@@ -69,12 +69,12 @@ class WordItemView: UIView {
 }
 
 extension WordItemView: UITextFieldDelegate{
-    internal func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
     }
     
-    internal func textFieldDidEndEditing(_ textField: UITextField) {
+    func textFieldDidEndEditing(_ textField: UITextField) {
         if !textField.text!.isEmpty{
             self.delegate.textFieldDidEndEditing(item: self, value: textField.text!)
         }
