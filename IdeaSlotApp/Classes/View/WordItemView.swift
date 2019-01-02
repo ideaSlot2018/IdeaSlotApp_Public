@@ -29,6 +29,7 @@ class WordItemView: UIView {
             categorybutton.tintColor = UIColor.AppColor.buttonTextColor
             categorybutton.layer.cornerRadius = 5.0
             categorybutton.layer.masksToBounds = true
+            categorybutton.titleLabel?.lineBreakMode = .byTruncatingTail
         }
     }
     var delegate:InputTextDelegate! = nil

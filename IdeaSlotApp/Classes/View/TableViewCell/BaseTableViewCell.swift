@@ -2,8 +2,8 @@
 //  BaseTableViewCell.swift
 //  SlideMenuControllerSwift
 //
-//  Created by Yuji Hato on 1/22/15.
-//  Copyright (c) 2015 Yuji Hato. All rights reserved.
+//  Created by yuta akazawa on 2018/08/12.
+//  Copyright © 2018年 yuta akazawa. All rights reserved.
 //
 import UIKit
 

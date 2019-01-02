@@ -15,6 +15,7 @@ class CategoryListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var categoryEntities: Results<Category>? = nil
+    var category: Category? = nil
 
     let realm = try! Realm()
     
@@ -58,11 +59,74 @@ class CategoryListViewController: UIViewController {
         setRegistFrom()
     }
     
+    //display category regist form
     func setRegistFrom(){
         PopupWindowManager.shared.changeKeyWindow(rootViewController: CategoryRegistFormViewController())
-        self.tableView.reloadData()
     }
     
+    //regist or update category
+    func registCategory(category: Category, formText: String) -> Bool {
+        let item: [String: Any]
+        
+        if category.categoryId != 0 {
+            let newWords = self.convertWords(category: category, categoryName: formText)
+            item = ["categoryId":category.categoryId,
+                    "categoryName":formText,
+                    "words":newWords,
+                    "createDate":category.createDate
+            ]
+        }else{
+            item = ["categoryId":getCategoryMaxId(),
+                    "categoryName":formText,
+            ]
+        }
+        
+        let editCategory = Category(value: item)
+        try! realm.write {
+            realm.add(editCategory, update: true)
+        }
+        
+        self.tableView.reloadData()
+        return true
+    }
+    
+    //update word's category name when category cahnged
+    private func convertWords(category:Category, categoryName:String) -> Array<Words>{
+        var newWords:Array<Words>? = Array()
+        let words:Results<Words>? = realm.objects(Words.self).filter("categoryId == %@", category.categoryId)
+        
+        try! realm.write {
+            for word in words! {
+                word.categoryName = categoryName
+                word.updateDate = Date()
+                newWords?.append(word)
+            }
+        }
+        return newWords!
+    }
+    
+    //delete category
+    private func deleteCategory(_ tableView: UITableView, forRowAt indexPath: IndexPath){
+        let categoryId = categoryEntities![indexPath.row].categoryId
+        let words:Results<Words>? = realm.objects(Words.self).filter("categoryId == %@", categoryId)
+        
+        //update words
+        try! realm.write {
+            for word in words!{
+                word.categoryId = 0
+                word.categoryName = "No Category"
+                word.updateDate = Date()
+            }
+        }
+        
+        //delete category
+        try! realm.write {
+            if let category = categoryEntities{
+                realm.delete(category[indexPath.row])
+            }
+        }
+        tableView.reloadData()
+    }
 }
 
 /**
@@ -107,6 +171,9 @@ extension CategoryListViewController: UITableViewDataSource{
     }
 }
 
+/**
+ SwipeCellKit SwipeTableViewCellDelegate
+ **/
 extension CategoryListViewController:SwipeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
@@ -114,14 +181,20 @@ extension CategoryListViewController:SwipeTableViewCellDelegate{
         let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
             let appDelegate = UIApplication.shared.delegate as! AppDelegate
             appDelegate.category = self.categoryEntities![indexPath.row]
-            
             self.setRegistFrom()
         }
         editAction.transitionDelegate = ScaleTransition.default
         editAction.image = UIImage(named: "Edit")
         editAction.backgroundColor = UIColor.AppColor.editBackGroundColor
         
-        return [editAction]
+        let deleteAction = SwipeAction(style: .default, title: "Delete"){ action, indexPath in
+            self.deleteCategory(tableView, forRowAt: indexPath)
+        }
+        deleteAction.transitionDelegate = ScaleTransition.default
+        deleteAction.image = UIImage(named: "Trash")
+        deleteAction.backgroundColor = UIColor.AppColor.deleteBackGroundColor
+        
+        return [deleteAction, editAction]
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
