@@ -20,6 +20,7 @@ class CategoryRegistFormViewController: BasePopupViewController {
     }
     
     var category: Category? = nil
+    var categoryTableView: UITableView!
     
     let appDelegate = UIApplication.shared.delegate as! AppDelegate
     let realm = try! Realm()
@@ -29,8 +30,7 @@ class CategoryRegistFormViewController: BasePopupViewController {
         
         var categoryRegistFormView = CategoryRegistFormView()
         categoryRegistFormView = UINib(nibName: "CategoryRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! CategoryRegistFormView
-        if appDelegate.category != nil {
-            self.category = appDelegate.category
+        if self.category?.categoryId != 0 {
             categoryRegistFormView.textFrom.text = self.category?.categoryName
         }
         
@@ -44,16 +44,11 @@ class CategoryRegistFormViewController: BasePopupViewController {
         
         categoryRegistFormView.closeButtonTapHandler = { [weak self] in
             self?.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: .bottom) { _ in }
-            self!.appDelegate.category = nil
         }
     }
     
     private func showCompletionView(formView: CategoryRegistFormView) {
         let popupItem = PopupItem(view: formView, height: CategoryRegistFormView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
-        
-        if self.category == nil {
-            self.category = Category()
-        }
         
         //Regist Category
         var result:Bool = false
@@ -61,12 +56,12 @@ class CategoryRegistFormViewController: BasePopupViewController {
         result = categoryListViewControler.registCategory(category: self.category!,formText: formView.textFrom.text!)
         if result {
             print("success")
+            categoryTableView.reloadData()
             transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
                 guard let me = self else { return }
                 me.replacePopupView(with: popupItem)
                 me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction) { _ in
                     PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
-                    self!.appDelegate.category = nil
                 }
             }
         }else{

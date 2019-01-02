@@ -56,12 +56,15 @@ class CategoryListViewController: UIViewController {
     }
     
     override func rightButtonAction() {
-        setRegistFrom()
+        setRegistFrom(category: Category())
     }
     
     //display category regist form
-    func setRegistFrom(){
-        PopupWindowManager.shared.changeKeyWindow(rootViewController: CategoryRegistFormViewController())
+    func setRegistFrom(category:Category){
+        let categoryRegistFormViewController = CategoryRegistFormViewController()
+        categoryRegistFormViewController.categoryTableView = self.tableView
+        categoryRegistFormViewController.category = category
+        PopupWindowManager.shared.changeKeyWindow(rootViewController: categoryRegistFormViewController)
     }
     
     //regist or update category
@@ -86,7 +89,6 @@ class CategoryListViewController: UIViewController {
             realm.add(editCategory, update: true)
         }
         
-        self.tableView.reloadData()
         return true
     }
     
@@ -179,9 +181,7 @@ extension CategoryListViewController:SwipeTableViewCellDelegate{
         guard orientation == .right else { return nil }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
-            let appDelegate = UIApplication.shared.delegate as! AppDelegate
-            appDelegate.category = self.categoryEntities![indexPath.row]
-            self.setRegistFrom()
+            self.setRegistFrom(category: self.categoryEntities![indexPath.row])
         }
         editAction.transitionDelegate = ScaleTransition.default
         editAction.image = UIImage(named: "Edit")

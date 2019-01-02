@@ -14,7 +14,6 @@ import DropDown
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-    var category:Category? = nil
     
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
@@ -67,7 +66,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let leftMenuViewController = storyboard.instantiateViewController(withIdentifier: "LeftMenu") as! LeftMenuViewController
         let nvc: UINavigationController = UINavigationController(rootViewController: mainViewController)
         let slideMenuController = SlideMenuViewController(mainViewController:nvc, leftMenuViewController:leftMenuViewController)
-//        slideMenuController.automaticallyAdjustsScrollViewInsets = true
 
         UINavigationBar.appearance().tintColor = UIColor.AppColor.navigationTitle
         UINavigationBar.appearance().barTintColor = UIColor.AppColor.navigationbarColor
