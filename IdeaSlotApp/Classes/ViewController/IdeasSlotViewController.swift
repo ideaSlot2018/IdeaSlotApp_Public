@@ -8,74 +8,52 @@
 
 import UIKit
 import RealmSwift
-import DropDown
 
 class IdeasSlotViewController: UIViewController {
+    enum Operators {
+        case plus
+        case minus
+        case multiply
+        case division
+    }
 
-    var pickerview01 = UIPickerView()
-    var pickerview02 = UIPickerView()
-    var pickerview03 = UIPickerView()
-    var categoryButton01 = UIButton()
-    var categoryButton02 = UIButton()
-    var categoryButton03 = UIButton()
-    var categoryId:Int = 0
-    var pickerList01 = Array<String>()
-    var pickerList02 = Array<String>()
-    var pickerList03 = Array<String>()
-    
-//    var words = Array<String>()
-    var operatorList = ["+","-","×","÷"]
-    var operatorButton = UIButton()
+    var wordEntities:Results<Words>? = nil
+    var ideaSlotPickerView = IdeaSlotPickerView()
+    var ideaSlotPickerView2 = IdeaSlotPickerView()
 
     let realm = try!Realm()
-    let categoryDropDown = DropDown()
-    var wordList:Results<Words>? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        wordList = realm.objects(Words.self)
-        pickerview01.frame = CGRect(x: 0, y: 200, width: self.view.frame.width, height: 100)
-        pickerview02.frame = CGRect(x: 0, y: 400, width: self.view.frame.width, height: 100)
+        
+        ideaSlotPickerView = UINib(nibName: "IdeaSlotPickerView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaSlotPickerView
+        ideaSlotPickerView.frame = CGRect(x: 0, y: 100, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
+        
+        ideaSlotPickerView2 = UINib(nibName: "IdeaSlotPickerView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaSlotPickerView
+        ideaSlotPickerView2.frame = CGRect(x: self.view.frame.width - 200, y: 100, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
+        
+        self.view.addSubview(ideaSlotPickerView)
+        self.view.addSubview(ideaSlotPickerView2)
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarTitle(title: "Idea Slot")
-        pickerList01 = arrayWordList(categoryId: categoryId)
-        setPickerView(pickerview: pickerview01, tag: 1)
-        pickerList02 = arrayWordList(categoryId: categoryId)
-        setPickerView(pickerview: pickerview02, tag: 2)
+
+        wordEntities = realm.objects(Words.self)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
     }
     
-    //setting DropDown(Category)
-    func setupCategoryDropDown(categoryButton:UIButton){
-        categoryDropDown.anchorView = categoryButton
-        categoryDropDown.dataSource = arrayCategoryList()
-        categoryDropDown.selectionAction = { [weak self] (index, item) in
-            categoryButton.setTitle(item, for: .normal)
-        }
-    }
-    
-    func setPickerView(pickerview: UIPickerView, tag:Int){
-        pickerview.backgroundColor = UIColor(red: 0.9, green: 0.9, blue: 0.9, alpha: 1.0)
-//        pickerview.center = self.view.center
-        pickerview.tag = tag
-        pickerview.delegate = self
-        pickerview.dataSource = self
-        self.view.addSubview(pickerview)
-    }
-    
     func arrayWordList(categoryId: Int) -> Array<String> {
         var wordNameList:[String] = []
         if categoryId != 0 {
-            wordList = wordList!.filter("categoryId == %@", categoryId)
+            wordEntities = wordEntities!.filter("categoryId == %@", categoryId)
         }
         
-        for word in wordList!{
+        for word in wordEntities!{
             wordNameList.append(word.word!)
         }
         return wordNameList
@@ -83,45 +61,24 @@ class IdeasSlotViewController: UIViewController {
 
 }
 
-extension IdeasSlotViewController: UIPickerViewDelegate{
-    
-    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(pickerView)
-    }
-    
-}
+//extension IdeasSlotViewController: UIPickerViewDelegate{
+//    
+//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+//        print(pickerView)
+//    }
+//}
 
-extension IdeasSlotViewController: UIPickerViewDataSource{
-    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        switch pickerView.tag {
-        case 1:
-            return pickerList01.count
-        case 2:
-            return pickerList02.count
-        case 3:
-            return pickerList03.count
-        default:
-            break
-        }
-        return 1
-    }
-    
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        switch pickerView.tag {
-        case 1:
-            return pickerList01[row] as String
-        case 2:
-            return pickerList02[row] as String
-        case 3:
-            return pickerList03[row] as String
-        default:
-            break
-        }
-        return "no list"
-    }
-    
-}
+//extension IdeasSlotViewController: UIPickerViewDataSource{
+//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+//        return 1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+//        return 1
+//    }
+//
+//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+//        return "no list"
+//    }
+//
+//}

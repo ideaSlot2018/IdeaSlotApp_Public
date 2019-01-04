@@ -21,7 +21,6 @@
 		CE78EABA219698C600493969 /* WordItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE78EAB9219698C600493969 /* WordItemView.xib */; };
 		CE78EABC21969B0800493969 /* WordItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78EABB21969B0800493969 /* WordItemView.swift */; };
 		CE79C6A221CA884B00B3BC63 /* CategoryRegistFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79C6A121CA884B00B3BC63 /* CategoryRegistFormViewController.swift */; };
-		CE7C06F021D9D00C002ECE6E /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE7C06EF21D9D00C002ECE6E /* Images.xcassets */; };
 		CE7C06F321D9D260002ECE6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C06F121D9D260002ECE6E /* LaunchScreen.storyboard */; };
 		CE82D30921A97FA2003BE0B0 /* CategoryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE82D30821A97FA2003BE0B0 /* CategoryItemCell.xib */; };
 		CE82D30B21A98082003BE0B0 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D30A21A98082003BE0B0 /* CategoryTableViewCell.swift */; };
@@ -34,6 +33,8 @@
 		CE918FE521995B99001C6B95 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE918FE421995B99001C6B95 /* UIColor.swift */; };
 		CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE988D40215D1919000B1345 /* IdeasSlotViewController.swift */; };
 		CE988D43215D1F97000B1345 /* IdeaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE988D42215D1F97000B1345 /* IdeaTableViewCell.swift */; };
+		CEBBC64F21DCA66900DA33BC /* IdeaSlotPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */; };
+		CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */; };
 		CED3DB1F215F5939008B6A0D /* IdeaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3DB1E215F5939008B6A0D /* IdeaDetailViewController.swift */; };
 		CEDB938E21BCEA3F00099D1B /* PopupWindow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDB938D21BCEA3F00099D1B /* PopupWindow.framework */; };
 		CEE38EAB2180BAE300BBD07F /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE38EA72180BAE300BBD07F /* DropDown.framework */; };
@@ -76,7 +77,6 @@
 		CE78EAB9219698C600493969 /* WordItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordItemView.xib; sourceTree = "<group>"; };
 		CE78EABB21969B0800493969 /* WordItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordItemView.swift; sourceTree = "<group>"; };
 		CE79C6A121CA884B00B3BC63 /* CategoryRegistFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegistFormViewController.swift; sourceTree = "<group>"; };
-		CE7C06EF21D9D00C002ECE6E /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		CE7C06F221D9D260002ECE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE82D30821A97FA2003BE0B0 /* CategoryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryItemCell.xib; sourceTree = "<group>"; };
 		CE82D30A21A98082003BE0B0 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
@@ -95,6 +95,8 @@
 		CE918FE421995B99001C6B95 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CE988D40215D1919000B1345 /* IdeasSlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasSlotViewController.swift; sourceTree = "<group>"; };
 		CE988D42215D1F97000B1345 /* IdeaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTableViewCell.swift; sourceTree = "<group>"; };
+		CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaSlotPickerView.xib; sourceTree = "<group>"; };
+		CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaSlotPickerView.swift; sourceTree = "<group>"; };
 		CED3DB1E215F5939008B6A0D /* IdeaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailViewController.swift; sourceTree = "<group>"; };
 		CEDB938D21BCEA3F00099D1B /* PopupWindow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PopupWindow.framework; path = Carthage/Build/iOS/PopupWindow.framework; sourceTree = "<group>"; };
 		CEE38EA72180BAE300BBD07F /* DropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropDown.framework; path = Carthage/Build/iOS/DropDown.framework; sourceTree = "<group>"; };
@@ -161,6 +163,7 @@
 				CE7E126D21D9186C002C98CE /* RegistForm */,
 				CE5804762144206B00BEDA1A /* TableViewCell */,
 				CE78EABB21969B0800493969 /* WordItemView.swift */,
+				CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -275,7 +278,6 @@
 				CE78631A2116E54C0053B87B /* Model */,
 				CE558585211573B400E66A6C /* Others */,
 				CE5585842115739E00E66A6C /* Classes */,
-				CE7C06EF21D9D00C002ECE6E /* Images.xcassets */,
 			);
 			path = IdeaSlotApp;
 			sourceTree = "<group>";
@@ -318,6 +320,7 @@
 		CEBBC64D21DCA21800DA33BC /* Idea */ = {
 			isa = PBXGroup;
 			children = (
+				CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */,
 			);
 			path = Idea;
 			sourceTree = "<group>";
@@ -446,8 +449,8 @@
 				CE78EABA219698C600493969 /* WordItemView.xib in Resources */,
 				CEFA63FE21C6481700460E88 /* CategoryRegistFormView.xib in Resources */,
 				CE82D30921A97FA2003BE0B0 /* CategoryItemCell.xib in Resources */,
-				CE7C06F021D9D00C002ECE6E /* Images.xcassets in Resources */,
 				CE7C06F321D9D260002ECE6E /* LaunchScreen.storyboard in Resources */,
+				CEBBC64F21DCA66900DA33BC /* IdeaSlotPickerView.xib in Resources */,
 				CE8B79FE21047601009BD29F /* Assets.xcassets in Resources */,
 				CE8B79FC210475FF009BD29F /* Main.storyboard in Resources */,
 			);
@@ -539,6 +542,7 @@
 				CE7497292143F7D100F51E91 /* UIApplication.swift in Sources */,
 				CE8B79F9210475FF009BD29F /* WordsListViewController.swift in Sources */,
 				CE5585832115701600E66A6C /* Idea.swift in Sources */,
+				CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */,
 				CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */,
 				CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */,
 				CED3DB1F215F5939008B6A0D /* IdeaDetailViewController.swift in Sources */,
