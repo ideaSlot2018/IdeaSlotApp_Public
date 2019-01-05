@@ -9,11 +9,10 @@
 import UIKit
 import PopupWindow
 
-class CategoryRegistFormView: UIView ,PopupViewContainable{
+class CategoryRegistFormView: UIView, PopupViewContainable{
     enum Const {
         static let height: CGFloat = 150
     }
-    let categoryId:Int? = nil
     
     @IBOutlet weak var containerView: UIView!{
         didSet{

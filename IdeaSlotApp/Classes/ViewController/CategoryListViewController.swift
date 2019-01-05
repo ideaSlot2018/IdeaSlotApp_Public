@@ -67,6 +67,14 @@ class CategoryListViewController: UIViewController {
         PopupWindowManager.shared.changeKeyWindow(rootViewController: categoryRegistFormViewController)
     }
     
+    //display delete alert
+    func setDeleteAlert(category:Category){
+        let categoryDeleteAlertViewController = CategoryDeleteAlertViewController()
+        categoryDeleteAlertViewController.categoryTableView = self.tableView
+        categoryDeleteAlertViewController.category = category
+        PopupWindowManager.shared.changeKeyWindow(rootViewController: categoryDeleteAlertViewController)
+    }
+    
     //regist or update category
     func registCategory(category: Category, formText: String) -> Bool {
         let item: [String: Any]
@@ -108,8 +116,8 @@ class CategoryListViewController: UIViewController {
     }
     
     //delete category
-    private func deleteCategory(_ tableView: UITableView, forRowAt indexPath: IndexPath){
-        let categoryId = categoryEntities![indexPath.row].categoryId
+    func deleteCategory(category: Category) -> Bool{
+        let categoryId = category.categoryId
         let words:Results<Words>? = realm.objects(Words.self).filter("categoryId == %@", categoryId)
         
         //update words
@@ -123,11 +131,9 @@ class CategoryListViewController: UIViewController {
         
         //delete category
         try! realm.write {
-            if let category = categoryEntities{
-                realm.delete(category[indexPath.row])
-            }
+            realm.delete(category)
         }
-        tableView.reloadData()
+        return true
     }
 }
 
@@ -188,7 +194,7 @@ extension CategoryListViewController:SwipeTableViewCellDelegate{
         editAction.backgroundColor = UIColor.AppColor.editBackGroundColor
         
         let deleteAction = SwipeAction(style: .default, title: "Delete"){ action, indexPath in
-            self.deleteCategory(tableView, forRowAt: indexPath)
+            self.setDeleteAlert(category: self.categoryEntities![indexPath.row])
         }
         deleteAction.transitionDelegate = ScaleTransition.default
         deleteAction.image = UIImage(named: "Trash")

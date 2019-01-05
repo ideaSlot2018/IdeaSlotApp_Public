@@ -8,7 +8,6 @@
 
 import UIKit
 import PopupWindow
-import RealmSwift
 
 class CategoryRegistFormViewController: BasePopupViewController {
     enum Const {
@@ -21,9 +20,6 @@ class CategoryRegistFormViewController: BasePopupViewController {
     
     var category: Category? = nil
     var categoryTableView: UITableView!
-    
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
-    let realm = try! Realm()
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,6 +15,7 @@
 		CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58047A214420C700BEDA1A /* BaseTableViewCell.swift */; };
 		CE5A635B212948BC007E4887 /* CategorySeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A635A212948BC007E4887 /* CategorySeed.swift */; };
 		CE5A635D21294E99007E4887 /* RealmInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A635C21294E99007E4887 /* RealmInitializer.swift */; };
+		CE5B626121E07EF4006D428D /* CategoryDeleteAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B626021E07EF4006D428D /* CategoryDeleteAlertViewController.swift */; };
 		CE5E1F3F211FFE5600523D96 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E1F3E211FFE5600523D96 /* LeftMenuViewController.swift */; };
 		CE5E1F41211FFE7B00523D96 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E1F40211FFE7B00523D96 /* CategoryListViewController.swift */; };
 		CE5E1F43211FFE8800523D96 /* IdeasListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E1F42211FFE8800523D96 /* IdeasListViewController.swift */; };
@@ -73,6 +74,7 @@
 		CE58047A214420C700BEDA1A /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		CE5A635A212948BC007E4887 /* CategorySeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySeed.swift; sourceTree = "<group>"; };
 		CE5A635C21294E99007E4887 /* RealmInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInitializer.swift; sourceTree = "<group>"; };
+		CE5B626021E07EF4006D428D /* CategoryDeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDeleteAlertViewController.swift; sourceTree = "<group>"; };
 		CE5E1F3E211FFE5600523D96 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		CE5E1F40211FFE7B00523D96 /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
 		CE5E1F42211FFE8800523D96 /* IdeasListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasListViewController.swift; sourceTree = "<group>"; };
@@ -164,11 +166,10 @@
 		CE558586211573D600E66A6C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				CE7E126D21D9186C002C98CE /* RegistForm */,
+				CE7E126D21D9186C002C98CE /* Form */,
 				CE5804762144206B00BEDA1A /* TableViewCell */,
 				CE78EABB21969B0800493969 /* WordItemView.swift */,
 				CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */,
-				CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -245,13 +246,15 @@
 			path = Storyboard;
 			sourceTree = "<group>";
 		};
-		CE7E126D21D9186C002C98CE /* RegistForm */ = {
+		CE7E126D21D9186C002C98CE /* Form */ = {
 			isa = PBXGroup;
 			children = (
 				CE79C6A121CA884B00B3BC63 /* CategoryRegistFormViewController.swift */,
 				CEFA63FB21C6480600460E88 /* CategoryRegistFormView.swift */,
+				CE5B626021E07EF4006D428D /* CategoryDeleteAlertViewController.swift */,
+				CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */,
 			);
-			path = RegistForm;
+			path = Form;
 			sourceTree = "<group>";
 		};
 		CE8B79EA210475FF009BD29F = {
@@ -554,6 +557,7 @@
 				CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */,
 				CED3DB1F215F5939008B6A0D /* IdeaDetailViewController.swift in Sources */,
 				CEEDE3ED2143929C00D05F61 /* SlideMenuViewController.swift in Sources */,
+				CE5B626121E07EF4006D428D /* CategoryDeleteAlertViewController.swift in Sources */,
 				CE5E1F41211FFE7B00523D96 /* CategoryListViewController.swift in Sources */,
 				CE8B79F7210475FF009BD29F /* AppDelegate.swift in Sources */,
 				CE918FE521995B99001C6B95 /* UIColor.swift in Sources */,
