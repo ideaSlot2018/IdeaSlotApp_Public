@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CE22FC1121DF495D00EB51A3 /* CategoryDeleteAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */; };
+		CE22FC1321DF497500EB51A3 /* CategoryDeleteAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE22FC1221DF497500EB51A3 /* CategoryDeleteAlertView.xib */; };
 		CE43D50021BB9C540089764A /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */; };
 		CE4B2BE2218D627F009A94B2 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */; };
 		CE5585832115701600E66A6C /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5585822115701600E66A6C /* Idea.swift */; };
@@ -63,6 +65,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDeleteAlertView.swift; sourceTree = "<group>"; };
+		CE22FC1221DF497500EB51A3 /* CategoryDeleteAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryDeleteAlertView.xib; sourceTree = "<group>"; };
 		CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = Carthage/Build/iOS/SlideMenuControllerSwift.framework; sourceTree = "<group>"; };
 		CE5585822115701600E66A6C /* Idea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idea.swift; sourceTree = "<group>"; };
@@ -164,6 +168,7 @@
 				CE5804762144206B00BEDA1A /* TableViewCell */,
 				CE78EABB21969B0800493969 /* WordItemView.swift */,
 				CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */,
+				CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -313,6 +318,7 @@
 			children = (
 				CE82D30821A97FA2003BE0B0 /* CategoryItemCell.xib */,
 				CEFA63FD21C6481700460E88 /* CategoryRegistFormView.xib */,
+				CE22FC1221DF497500EB51A3 /* CategoryDeleteAlertView.xib */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -446,6 +452,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE22FC1321DF497500EB51A3 /* CategoryDeleteAlertView.xib in Resources */,
 				CE78EABA219698C600493969 /* WordItemView.xib in Resources */,
 				CEFA63FE21C6481700460E88 /* CategoryRegistFormView.xib in Resources */,
 				CE82D30921A97FA2003BE0B0 /* CategoryItemCell.xib in Resources */,
@@ -555,6 +562,7 @@
 				CE988D43215D1F97000B1345 /* IdeaTableViewCell.swift in Sources */,
 				CE5E1F3F211FFE5600523D96 /* LeftMenuViewController.swift in Sources */,
 				CE79C6A221CA884B00B3BC63 /* CategoryRegistFormViewController.swift in Sources */,
+				CE22FC1121DF495D00EB51A3 /* CategoryDeleteAlertView.swift in Sources */,
 				CE82D30B21A98082003BE0B0 /* CategoryTableViewCell.swift in Sources */,
 				CE5A635D21294E99007E4887 /* RealmInitializer.swift in Sources */,
 				CE7497272143F48100F51E91 /* UIViewController.swift in Sources */,

@@ -11,7 +11,7 @@ import PopupWindow
 
 class CategoryRegistFormView: UIView ,PopupViewContainable{
     enum Const {
-        static let height: CGFloat = 200
+        static let height: CGFloat = 150
     }
     let categoryId:Int? = nil
     
@@ -30,6 +30,7 @@ class CategoryRegistFormView: UIView ,PopupViewContainable{
     @IBOutlet weak var registButton: UIButton!{
         didSet{
             registButton.setTitle("Continue", for: .normal)
+            registButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
             registButton.backgroundColor = UIColor.AppColor.buttonColor
             registButton.tintColor = UIColor.AppColor.buttonTextColor
             registButton.layer.cornerRadius = 5.0
@@ -59,7 +60,7 @@ class CategoryRegistFormView: UIView ,PopupViewContainable{
         self.backgroundColor = UIColor.AppColor.formBackgroundColor
         let border = CALayer()
         border.borderColor = UIColor.black.cgColor
-        border.frame = CGRect(x: 0, y: textFrom.frame.size.height - CGFloat(2.0), width: textFrom.frame.size.width, height: 1)
+        border.frame = CGRect(x: 0, y: textFrom.frame.size.height, width: textFrom.frame.size.width, height: 1)
         border.borderWidth = CGFloat(2.0)
         
         textFrom.layer.addSublayer(border)
