@@ -19,17 +19,6 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="d06-mZ-fO6">
                     <rect key="frame" x="0.0" y="0.0" width="400" height="150"/>
                     <subviews>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVp-9q-eXd">
-                            <rect key="frame" x="355" y="8" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="20" id="7Q7-TX-aWQ"/>
-                                <constraint firstAttribute="height" constant="20" id="ZBe-dF-9rl"/>
-                            </constraints>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="CloseAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="5UO-nF-KaO"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2IP-ef-nDl">
                             <rect key="frame" x="112.5" y="112" width="175" height="30"/>
                             <constraints>
@@ -56,6 +45,17 @@
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
                             <textInputTraits key="textInputTraits"/>
                         </textField>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rVp-9q-eXd">
+                            <rect key="frame" x="372" y="17" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="7Q7-TX-aWQ"/>
+                                <constraint firstAttribute="height" constant="20" id="ZBe-dF-9rl"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="CloseAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="5UO-nF-KaO"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstItem="dqh-2D-VY5" firstAttribute="top" secondItem="d06-mZ-fO6" secondAttribute="topMargin" id="6eX-uw-JwF"/>
@@ -63,10 +63,10 @@
                         <constraint firstItem="dqh-2D-VY5" firstAttribute="leading" secondItem="b3Y-xB-bIs" secondAttribute="leading" id="Cvc-3a-4tf"/>
                         <constraint firstAttribute="bottom" secondItem="2IP-ef-nDl" secondAttribute="bottom" constant="8" id="DhX-Ad-XqI"/>
                         <constraint firstItem="b3Y-xB-bIs" firstAttribute="centerX" secondItem="d06-mZ-fO6" secondAttribute="centerX" id="OWK-Ww-FBA"/>
-                        <constraint firstItem="b3Y-xB-bIs" firstAttribute="top" secondItem="rVp-9q-eXd" secondAttribute="bottom" constant="32" id="Qkw-oz-p4f"/>
+                        <constraint firstItem="b3Y-xB-bIs" firstAttribute="top" secondItem="rVp-9q-eXd" secondAttribute="bottom" constant="23" id="Qkw-oz-p4f"/>
                         <constraint firstItem="b3Y-xB-bIs" firstAttribute="top" secondItem="dqh-2D-VY5" secondAttribute="bottom" constant="14" id="Sjr-Dj-Fcm"/>
-                        <constraint firstItem="dqh-2D-VY5" firstAttribute="top" secondItem="rVp-9q-eXd" secondAttribute="top" id="X95-8f-WfQ"/>
-                        <constraint firstItem="rVp-9q-eXd" firstAttribute="trailing" secondItem="b3Y-xB-bIs" secondAttribute="trailing" id="bPL-2q-slw"/>
+                        <constraint firstItem="dqh-2D-VY5" firstAttribute="top" secondItem="rVp-9q-eXd" secondAttribute="top" constant="-9" id="X95-8f-WfQ"/>
+                        <constraint firstItem="rVp-9q-eXd" firstAttribute="trailing" secondItem="b3Y-xB-bIs" secondAttribute="trailing" constant="17" id="bPL-2q-slw"/>
                         <constraint firstItem="b3Y-xB-bIs" firstAttribute="centerX" secondItem="2IP-ef-nDl" secondAttribute="centerX" id="fd7-jd-ADZ"/>
                         <constraint firstItem="2IP-ef-nDl" firstAttribute="top" secondItem="b3Y-xB-bIs" secondAttribute="bottom" constant="22" id="w7j-Cv-UXB"/>
                     </constraints>

@@ -30,7 +30,7 @@ class CategoryDeleteAlertView: UIView, PopupViewContainable {
         didSet{
             canselButton.setTitle("Cansel", for: .normal)
             canselButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-            canselButton.tintColor = UIColor.AppColor.buttonTextColor
+            canselButton.tintColor = UIColor.AppColor.buttonColor
             canselButton.layer.cornerRadius = 5.0
             canselButton.layer.masksToBounds = true
         }
@@ -50,7 +50,7 @@ class CategoryDeleteAlertView: UIView, PopupViewContainable {
     @IBOutlet weak var closeButton: UIButton!{
         didSet{
             closeButton.setImage(UIImage(named: "Close"), for: .normal)
-            closeButton.imageView?.tintColor = UIColor.gray
+            closeButton.tintColor = UIColor.gray
         }
     }
     
