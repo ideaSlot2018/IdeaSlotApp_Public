@@ -38,6 +38,7 @@
 		CE988D43215D1F97000B1345 /* IdeaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE988D42215D1F97000B1345 /* IdeaTableViewCell.swift */; };
 		CEBBC64F21DCA66900DA33BC /* IdeaSlotPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */; };
 		CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */; };
+		CEBD041C21EA1DD300491AD7 /* WordSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD041B21EA1DD300491AD7 /* WordSeed.swift */; };
 		CED3DB1F215F5939008B6A0D /* IdeaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3DB1E215F5939008B6A0D /* IdeaDetailViewController.swift */; };
 		CEDB938E21BCEA3F00099D1B /* PopupWindow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDB938D21BCEA3F00099D1B /* PopupWindow.framework */; };
 		CEE38EAB2180BAE300BBD07F /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE38EA72180BAE300BBD07F /* DropDown.framework */; };
@@ -103,6 +104,7 @@
 		CE988D42215D1F97000B1345 /* IdeaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTableViewCell.swift; sourceTree = "<group>"; };
 		CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaSlotPickerView.xib; sourceTree = "<group>"; };
 		CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaSlotPickerView.swift; sourceTree = "<group>"; };
+		CEBD041B21EA1DD300491AD7 /* WordSeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSeed.swift; sourceTree = "<group>"; };
 		CED3DB1E215F5939008B6A0D /* IdeaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailViewController.swift; sourceTree = "<group>"; };
 		CEDB938D21BCEA3F00099D1B /* PopupWindow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PopupWindow.framework; path = Carthage/Build/iOS/PopupWindow.framework; sourceTree = "<group>"; };
 		CEE38EA72180BAE300BBD07F /* DropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropDown.framework; path = Carthage/Build/iOS/DropDown.framework; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		CE78631A2116E54C0053B87B /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				CEBD041B21EA1DD300491AD7 /* WordSeed.swift */,
 				CE5585822115701600E66A6C /* Idea.swift */,
 				CE5A635A212948BC007E4887 /* CategorySeed.swift */,
 				CE5A635C21294E99007E4887 /* RealmInitializer.swift */,
@@ -571,6 +574,7 @@
 				CE5A635D21294E99007E4887 /* RealmInitializer.swift in Sources */,
 				CE7497272143F48100F51E91 /* UIViewController.swift in Sources */,
 				CEFA63FC21C6480600460E88 /* CategoryRegistFormView.swift in Sources */,
+				CEBD041C21EA1DD300491AD7 /* WordSeed.swift in Sources */,
 				CE78EABC21969B0800493969 /* WordItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -13,10 +13,13 @@ struct RealmInitializer {
     
     static func setUp() {
         // Seed Data
-        insertSeedData(CategorySeed())
+        deleteCategory(CategorySeed())
+        deleteWords(WordSeed())
+        insertSeedCategories(CategorySeed())
+        insertSeedWords(WordSeed())
     }
     
-    private static func delete<T: Seed>(_ seed: T) where T.SeedType: Category {
+    private static func deleteCategory<T: Seed>(_ seed: T) where T.SeedType: Category {
         // realm
         let realm = try! Realm()
         try! realm.write {
@@ -24,12 +27,32 @@ struct RealmInitializer {
         }
     }
     
-    private static func insertSeedData<T: Seed>(_ seed: T) where T.SeedType: Category {
+    private static func deleteWords<T: BaseWords>(_ seed: T) where T.SeedType: Words {
+        // realm
+        let realm = try! Realm()
+        try! realm.write {
+            realm.delete(realm.objects(T.SeedType.self))
+        }
+    }
+    
+    private static func insertSeedCategories<T: Seed>(_ seed: T) where T.SeedType: Category {
         // realm
         let realm = try! Realm()
         try! realm.write {
             T.items().forEach { val in
                 realm.add(val, update: true)
+            }
+        }
+    }
+    
+    private static func insertSeedWords<T: BaseWords>(_ seed: T) where T.SeedType: Words {
+        // realm
+        let realm = try! Realm()
+        try! realm.write {
+            T.items().forEach { val in
+                realm.add(val, update: true)
+                let category = realm.objects(Category.self).filter("categoryId == %@", val.categoryId)
+                category.first?.words.append(val)
             }
         }
     }

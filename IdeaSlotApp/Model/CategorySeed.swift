@@ -36,11 +36,12 @@ struct CategorySeed: Seed {
 
 struct CategoryData {
     static let data: [[Any]] = [
-        [1, "Food", Date()],
+        [1, "Condition", Date()],
         [2, "Sports", Date()],
         [3, "Business", Date()],
         [4, "Fashion", Date()],
         [5, "Life-Style", Date()],
-        [6, "Music", Date()]
+        [6, "Music", Date()],
+        [7, "Food", Date()]
     ]
 }

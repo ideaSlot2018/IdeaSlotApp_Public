@@ -26,9 +26,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         // Realm Migration
         let config = Realm.Configuration(
-            schemaVersion: 17,
+            schemaVersion: 2,
             migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 17) {}
+                if (oldSchemaVersion < 2) {}
         })
         Realm.Configuration.defaultConfiguration = config
         createMenuView()
