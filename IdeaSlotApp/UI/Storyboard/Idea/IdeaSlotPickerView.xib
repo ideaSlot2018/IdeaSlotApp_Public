@@ -27,18 +27,17 @@
                             <rect key="frame" x="8" y="46" width="187" height="162"/>
                         </pickerView>
                         <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goE-oQ-bY0">
-                            <rect key="frame" x="78" y="216" width="46" height="30"/>
+                            <rect key="frame" x="76" y="216" width="50" height="30"/>
                             <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="playButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ywx-7N-GhA"/>
                             </connections>
                         </button>
                     </subviews>
-                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     <constraints>
                         <constraint firstItem="SnK-9o-183" firstAttribute="leading" secondItem="6ln-G9-TTa" secondAttribute="leading" constant="26" id="9zn-UT-DEs"/>
                         <constraint firstItem="SnK-9o-183" firstAttribute="top" secondItem="6ln-G9-TTa" secondAttribute="topMargin" id="I1j-vO-yGu"/>
-                        <constraint firstItem="goE-oQ-bY0" firstAttribute="leading" secondItem="6ln-G9-TTa" secondAttribute="leading" constant="78" id="R11-bd-Lpe"/>
+                        <constraint firstItem="goE-oQ-bY0" firstAttribute="leading" secondItem="6ln-G9-TTa" secondAttribute="leading" constant="76" id="R11-bd-Lpe"/>
                         <constraint firstItem="e7e-4u-8BZ" firstAttribute="centerX" secondItem="goE-oQ-bY0" secondAttribute="centerX" id="T3D-8t-5Ce"/>
                         <constraint firstItem="e7e-4u-8BZ" firstAttribute="top" secondItem="SnK-9o-183" secondAttribute="bottom" constant="8" symbolic="YES" id="XJl-9f-qfo"/>
                         <constraint firstItem="goE-oQ-bY0" firstAttribute="top" secondItem="e7e-4u-8BZ" secondAttribute="bottom" constant="8" symbolic="YES" id="Z51-7N-3Vv"/>
@@ -48,7 +47,6 @@
                     </constraints>
                 </view>
             </subviews>
-            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
                 <constraint firstItem="6ln-G9-TTa" firstAttribute="bottom" secondItem="vUN-kp-3ea" secondAttribute="bottom" id="VUh-Gf-Gmn"/>
                 <constraint firstAttribute="trailing" secondItem="6ln-G9-TTa" secondAttribute="trailing" id="a7o-Vi-Deh"/>

@@ -11,12 +11,12 @@ import DropDown
 
 class IdeaSlotPickerView: UIView {
     enum Const {
-        static let width: CGFloat = 200
+        static let width: CGFloat = 175
         static let height: CGFloat = 300
     }
     @IBOutlet weak var containerView: UIView!{
         didSet{
-            containerView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
+//            containerView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
             containerView.frame = CGRect(x: 0, y: 0, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
         }
     }
@@ -33,16 +33,18 @@ class IdeaSlotPickerView: UIView {
     }
     @IBOutlet weak var playButton: UIButton!{
         didSet{
-            playButton.setTitle("Play", for: .normal)
+            playButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
             playButton.backgroundColor = UIColor.AppColor.buttonColor
             playButton.tintColor = UIColor.AppColor.buttonTextColor
             playButton.layer.cornerRadius = 5.0
             playButton.layer.masksToBounds = true
-            playButton.setImage(UIImage(named: "Play"), for: .normal)
+//            playButton.setImage(UIImage(named: "Play"), for: .normal)
         }
     }
     @IBOutlet weak var wordsPickerView: UIPickerView!{
         didSet{
+            wordsPickerView.layer.borderWidth = 0.5
+            wordsPickerView.layer.borderColor = UIColor.AppColor.buttonTextColor.cgColor
         }
     }
     

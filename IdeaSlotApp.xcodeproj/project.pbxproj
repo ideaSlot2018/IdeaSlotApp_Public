@@ -19,6 +19,8 @@
 		CE5E1F3F211FFE5600523D96 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E1F3E211FFE5600523D96 /* LeftMenuViewController.swift */; };
 		CE5E1F41211FFE7B00523D96 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E1F40211FFE7B00523D96 /* CategoryListViewController.swift */; };
 		CE5E1F43211FFE8800523D96 /* IdeasListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E1F42211FFE8800523D96 /* IdeasListViewController.swift */; };
+		CE62C4CC21ECC632003BDE0B /* IdeaRegistFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62C4CB21ECC632003BDE0B /* IdeaRegistFormView.swift */; };
+		CE62C4CE21ECC650003BDE0B /* IdeaRegistFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE62C4CD21ECC650003BDE0B /* IdeaRegistFormView.xib */; };
 		CE7497272143F48100F51E91 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7497262143F48100F51E91 /* UIViewController.swift */; };
 		CE7497292143F7D100F51E91 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7497282143F7D100F51E91 /* UIApplication.swift */; };
 		CE78EABA219698C600493969 /* WordItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE78EAB9219698C600493969 /* WordItemView.xib */; };
@@ -79,6 +81,8 @@
 		CE5E1F3E211FFE5600523D96 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
 		CE5E1F40211FFE7B00523D96 /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
 		CE5E1F42211FFE8800523D96 /* IdeasListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasListViewController.swift; sourceTree = "<group>"; };
+		CE62C4CB21ECC632003BDE0B /* IdeaRegistFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaRegistFormView.swift; sourceTree = "<group>"; };
+		CE62C4CD21ECC650003BDE0B /* IdeaRegistFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaRegistFormView.xib; sourceTree = "<group>"; };
 		CE7497262143F48100F51E91 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
 		CE7497282143F7D100F51E91 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
 		CE78EAB9219698C600493969 /* WordItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordItemView.xib; sourceTree = "<group>"; };
@@ -172,6 +176,7 @@
 				CE5804762144206B00BEDA1A /* TableViewCell */,
 				CE78EABB21969B0800493969 /* WordItemView.swift */,
 				CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */,
+				CE62C4CB21ECC632003BDE0B /* IdeaRegistFormView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -333,6 +338,7 @@
 			isa = PBXGroup;
 			children = (
 				CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */,
+				CE62C4CD21ECC650003BDE0B /* IdeaRegistFormView.xib */,
 			);
 			path = Idea;
 			sourceTree = "<group>";
@@ -462,6 +468,7 @@
 				CE78EABA219698C600493969 /* WordItemView.xib in Resources */,
 				CEFA63FE21C6481700460E88 /* CategoryRegistFormView.xib in Resources */,
 				CE82D30921A97FA2003BE0B0 /* CategoryItemCell.xib in Resources */,
+				CE62C4CE21ECC650003BDE0B /* IdeaRegistFormView.xib in Resources */,
 				CE7C06F321D9D260002ECE6E /* LaunchScreen.storyboard in Resources */,
 				CEBBC64F21DCA66900DA33BC /* IdeaSlotPickerView.xib in Resources */,
 				CE8B79FE21047601009BD29F /* Assets.xcassets in Resources */,
@@ -554,6 +561,7 @@
 			files = (
 				CE7497292143F7D100F51E91 /* UIApplication.swift in Sources */,
 				CE8B79F9210475FF009BD29F /* WordsListViewController.swift in Sources */,
+				CE62C4CC21ECC632003BDE0B /* IdeaRegistFormView.swift in Sources */,
 				CE5585832115701600E66A6C /* Idea.swift in Sources */,
 				CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */,
 				CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */,

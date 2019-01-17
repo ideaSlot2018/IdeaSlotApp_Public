@@ -18,22 +18,62 @@ class IdeasSlotViewController: UIViewController {
     }
 
     var wordEntities:Results<Words>? = nil
-    var ideaSlotPickerView = IdeaSlotPickerView()
-    var ideaSlotPickerView2 = IdeaSlotPickerView()
+    var ideaSlotPickerView = IdeaSlotPickerView(){
+        didSet{
+            ideaSlotPickerView.frame = CGRect(x: 0, y: 100, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
+        }
+    }
+    var ideaSlotPickerView2 = IdeaSlotPickerView(){
+        didSet{
+            ideaSlotPickerView2.frame = CGRect(x: self.view.frame.width - IdeaSlotPickerView.Const.width, y: 100, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
+        }
+    }
+    var operatorButton = UIButton(){
+        didSet{
+            operatorButton.setTitle("+", for: .normal)
+            operatorButton.frame = CGRect(x: IdeaSlotPickerView.Const.width + 10, y: 235, width: 40, height: 40)
+            operatorButton.backgroundColor = UIColor.black
+            operatorButton.tintColor = UIColor.blue
+            operatorButton.layer.masksToBounds = true
+            operatorButton.layer.cornerRadius = 5.0
+            operatorButton.layer.borderColor = UIColor.black.cgColor
+            operatorButton.layer.borderWidth = 1.0
+        }
+    }
+    var shuffleButton = UIButton(){
+        didSet{
+            shuffleButton.setTitle("All Shuffle", for: .normal)
+            shuffleButton.frame = CGRect(x: 100, y: 425, width: 200, height: 40)
+            shuffleButton.backgroundColor = UIColor.AppColor.buttonColor
+            shuffleButton.layer.masksToBounds = true
+            shuffleButton.layer.cornerRadius = 5.0
+        }
+    }
+    var registForm = IdeaRegistFormView(){
+        didSet{
+            registForm.frame = CGRect(x: 0, y: 500, width: self.view.frame.size.width, height: IdeaRegistFormView.Const.height)
+        }
+    }    
 
     let realm = try!Realm()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //picker 1
         ideaSlotPickerView = UINib(nibName: "IdeaSlotPickerView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaSlotPickerView
-        ideaSlotPickerView.frame = CGRect(x: 0, y: 100, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
-        
+
+        //picker 2
         ideaSlotPickerView2 = UINib(nibName: "IdeaSlotPickerView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaSlotPickerView
-        ideaSlotPickerView2.frame = CGRect(x: self.view.frame.width - 200, y: 100, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
+        
+        //regist form
+        registForm = UINib(nibName: "IdeaRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaRegistFormView
         
         self.view.addSubview(ideaSlotPickerView)
         self.view.addSubview(ideaSlotPickerView2)
+        self.view.addSubview(operatorButton)
+        self.view.addSubview(shuffleButton)
+        self.view.addSubview(registForm)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,25 +100,3 @@ class IdeasSlotViewController: UIViewController {
     }
 
 }
-
-//extension IdeasSlotViewController: UIPickerViewDelegate{
-//    
-//    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-//        print(pickerView)
-//    }
-//}
-
-//extension IdeasSlotViewController: UIPickerViewDataSource{
-//    func numberOfComponents(in pickerView: UIPickerView) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-//        return 1
-//    }
-//
-//    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-//        return "no list"
-//    }
-//
-//}
