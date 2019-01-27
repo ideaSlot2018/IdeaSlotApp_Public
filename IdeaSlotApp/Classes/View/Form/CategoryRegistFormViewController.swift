@@ -51,7 +51,6 @@ class CategoryRegistFormViewController: BasePopupViewController {
         let categoryListViewControler = CategoryListViewController()
         result = categoryListViewControler.registCategory(category: self.category!,formText: formView.textFrom.text!)
         if result {
-            print("success")
             categoryTableView.reloadData()
             transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
                 guard let me = self else { return }
