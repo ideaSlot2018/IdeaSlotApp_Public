@@ -59,7 +59,6 @@ class CategoryDeleteAlertViewController: BasePopupViewController {
         result = categoryListViewController.deleteCategory(category: self.category!)
         
         if result {
-            print("success")
             categoryTableView.reloadData()
             transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
                 guard let me = self else { return }

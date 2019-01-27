@@ -90,7 +90,6 @@ class IdeasSlotViewController: UIViewController {
         }
         ideaSlotPickerView.playButtonTapHandler = { [weak self] in
             guard let me = self else { return }
-            print("tap idea slot 1")
         }
         
         //picker 2
@@ -101,7 +100,6 @@ class IdeasSlotViewController: UIViewController {
         }
         ideaSlotPickerView2.playButtonTapHandler = { [weak self] in
             guard let me = self else { return }
-            print("tap idea slot 2")
         }
 
         //addSubView
@@ -151,9 +149,6 @@ class IdeasSlotViewController: UIViewController {
         default:
             break
         }
-        
-        print("view.wordNameList",view.wordNameList)
-
         return view
     }
 
