@@ -63,10 +63,20 @@ extension UIViewController{
     }
     
     //return category name list
-    func arrayCategoryList() -> Array<String> {
+    func arrayCategoryList(listFlg: Int) -> Array<String> {
         let realm = try!Realm()
         var CategoryNameList: [String] = []
         let CategoryList = realm.objects(Category.self)
+        
+        //IdeaSlotViewController append "All"
+        switch listFlg {
+        case 0:
+            CategoryNameList.append("No Category")
+        case 1:
+            CategoryNameList.append("All")
+        default:
+            break
+        }
         
         //create ArrayList only categoryName
         for Category in CategoryList{
@@ -76,24 +86,19 @@ extension UIViewController{
     }
     
     //return one item Category filter by categoryName
-    func findCategoryItem(categoryName: String) -> Results<Category> {
+    func findCategoryItem(categoryName: String) -> Category {
         let realm = try!Realm()
         let categoryItem = realm.objects(Category.self).filter("categoryName = %@",categoryName)
-        return categoryItem
+        if categoryItem.first != nil {
+            return categoryItem.first!
+        } else {
+            return Category()
+        }
     }
     
     func getCategoryMaxId() -> Int {
         let realm = try!Realm()
         let categoryMaxId: Int = (realm.objects(Category.self).sorted(byKeyPath: "categoryId", ascending: true).last?.categoryId)! + 1
         return categoryMaxId
-    }
-
-    
-    func setCateoryDropDown(button:UIButton, dropdown:DropDown){
-        dropdown.anchorView = button
-        dropdown.dataSource = arrayCategoryList()
-        dropdown.selectionAction = {(index, item) in
-            button.setTitle(item, for: .normal)
-        }
     }
 }

@@ -74,16 +74,14 @@ class WordsListViewController: UIViewController{
     
     //insert new word
     func insertWord(text: String, categoryName: String){
-        var categoryItem:Category? = nil
-        var category:Array<Category>? = nil
+        var category:Category? = nil
         var item: [String: Any]? = nil
         
         if !categoryName.isEmpty{
-            category = Array(findCategoryItem(categoryName: categoryName))
-            if category!.count > 0{
-                categoryItem = category?.first
+            category = findCategoryItem(categoryName: categoryName)
+            if category?.categoryId != 0{
                 item = ["word": text,
-                    "categoryId": categoryItem!.categoryId,
+                    "categoryId": category!.categoryId,
                     "categoryName": categoryName]
             }
         }else{
@@ -96,25 +94,24 @@ class WordsListViewController: UIViewController{
         
         try! realm.write(){
             realm.add(newWord)
-            if categoryItem != nil{
-                categoryItem?.words.append(newWord)
+            if category != nil{
+                category?.words.append(newWord)
             }
         }
     }
     
     //update word
     func updateWord(text: String, categoryName: String, wordItem: Words){
-        var category:Array<Category>? = nil
-        var categoryItem:Category? = nil
+//        var category:Array<Category>? = nil
+        var category:Category? = nil
         let item: [String: Any]
         
-        category = Array(findCategoryItem(categoryName: categoryName))
-        if category!.count > 0{
-            categoryItem = category?.first
+        category = findCategoryItem(categoryName: categoryName)
+        if category?.categoryId != 0 {
             item = ["wordId": wordItem.wordId!,
                     "word": text,
-                    "categoryId": category!.first!.categoryId,
-                    "categoryName": category!.first!.categoryName,
+                    "categoryId": category!.categoryId,
+                    "categoryName": category!.categoryName,
                     "createDate":wordItem.createDate
             ]
         }else{
@@ -125,24 +122,22 @@ class WordsListViewController: UIViewController{
             ]
         }
         
-        var oldCategoryItem:Results<Category>? = nil
-        var removeWordItem:Category? = nil
+        var oldCategoryItem:Category? = nil
         var removeWordItemIndex:Int? = nil
         var oldCategory:Category? = nil
         
         if wordItem.categoryId != 0{
             oldCategoryItem = findCategoryItem(categoryName: wordItem.categoryName!)
-            removeWordItem = Array(oldCategoryItem!).first
-            removeWordItemIndex = removeWordItem!.words.index(matching: "wordId == %@", wordItem.wordId!)
-            oldCategory = Category(value: removeWordItem!)
+            removeWordItemIndex = oldCategoryItem!.words.index(matching: "wordId == %@", wordItem.wordId!)
+            oldCategory = Category(value: oldCategoryItem!)
         }
         
         
         let editWord = Words(value: item)
         try! realm.write(){
             realm.add(editWord, update: true)
-            if categoryItem != nil{
-                categoryItem!.words.append(editWord)
+            if category != nil{
+                category!.words.append(editWord)
             }
             if removeWordItemIndex != nil{
                 oldCategory!.words.remove(at: removeWordItemIndex!)
@@ -198,7 +193,7 @@ extension WordsListViewController: UITableViewDelegate{
         var item = WordItemView()
         item = Bundle.main.loadNibNamed("WordItemView", owner: self, options: nil)!.first! as! WordItemView
         item.delegate = self
-        item.dropdown.dataSource = arrayCategoryList()
+        item.dropdown.dataSource = arrayCategoryList(listFlg: 0)
         if category != nil{
             item.categorybutton.setTitle(category?.categoryName, for: .normal)
         }
@@ -263,7 +258,7 @@ extension WordsListViewController: UITableViewDataSource{
         }
         
         itemView.delegate = self
-        itemView.dropdown.dataSource = arrayCategoryList()
+        itemView.dropdown.dataSource = arrayCategoryList(listFlg: 0)
         itemView.textfield.text = words.word
         itemView.wordId = words.wordId
         itemView.beforeWord = words.word

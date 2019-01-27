@@ -11,16 +11,15 @@ import DropDown
 
 class IdeaSlotPickerView: UIView {
     enum Const {
-        static let width: CGFloat = 175
+        static let width: CGFloat = 190
         static let height: CGFloat = 300
     }
+    
     @IBOutlet weak var containerView: UIView!{
         didSet{
-//            containerView.backgroundColor = UIColor.init(red: 0, green: 0, blue: 0, alpha: 0.5)
             containerView.frame = CGRect(x: 0, y: 0, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
         }
     }
-    
     @IBOutlet weak var categoryButton: UIButton!{
         didSet{
             categoryButton.setTitle("All", for: .normal)
@@ -31,14 +30,18 @@ class IdeaSlotPickerView: UIView {
             categoryButton.titleLabel?.lineBreakMode = .byTruncatingTail
         }
     }
+    var playImage = UIImageView(image: UIImage(named: "Play")){
+        didSet{
+            playImage.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
+        }
+    }
     @IBOutlet weak var playButton: UIButton!{
         didSet{
-            playButton.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+//            playButton.setImage(UIImage(named: "Play"), for: .normal)
+            playButton.imageView?.contentMode = .scaleAspectFit
             playButton.backgroundColor = UIColor.AppColor.buttonColor
-            playButton.tintColor = UIColor.AppColor.buttonTextColor
             playButton.layer.cornerRadius = 5.0
             playButton.layer.masksToBounds = true
-//            playButton.setImage(UIImage(named: "Play"), for: .normal)
         }
     }
     @IBOutlet weak var wordsPickerView: UIPickerView!{
@@ -47,14 +50,25 @@ class IdeaSlotPickerView: UIView {
             wordsPickerView.layer.borderColor = UIColor.AppColor.buttonTextColor.cgColor
         }
     }
+    var categoryButtonTapHandler: (() -> Void)?
+    var playButtonTapHandler: (() -> Void)?
+    var wordList:Array<Words>? = nil
+    var wordNameList:Array<String>? = nil
+    var categoryName:String? = nil
+    var category:Category? = nil
+    
+    let dropdown = DropDown()
     
     @IBAction func playButtonAction(_ sender: Any) {
-        print("tap play button")
+        playButtonTapHandler?()
+    }
+    @IBAction func showDropDown(_ sender: Any) {
+        dropdown.show()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
-//        setDropDown(button: categorybutton, dropdown: dropdown)
+        setDropDown(button: categoryButton, dropdown: dropdown)
         wordsPickerView.delegate = self
         wordsPickerView.dataSource = self
     }
@@ -65,6 +79,15 @@ class IdeaSlotPickerView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func setDropDown(button:UIButton, dropdown:DropDown){
+        dropdown.anchorView = button
+        dropdown.selectionAction = {(index, item) in
+            button.setTitle(item, for: .normal)
+            self.categoryName = item            
+            self.categoryButtonTapHandler?()
+        }
     }
 }
 
@@ -81,10 +104,17 @@ extension IdeaSlotPickerView: UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return 1
+        if wordNameList!.count > 0 {
+            return wordNameList!.count
+        }
+        return 0
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-            return "no list"
+        if wordNameList!.count > 0 {
+            return wordNameList![row]
+        } else {
+            return "No List"
+        }
     }
 }
