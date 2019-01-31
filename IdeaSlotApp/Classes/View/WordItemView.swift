@@ -17,7 +17,7 @@ class WordItemView: UIView {
     
     @IBOutlet weak var textfield: UITextField!{
         didSet{
-            textfield.placeholder = "+"
+            textfield.placeholder = "please type word and press enter"
             textfield.delegate = self
         }
     }

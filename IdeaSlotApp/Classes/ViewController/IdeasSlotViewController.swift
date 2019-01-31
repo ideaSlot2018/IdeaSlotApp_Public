@@ -8,16 +8,16 @@
 
 import UIKit
 import RealmSwift
+import DropDown
 
 class IdeasSlotViewController: UIViewController {
-    enum Operators {
-        case plus
-        case minus
-        case multiply
-        case division
-    }
+//    enum Operators {
+//        case plus
+//        case minus
+//        case multiply
+//        case division
+//    }
 
-    var wordEntities:Results<Words>? = nil
     var ideaSlotPickerView = IdeaSlotPickerView(){
         didSet{
             ideaSlotPickerView.frame = CGRect(x: 0, y: 100, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
@@ -32,14 +32,8 @@ class IdeasSlotViewController: UIViewController {
     }
     var operatorButton = UIButton(){
         didSet{
-            operatorButton.setTitle("+", for: .normal)
-            operatorButton.frame = CGRect(x: IdeaSlotPickerView.Const.width + 10, y: 235, width: 40, height: 40)
-            operatorButton.backgroundColor = UIColor.black
-            operatorButton.tintColor = UIColor.blue
-            operatorButton.layer.masksToBounds = true
-            operatorButton.layer.cornerRadius = 5.0
-            operatorButton.layer.borderColor = UIColor.black.cgColor
-            operatorButton.layer.borderWidth = 1.0
+            operatorButton.setImage(UIImage(named: "Operator-Plus"), for: .normal)
+            operatorButton.imageView?.contentMode = .scaleAspectFit
         }
     }
     var shuffleButton = UIButton(){
@@ -56,7 +50,11 @@ class IdeasSlotViewController: UIViewController {
             registForm.frame = CGRect(x: 0, y: 500, width: self.view.frame.size.width, height: IdeaRegistFormView.Const.height)
         }
     }
+    var wordEntities:Results<Words>? = nil
+    var operatorName:[String] = ["Plus", "Minus", "Multiply", "Divide"]
     let realm = try!Realm()
+    let dropdown = DropDown()
+    
 
     /**
      viewDidLoad
@@ -72,6 +70,23 @@ class IdeasSlotViewController: UIViewController {
 
         //regist form
         registForm = UINib(nibName: "IdeaRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaRegistFormView
+        
+        //operator
+        dropdown.anchorView = operatorButton
+        dropdown.dataSource = operatorName
+        dropdown.selectionAction = {(index, item) in
+            self.operatorButton.setImage(UIImage(named: "Operator-\(self.operatorName[index])"), for: .normal)
+        }
+        operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 40, y: 220, width: 80, height: 80)
+        operatorButton.setImage(UIImage(named: "Operator-Plus"), for: .normal)
+        operatorButton.addTarget(self, action: #selector(showOperator), for: .touchUpInside)
+
+        //addSubView
+        self.view.addSubview(operatorButton)
+        self.view.addSubview(ideaSlotPickerView)
+        self.view.addSubview(ideaSlotPickerView2)
+        self.view.addSubview(shuffleButton)
+        self.view.addSubview(registForm)
     }
     
     /**
@@ -101,17 +116,14 @@ class IdeasSlotViewController: UIViewController {
         ideaSlotPickerView2.playButtonTapHandler = { [weak self] in
             guard let me = self else { return }
         }
-
-        //addSubView
-        self.view.addSubview(ideaSlotPickerView)
-        self.view.addSubview(ideaSlotPickerView2)
-        self.view.addSubview(operatorButton)
-        self.view.addSubview(shuffleButton)
-        self.view.addSubview(registForm)
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    
+    @objc func showOperator() {
+        dropdown.show()
     }
     
     //create words list only word's text
