@@ -46,8 +46,6 @@ class IdeaSlotPickerView: UIView {
     }
     @IBOutlet weak var wordsPickerView: UIPickerView!{
         didSet{
-            wordsPickerView.layer.borderWidth = 0.5
-            wordsPickerView.layer.borderColor = UIColor.AppColor.buttonTextColor.cgColor
         }
     }
     var categoryButtonTapHandler: (() -> Void)?

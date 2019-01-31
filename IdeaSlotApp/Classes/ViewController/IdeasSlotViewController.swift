@@ -77,7 +77,7 @@ class IdeasSlotViewController: UIViewController {
         dropdown.selectionAction = {(index, item) in
             self.operatorButton.setImage(UIImage(named: "Operator-\(self.operatorName[index])"), for: .normal)
         }
-        operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 40, y: 220, width: 80, height: 80)
+        operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 40, y: 210, width: 80, height: 80)
         operatorButton.setImage(UIImage(named: "Operator-Plus"), for: .normal)
         operatorButton.addTarget(self, action: #selector(showOperator), for: .touchUpInside)
 
