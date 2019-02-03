@@ -11,12 +11,6 @@ import RealmSwift
 import DropDown
 
 class IdeasSlotViewController: UIViewController {
-//    enum Operators {
-//        case plus
-//        case minus
-//        case multiply
-//        case division
-//    }
 
     var ideaSlotPickerView = IdeaSlotPickerView(){
         didSet{
@@ -63,15 +57,35 @@ class IdeasSlotViewController: UIViewController {
         super.viewDidLoad()
         
         //picker 1
+        //***********************************************************************//
         ideaSlotPickerView = UINib(nibName: "IdeaSlotPickerView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaSlotPickerView
+        ideaSlotPickerView.categoryButtonTapHandler = { [weak self] in
+            guard let me = self else { return }
+            self!.ideaSlotPickerView = me.setPickerViewData(view: self!.ideaSlotPickerView, setFlg: 1)
+        }
+        ideaSlotPickerView.playButtonTapHandler = { [weak self] in
+            guard let me = self else { return }
+            me.playSlotPicker(view: self!.ideaSlotPickerView)
+        }
 
         //picker 2
+        //***********************************************************************//
         ideaSlotPickerView2 = UINib(nibName: "IdeaSlotPickerView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaSlotPickerView
+        ideaSlotPickerView2.categoryButtonTapHandler = { [weak self] in
+            guard let me = self else { return }
+            self!.ideaSlotPickerView2 = me.setPickerViewData(view: self!.ideaSlotPickerView2, setFlg: 1)
+        }
+        ideaSlotPickerView2.playButtonTapHandler = { [weak self] in
+            guard let me = self else { return }
+            me.playSlotPicker(view: self!.ideaSlotPickerView2)
+        }
 
         //regist form
+        //***********************************************************************//
         registForm = UINib(nibName: "IdeaRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaRegistFormView
         
         //operator
+        //***********************************************************************//
         dropdown.anchorView = operatorButton
         dropdown.dataSource = operatorName
         dropdown.selectionAction = {(index, item) in
@@ -82,6 +96,7 @@ class IdeasSlotViewController: UIViewController {
         operatorButton.addTarget(self, action: #selector(showOperator), for: .touchUpInside)
 
         //addSubView
+        //***********************************************************************//
         self.view.addSubview(operatorButton)
         self.view.addSubview(ideaSlotPickerView)
         self.view.addSubview(ideaSlotPickerView2)
@@ -98,24 +113,17 @@ class IdeasSlotViewController: UIViewController {
         wordEntities = realm.objects(Words.self)
         
         //picker 1
+        //***********************************************************************//
         ideaSlotPickerView = setPickerViewData(view: ideaSlotPickerView, setFlg: 0)
-        ideaSlotPickerView.categoryButtonTapHandler = { [weak self] in
-            guard let me = self else { return }
-            self!.ideaSlotPickerView = me.setPickerViewData(view: self!.ideaSlotPickerView, setFlg: 1)
-        }
-        ideaSlotPickerView.playButtonTapHandler = { [weak self] in
-            guard let me = self else { return }
-        }
-        
+        ideaSlotPickerView.pickerViewMiddle = ((ideaSlotPickerView.pickerViewRows / ideaSlotPickerView.wordNameList!.count) / 2) * ideaSlotPickerView.wordNameList!.count
+        ideaSlotPickerView.wordsPickerView.selectRow(ideaSlotPickerView.pickerViewMiddle, inComponent: 0, animated: false)
+
         //picker 2
+        //***********************************************************************//
         ideaSlotPickerView2 = setPickerViewData(view: ideaSlotPickerView2, setFlg: 0)
-        ideaSlotPickerView2.categoryButtonTapHandler = { [weak self] in
-            guard let me = self else { return }
-            self!.ideaSlotPickerView2 = me.setPickerViewData(view: self!.ideaSlotPickerView2, setFlg: 1)
-        }
-        ideaSlotPickerView2.playButtonTapHandler = { [weak self] in
-            guard let me = self else { return }
-        }
+        ideaSlotPickerView2.pickerViewMiddle = ((ideaSlotPickerView2.pickerViewRows / ideaSlotPickerView2.wordNameList!.count) / 2) * ideaSlotPickerView2.wordNameList!.count
+        ideaSlotPickerView2.wordsPickerView.selectRow(ideaSlotPickerView2.pickerViewMiddle, inComponent: 0, animated: false)
+
     }
     
     override func didReceiveMemoryWarning() {
@@ -158,10 +166,19 @@ class IdeasSlotViewController: UIViewController {
             view.wordList = self.filteredWordList(category: view.category!)
             view.wordNameList = self.arrayWordList(wordList: view.wordList!)
             view.wordsPickerView.reloadAllComponents()
+            view.wordsPickerView.selectRow(view.randomNumber(size: view.pickerViewRows), inComponent: 0, animated: false)
         default:
             break
         }
         return view
     }
 
+    //slot animation and get picker's text
+    func playSlotPicker(view: IdeaSlotPickerView){
+        
+        if view.wordNameList!.count > 0 {
+            view.wordsPickerView.selectRow(view.randomNumber(size: view.pickerViewRows), inComponent: 0, animated: true)
+        }
+
+    }
 }

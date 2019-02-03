@@ -31,7 +31,6 @@
                         </pickerView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="goE-oQ-bY0">
                             <rect key="frame" x="80" y="242" width="30" height="30"/>
-                            <state key="normal" title="Button"/>
                             <connections>
                                 <action selector="playButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="ywx-7N-GhA"/>
                             </connections>
