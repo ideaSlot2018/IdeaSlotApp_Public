@@ -102,7 +102,6 @@ class WordsListViewController: UIViewController{
     
     //update word
     func updateWord(text: String, categoryName: String, wordItem: Words){
-//        var category:Array<Category>? = nil
         var category:Category? = nil
         let item: [String: Any]
         

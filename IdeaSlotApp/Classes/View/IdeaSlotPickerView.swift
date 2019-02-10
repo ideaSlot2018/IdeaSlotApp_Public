@@ -30,24 +30,17 @@ class IdeaSlotPickerView: UIView {
             categoryButton.titleLabel?.lineBreakMode = .byTruncatingTail
         }
     }
-    var playImage = UIImageView(image: UIImage(named: "Play")){
-        didSet{
-            playImage.frame = CGRect(x: 0, y: 0, width: 30, height: 30)
-        }
-    }
     @IBOutlet weak var playButton: UIButton!{
         didSet{
-//            playButton.setImage(UIImage(named: "Play"), for: .normal)
-            playButton.imageView?.contentMode = .scaleAspectFit
-            playButton.backgroundColor = UIColor.AppColor.buttonColor
             playButton.layer.cornerRadius = 5.0
             playButton.layer.masksToBounds = true
+            playButton.setImage(UIImage(named: "Play"), for: .normal)
+            playButton.imageView?.contentMode = .scaleAspectFit
+            playButton.imageView?.tintColor = UIColor.black
         }
     }
     @IBOutlet weak var wordsPickerView: UIPickerView!{
         didSet{
-            wordsPickerView.layer.borderWidth = 0.5
-            wordsPickerView.layer.borderColor = UIColor.AppColor.buttonTextColor.cgColor
         }
     }
     var categoryButtonTapHandler: (() -> Void)?
@@ -58,6 +51,8 @@ class IdeaSlotPickerView: UIView {
     var category:Category? = nil
     
     let dropdown = DropDown()
+    var pickerViewRows = 0
+    var pickerViewMiddle = 0
     
     @IBAction func playButtonAction(_ sender: Any) {
         playButtonTapHandler?()
@@ -89,12 +84,18 @@ class IdeaSlotPickerView: UIView {
             self.categoryButtonTapHandler?()
         }
     }
+    
+    func randomNumber(size:Int) -> Int {
+        return Int.random(in: 0..<size)
+    }
 }
 
 extension IdeaSlotPickerView: UIPickerViewDelegate{
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        print(pickerView)
+        let newRow = pickerViewMiddle + (row % wordNameList!.count)
+        pickerView.selectRow(newRow, inComponent: 0, animated: false)
+        print("Resetting row to \(newRow)")
     }
 }
 
@@ -104,17 +105,29 @@ extension IdeaSlotPickerView: UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if wordNameList!.count > 0 {
-            return wordNameList!.count
+        if wordNameList!.count > 1 {
+            return pickerViewRows
         }
-        return 0
+        return 1
     }
     
-    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        if wordNameList!.count > 0 {
-            return wordNameList![row]
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        if wordNameList!.count > 0{
+            return NSAttributedString(string: valueForRow(row: row), attributes: [NSAttributedString.Key.foregroundColor: UIColor.AppColor.textColor])
         } else {
-            return "No List"
+            return NSAttributedString(string: "\'No List\'", attributes: [NSAttributedString.Key.foregroundColor: UIColor.AppColor.textColor])
         }
     }
+    
+    func valueForRow(row: Int) -> String {
+        // the rows repeat every `pickerViewData.count` items
+        return wordNameList![row % wordNameList!.count]
+    }
+    
+//    func rowForValue(value: Int) -> Int? {
+//        if wordNameList!.count > 0 {
+//            return pickerViewMiddle + value
+//        }
+//        return nil
+//    }
 }
