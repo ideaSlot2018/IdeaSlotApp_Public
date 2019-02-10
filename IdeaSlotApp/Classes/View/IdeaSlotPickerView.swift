@@ -51,7 +51,7 @@ class IdeaSlotPickerView: UIView {
     var category:Category? = nil
     
     let dropdown = DropDown()
-    let pickerViewRows = 10_000
+    var pickerViewRows = 0
     var pickerViewMiddle = 0
     
     @IBAction func playButtonAction(_ sender: Any) {
@@ -105,8 +105,7 @@ extension IdeaSlotPickerView: UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        if wordNameList!.count > 0 {
-//            return wordNameList!.count
+        if wordNameList!.count > 1 {
             return pickerViewRows
         }
         return 1
@@ -125,10 +124,10 @@ extension IdeaSlotPickerView: UIPickerViewDataSource{
         return wordNameList![row % wordNameList!.count]
     }
     
-    func rowForValue(value: Int) -> Int? {
-        if wordNameList!.count > 0 {
-            return pickerViewMiddle + value
-        }
-        return nil
-    }
+//    func rowForValue(value: Int) -> Int? {
+//        if wordNameList!.count > 0 {
+//            return pickerViewMiddle + value
+//        }
+//        return nil
+//    }
 }

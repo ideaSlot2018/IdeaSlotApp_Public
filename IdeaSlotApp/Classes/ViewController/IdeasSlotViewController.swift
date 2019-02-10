@@ -110,18 +110,21 @@ class IdeasSlotViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         setNavigationBarTitle(title: "Idea Slot")
-        wordEntities = realm.objects(Words.self)
+        wordEntities = realm.objects(Words.self).sorted(byKeyPath: "updateDate", ascending: false)
+        print(wordEntities)
         
         //picker 1
         //***********************************************************************//
         ideaSlotPickerView = setPickerViewData(view: ideaSlotPickerView, setFlg: 0)
-        ideaSlotPickerView.pickerViewMiddle = ((ideaSlotPickerView.pickerViewRows / ideaSlotPickerView.wordNameList!.count) / 2) * ideaSlotPickerView.wordNameList!.count
+        ideaSlotPickerView.pickerViewRows = ideaSlotPickerView.wordNameList!.count * 10
+        ideaSlotPickerView.pickerViewMiddle = ideaSlotPickerView.pickerViewRows / 2
         ideaSlotPickerView.wordsPickerView.selectRow(ideaSlotPickerView.pickerViewMiddle, inComponent: 0, animated: false)
 
         //picker 2
         //***********************************************************************//
         ideaSlotPickerView2 = setPickerViewData(view: ideaSlotPickerView2, setFlg: 0)
-        ideaSlotPickerView2.pickerViewMiddle = ((ideaSlotPickerView2.pickerViewRows / ideaSlotPickerView2.wordNameList!.count) / 2) * ideaSlotPickerView2.wordNameList!.count
+        ideaSlotPickerView2.pickerViewRows = ideaSlotPickerView2.wordNameList!.count * 10
+        ideaSlotPickerView2.pickerViewMiddle = ideaSlotPickerView2.pickerViewRows / 2
         ideaSlotPickerView2.wordsPickerView.selectRow(ideaSlotPickerView2.pickerViewMiddle, inComponent: 0, animated: false)
 
     }
@@ -179,6 +182,7 @@ class IdeasSlotViewController: UIViewController {
         if view.wordNameList!.count > 0 {
             view.wordsPickerView.selectRow(view.randomNumber(size: view.pickerViewRows), inComponent: 0, animated: true)
         }
-
+        print("selected", view.wordNameList![view.wordsPickerView.selectedRow(inComponent: 0) % view.wordNameList!.count])
+        
     }
 }
