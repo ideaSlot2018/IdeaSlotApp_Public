@@ -46,6 +46,9 @@ class IdeasSlotViewController: UIViewController {
     }
     var wordEntities:Results<Words>? = nil
     var operatorName:[String] = ["Plus", "Minus", "Multiply", "Divide"]
+    var ideaItem = Idea()
+    
+    
     let realm = try!Realm()
     let dropdown = DropDown()
     
@@ -111,7 +114,6 @@ class IdeasSlotViewController: UIViewController {
         super.viewWillAppear(animated)
         setNavigationBarTitle(title: "Idea Slot")
         wordEntities = realm.objects(Words.self).sorted(byKeyPath: "updateDate", ascending: false)
-        print(wordEntities)
         
         //picker 1
         //***********************************************************************//
@@ -182,7 +184,5 @@ class IdeasSlotViewController: UIViewController {
         if view.wordNameList!.count > 0 {
             view.wordsPickerView.selectRow(view.randomNumber(size: view.pickerViewRows), inComponent: 0, animated: true)
         }
-        print("selected", view.wordNameList![view.wordsPickerView.selectedRow(inComponent: 0) % view.wordNameList!.count])
-        
     }
 }
