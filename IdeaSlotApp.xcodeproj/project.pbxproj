@@ -219,8 +219,8 @@
 		CE78631A2116E54C0053B87B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CEBD041B21EA1DD300491AD7 /* WordSeed.swift */,
 				CE5585822115701600E66A6C /* Idea.swift */,
+				CEBD041B21EA1DD300491AD7 /* WordSeed.swift */,
 				CE5A635A212948BC007E4887 /* CategorySeed.swift */,
 				CE5A635C21294E99007E4887 /* RealmInitializer.swift */,
 			);
