@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import DropDown
+import PopupWindow
 
 class IdeasSlotViewController: UIViewController {
 
@@ -31,15 +32,14 @@ class IdeasSlotViewController: UIViewController {
             operatorButton.imageView?.contentMode = .scaleAspectFit
         }
     }
-    var shuffleButton = UIButton(){
-        didSet{
-        }
-    }
-    var registForm = IdeaRegistFormView(){
-        didSet{
-            registForm.frame = CGRect(x: 0, y: 500, width: self.view.frame.size.width, height: IdeaRegistFormView.Const.height)
-        }
-    }
+    var shuffleButton = UIButton()
+    var pickupButton = UIButton()
+    
+//    var registForm = IdeaRegistFormView(){
+//        didSet{
+//            registForm.frame = CGRect(x: 0, y: 500, width: self.view.frame.size.width, height: IdeaRegistFormView.Const.height)
+//        }
+//    }
     var wordEntities:Results<Words>? = nil
     var operatorName:[String] = ["Plus", "Minus", "Multiply", "Divide"]
     var ideaItem = Idea()    
@@ -78,7 +78,7 @@ class IdeasSlotViewController: UIViewController {
 
         //regist form
         //***********************************************************************//
-        registForm = UINib(nibName: "IdeaRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaRegistFormView
+//        registForm = UINib(nibName: "IdeaRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaRegistFormView
         
         //operator
         //***********************************************************************//
@@ -100,6 +100,15 @@ class IdeasSlotViewController: UIViewController {
         shuffleButton.addTarget(self, action: #selector(shuffleButtonAction), for: .touchUpInside)
         shuffleButton.layer.masksToBounds = true
         shuffleButton.layer.cornerRadius = 5.0
+        
+        //pickup button
+        //***********************************************************************//
+        pickupButton.setTitle("Pick Up", for: .normal)
+        pickupButton.frame = CGRect(x: 100, y: 500, width: 200, height: 40)
+        pickupButton.backgroundColor = UIColor.AppColor.buttonColor
+        pickupButton.addTarget(self, action: #selector(setRegistForm), for: .touchUpInside)
+        pickupButton.layer.masksToBounds = true
+        pickupButton.layer.cornerRadius = 5.0
 
         //addSubView
         //***********************************************************************//
@@ -107,7 +116,8 @@ class IdeasSlotViewController: UIViewController {
         self.view.addSubview(ideaSlotPickerView)
         self.view.addSubview(ideaSlotPickerView2)
         self.view.addSubview(shuffleButton)
-        self.view.addSubview(registForm)
+        self.view.addSubview(pickupButton)
+//        self.view.addSubview(registForm)
     }
     
     /**
@@ -137,17 +147,24 @@ class IdeasSlotViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     
+    //change operator
     @objc func showOperator() {
         dropdown.show()
     }
     
+    //play all shuffle
     @objc func shuffleButtonAction(){
-        print("tap shuffle button")
         playSlotPicker(view: ideaSlotPickerView)
         playSlotPicker(view: ideaSlotPickerView2)
     }
     
-    //create words list only word's text
+    @objc func setRegistForm() {
+        let ideaRegistFormViewController = IdeaRegistFormViewController()
+        print(ideaItem)
+        PopupWindowManager.shared.changeKeyWindow(rootViewController: ideaRegistFormViewController)
+    }
+    
+    //create word's name list
     func arrayWordList(wordList: Array<Words>) -> Array<String> {
         var wordNameList:[String] = []
 
@@ -166,7 +183,7 @@ class IdeasSlotViewController: UIViewController {
         return Array(wordList!)
     }
     
-    //set up pickerview's property
+    //set pickerview's property
     func setPickerViewData(view: IdeaSlotPickerView,setFlg:Int) -> IdeaSlotPickerView{
         switch setFlg {
         case 0:
@@ -192,7 +209,6 @@ class IdeasSlotViewController: UIViewController {
         if view.wordNameList!.count > 0 {
             view.wordsPickerView.selectRow(view.randomNumber(size: view.pickerViewRows), inComponent: 0, animated: true)
         }
-//        print("selected", view.wordNameList![view.wordsPickerView.selectedRow(inComponent: 0) % view.wordNameList!.count])
         let rowWord = view.wordNameList![view.wordsPickerView.selectedRow(inComponent: 0) % view.wordNameList!.count]
         
         //set idea's data

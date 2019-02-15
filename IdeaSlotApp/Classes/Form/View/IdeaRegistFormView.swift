@@ -18,6 +18,7 @@ class IdeaRegistFormView: UIView {
             containerView.layer.masksToBounds = true
             containerView.layer.masksToBounds = true
             containerView.layer.cornerRadius = 5.0
+            containerView.backgroundColor = UIColor.white
         }
     }
     
@@ -50,7 +51,22 @@ class IdeaRegistFormView: UIView {
         }
     }
     
+    var saveButtonTapHandler:(() -> Void)?
+    
     @IBAction func saveButtonAction(_ sender: Any) {
         print("tap save button")
+        saveButtonTapHandler?()
+    }
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+    }
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
     }
 }

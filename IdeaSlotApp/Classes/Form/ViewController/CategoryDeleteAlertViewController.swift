@@ -46,12 +46,12 @@ class CategoryDeleteAlertViewController: BasePopupViewController {
         //delete button tapped
         categoryDeleteAlertView.deleteButtonTapHandler = { [weak self] in
             guard  let me = self else { return }
-            me.showCompletionView(alertView: categoryDeleteAlertView)
+            me.showCompletionView(formView: categoryDeleteAlertView)
         }
     }
     
-    private func showCompletionView(alertView: CategoryDeleteAlertView){
-        let popupItem = PopupItem(view: alertView, height: CategoryDeleteAlertView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
+    private func showCompletionView(formView: CategoryDeleteAlertView){
+        let popupItem = PopupItem(view: formView, height: CategoryDeleteAlertView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
         
         //delete Category
         var result:Bool = false
