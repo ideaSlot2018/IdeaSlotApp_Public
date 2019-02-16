@@ -11,18 +11,19 @@ import PopupWindow
 
 class CategoryRegistFormView: UIView, PopupViewContainable{
     enum Const {
-        static let height: CGFloat = 150
+        static let height: CGFloat = 500
     }
     
     @IBOutlet weak var containerView: UIView!{
         didSet{
             containerView.layer.masksToBounds = true
+            containerView.layer.cornerRadius = 5.0
         }
     }
     
     @IBOutlet weak var textFrom: UITextField!{
         didSet{
-            textFrom.placeholder = "15 characters"
+            textFrom.placeholder = "please type \'New Category\' in 15 characters"
         }
     }
     
@@ -56,7 +57,8 @@ class CategoryRegistFormView: UIView, PopupViewContainable{
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        self.backgroundColor = UIColor.AppColor.formBackgroundColor
+        containerView.backgroundColor = UIColor.AppColor.formBackgroundColor
+        
         let border = CALayer()
         border.borderColor = UIColor.black.cgColor
         border.frame = CGRect(x: 0, y: textFrom.frame.size.height, width: textFrom.frame.size.width, height: 1)

@@ -18,13 +18,13 @@ class CategoryRegistFormViewController: BasePopupViewController {
         static let popupOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .bottom, canTapDismiss: true)
     }
     
+    var categoryRegistFormView = CategoryRegistFormView()
     var category: Category? = nil
     var categoryTableView: UITableView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var categoryRegistFormView = CategoryRegistFormView()
         categoryRegistFormView = UINib(nibName: "CategoryRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! CategoryRegistFormView
         if self.category?.categoryId != 0 {
             categoryRegistFormView.textFrom.text = self.category?.categoryName
@@ -35,7 +35,7 @@ class CategoryRegistFormViewController: BasePopupViewController {
         
         categoryRegistFormView.registerButtonTapHandler = { [weak self] in
             guard let me = self else { return }
-            me.showCompletionView(formView: categoryRegistFormView)
+            me.showCompletionView(formView: self!.categoryRegistFormView)
         }
         
         categoryRegistFormView.closeButtonTapHandler = { [weak self] in
