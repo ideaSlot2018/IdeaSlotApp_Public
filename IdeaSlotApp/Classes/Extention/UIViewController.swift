@@ -16,6 +16,7 @@ extension UIViewController{
         self.addLeftBarButtonWithImage(UIImage(named: "Menu")!)
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.addLeftGestures()
+//        setNavigationBarTitle()
     }
     
     func setNavigationBarRightItem(imageName: String) {
@@ -34,12 +35,9 @@ extension UIViewController{
     
     @objc func rightButtonAction() {}
     
-    func setNavigationBarTitle(title: String){
-        let navigationTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        navigationTitle.font = UIFont.systemFont(ofSize: 21)
-        navigationTitle.text = title
-        navigationTitle.textAlignment = .center
-        navigationTitle.textColor = UIColor.AppColor.navigationTitle
+    func setNavigationBarTitle(){
+        let navigationTitle = UIImageView(image: UIImage(named: "Header"))
+        navigationTitle.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
         self.navigationItem.titleView = navigationTitle
     }
     
@@ -56,6 +54,7 @@ extension UIViewController{
         let currHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 25)
         currHeight?.isActive = true
         self.navigationItem.leftBarButtonItem = backButton
+//        setNavigationBarTitle()
     }
     
     @objc func toBack(){

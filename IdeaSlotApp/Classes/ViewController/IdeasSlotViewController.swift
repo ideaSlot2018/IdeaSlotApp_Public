@@ -51,6 +51,8 @@ class IdeasSlotViewController: UIViewController {
      **/
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBarTitle()
+        setNavigationBarItem()
         
         //picker 1
         //***********************************************************************//
@@ -125,7 +127,6 @@ class IdeasSlotViewController: UIViewController {
      **/
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarTitle(title: "Idea Slot")
         wordEntities = realm.objects(Words.self).sorted(byKeyPath: "updateDate", ascending: false)
         
         //picker 1

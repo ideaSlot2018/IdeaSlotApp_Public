@@ -21,8 +21,8 @@ class CategoryListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setNavigationBarItem()
-        setNavigationBarTitle(title: "Category")
+        setNavigationBarTitle()
+        setNavigationBarItem()
         setNavigationBarRightItem(imageName: "Plus")
         
         tableView.delegate = self

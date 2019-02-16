@@ -23,12 +23,12 @@ class WordsListViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBarTitle()
         if category == nil{
             setNavigationBarItem()
         }else{
             customBackButton()
         }
-        setNavigationBarTitle(title: "Words")
         setSearchController()
         tableView.delegate = self
         tableView.dataSource = self

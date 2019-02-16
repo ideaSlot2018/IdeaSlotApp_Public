@@ -329,8 +329,8 @@
 			isa = PBXGroup;
 			children = (
 				CE5B626021E07EF4006D428D /* CategoryDeleteAlertViewController.swift */,
-				CE929FDD22114D4C006634A6 /* IdeaRegistFormViewController.swift */,
 				CE79C6A121CA884B00B3BC63 /* CategoryRegistFormViewController.swift */,
+				CE929FDD22114D4C006634A6 /* IdeaRegistFormViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
