@@ -124,11 +124,4 @@ extension IdeaSlotPickerView: UIPickerViewDataSource{
         // the rows repeat every `pickerViewData.count` items
         return wordNameList![row % wordNameList!.count]
     }
-    
-//    func rowForValue(value: Int) -> Int? {
-//        if wordNameList!.count > 0 {
-//            return pickerViewMiddle + value
-//        }
-//        return nil
-//    }
 }

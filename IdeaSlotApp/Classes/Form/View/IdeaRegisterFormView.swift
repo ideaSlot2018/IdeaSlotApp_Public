@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import DropDown
 
 class IdeaRegisterFormView: UIView {
     enum Const {
@@ -40,15 +41,33 @@ class IdeaRegisterFormView: UIView {
             detailsTextView.layer.borderColor = UIColor.gray.cgColor
         }
     }
-    
+    @IBOutlet weak var categoryButton: UIButton!{
+        didSet{
+            categoryButton.setTitle("No Category", for: .normal)
+            categoryButton.layer.masksToBounds = true
+            categoryButton.layer.cornerRadius = 5.0
+            categoryButton.backgroundColor = UIColor.AppColor.buttonColor
+            categoryButton.tintColor = UIColor.AppColor.buttonTextColor
+            categoryButton.titleLabel?.lineBreakMode = .byTruncatingTail
+        }
+    }
     var saveButtonTapHandler:(() -> Void)?
+    var categoryButtonTapHandler:(() -> Void)?
+    var categoryName:String? = nil
+    
+    let dropdown = DropDown()
     
     @IBAction func saveButtonAction(_ sender: Any) {
         saveButtonTapHandler?()
     }
+
+    @IBAction func showDropdown(_ sender: Any) {
+        dropdown.show()
+    }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        setDropDown(button: categoryButton, dropdown: dropdown)
         addBottomBorder(view: ideaTitle, height: 1.0, color: UIColor.darkGray.cgColor)
         addBottomBorder(view: wordText1, height: 1.0, color: UIColor.darkGray.cgColor)
         addBottomBorder(view: wordText2, height: 1.0, color: UIColor.darkGray.cgColor)
@@ -61,5 +80,14 @@ class IdeaRegisterFormView: UIView {
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    func setDropDown(button:UIButton, dropdown:DropDown){
+        dropdown.anchorView = button
+        dropdown.selectionAction = {(index, item) in
+            button.setTitle(item, for: .normal)
+            self.categoryName = item
+            self.categoryButtonTapHandler?()
+        }
     }
 }

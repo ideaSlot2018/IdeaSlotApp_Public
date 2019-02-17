@@ -29,6 +29,7 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         ideaRegisterFormView.wordText1.text = ideaItem?.words[0].word
         ideaRegisterFormView.wordText2.text = ideaItem?.words[1].word
         ideaRegisterFormView.operatorName.text = ideaItem?.operatorId1
+        ideaRegisterFormView.dropdown.dataSource = arrayCategoryList(listFlg: 0)
 
         let popupItem = PopupItem(view: ideaRegisterFormView, height: IdeaRegisterFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
         configurePopupItem(popupItem)
