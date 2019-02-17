@@ -10,7 +10,7 @@ import UIKit
 
 class IdeaRegistFormView: UIView {
     enum Const {
-        static let height:CGFloat = 400
+        static let height:CGFloat = 600
     }
     
     @IBOutlet weak var containerView: UIView!{
@@ -21,45 +21,38 @@ class IdeaRegistFormView: UIView {
             containerView.backgroundColor = UIColor.white
         }
     }
-    
-    @IBOutlet weak var textContainerView: UIView!{
-        didSet{
-            textContainerView.backgroundColor = UIColor.gray
-            textContainerView.layer.masksToBounds = true
-            textContainerView.layer.cornerRadius = 5.0
-        }
-    }
-    
-    @IBOutlet weak var ideaTitle: UITextField!{
-        didSet{
-            ideaTitle.layer.masksToBounds = true
-            ideaTitle.layer.cornerRadius = 5.0
-        }
-    }
-    
+    @IBOutlet weak var ideaTitle: UITextField!
     @IBOutlet weak var saveButton: UIButton!{
         didSet{
             saveButton.layer.masksToBounds = true
             saveButton.layer.cornerRadius = 5.0
+            saveButton.setImage(UIImage(named: "Check-OK"), for: .normal)
         }
     }
-    
-    @IBOutlet weak var detailTextView: UITextView!{
+    @IBOutlet weak var wordText1: UILabel!
+    @IBOutlet weak var wordText2: UILabel!
+    @IBOutlet weak var operatorName: UILabel!
+    @IBOutlet weak var detailsTextView: UITextView!{
         didSet{
-            detailTextView.layer.masksToBounds = true
-            detailTextView.layer.cornerRadius = 5.0
+            detailsTextView.layer.masksToBounds = true
+            detailsTextView.layer.cornerRadius = 5.0
+            detailsTextView.layer.borderWidth = 2.0
+            detailsTextView.layer.borderColor = UIColor.gray.cgColor
         }
     }
     
     var saveButtonTapHandler:(() -> Void)?
     
     @IBAction func saveButtonAction(_ sender: Any) {
-        print("tap save button")
         saveButtonTapHandler?()
     }
     
     override func awakeFromNib() {
         super.awakeFromNib()
+        addBottomBorder(view: ideaTitle, height: 1.0, color: UIColor.darkGray.cgColor)
+        addBottomBorder(view: wordText1, height: 1.0, color: UIColor.darkGray.cgColor)
+        addBottomBorder(view: wordText2, height: 1.0, color: UIColor.darkGray.cgColor)
+        addBottomBorder(view: operatorName, height: 1.0, color: UIColor.darkGray.cgColor)
     }
     
     override init(frame: CGRect) {

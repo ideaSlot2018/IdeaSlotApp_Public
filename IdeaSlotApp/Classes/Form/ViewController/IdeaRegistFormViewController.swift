@@ -18,12 +18,18 @@ class IdeaRegistFormViewController: BasePopupViewController {
         static let popupOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .bottom, canTapDismiss: true)
     }
     
+    var ideaItem:Idea? = nil
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        print(ideaItem)
         
         var ideaRegistFormView = IdeaRegistFormView()
         ideaRegistFormView = UINib(nibName: "IdeaRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaRegistFormView
-        
+        ideaRegistFormView.wordText1.text = ideaItem?.words[0].word
+        ideaRegistFormView.wordText2.text = ideaItem?.words[1].word
+        ideaRegistFormView.operatorName.text = ideaItem?.operatorId1
+
         let popupItem = PopupItem(view: ideaRegistFormView, height: IdeaRegistFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
         configurePopupItem(popupItem)
         

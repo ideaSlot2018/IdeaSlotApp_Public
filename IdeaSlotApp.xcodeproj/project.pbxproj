@@ -11,6 +11,7 @@
 		CE22FC1321DF497500EB51A3 /* CategoryDeleteAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE22FC1221DF497500EB51A3 /* CategoryDeleteAlertView.xib */; };
 		CE43D50021BB9C540089764A /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */; };
 		CE4B2BE2218D627F009A94B2 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */; };
+		CE4BD71522191C5200878860 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BD71422191C5200878860 /* UIView.swift */; };
 		CE5585832115701600E66A6C /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5585822115701600E66A6C /* Idea.swift */; };
 		CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58047A214420C700BEDA1A /* BaseTableViewCell.swift */; };
 		CE5A635B212948BC007E4887 /* CategorySeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A635A212948BC007E4887 /* CategorySeed.swift */; };
@@ -74,6 +75,7 @@
 		CE22FC1221DF497500EB51A3 /* CategoryDeleteAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryDeleteAlertView.xib; sourceTree = "<group>"; };
 		CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = Carthage/Build/iOS/SlideMenuControllerSwift.framework; sourceTree = "<group>"; };
+		CE4BD71422191C5200878860 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		CE5585822115701600E66A6C /* Idea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idea.swift; sourceTree = "<group>"; };
 		CE58047A214420C700BEDA1A /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		CE5A635A212948BC007E4887 /* CategorySeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySeed.swift; sourceTree = "<group>"; };
@@ -212,6 +214,7 @@
 				CE918FE421995B99001C6B95 /* UIColor.swift */,
 				CE7497282143F7D100F51E91 /* UIApplication.swift */,
 				CE7497262143F48100F51E91 /* UIViewController.swift */,
+				CE4BD71422191C5200878860 /* UIView.swift */,
 			);
 			path = Extention;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */,
 				CE929FDE22114D4C006634A6 /* IdeaRegistFormViewController.swift in Sources */,
 				CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */,
+				CE4BD71522191C5200878860 /* UIView.swift in Sources */,
 				CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */,
 				CED3DB1F215F5939008B6A0D /* IdeaDetailViewController.swift in Sources */,
 				CEEDE3ED2143929C00D05F61 /* SlideMenuViewController.swift in Sources */,

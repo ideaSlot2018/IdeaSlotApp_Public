@@ -16,7 +16,6 @@ extension UIViewController{
         self.addLeftBarButtonWithImage(UIImage(named: "Menu")!)
         self.slideMenuController()?.removeLeftGestures()
         self.slideMenuController()?.addLeftGestures()
-//        setNavigationBarTitle()
     }
     
     func setNavigationBarRightItem(imageName: String) {
@@ -54,7 +53,6 @@ extension UIViewController{
         let currHeight = backButton.customView?.heightAnchor.constraint(equalToConstant: 25)
         currHeight?.isActive = true
         self.navigationItem.leftBarButtonItem = backButton
-//        setNavigationBarTitle()
     }
     
     @objc func toBack(){

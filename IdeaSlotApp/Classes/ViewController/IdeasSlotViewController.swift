@@ -35,11 +35,6 @@ class IdeasSlotViewController: UIViewController {
     var shuffleButton = UIButton()
     var pickupButton = UIButton()
     
-//    var registForm = IdeaRegistFormView(){
-//        didSet{
-//            registForm.frame = CGRect(x: 0, y: 500, width: self.view.frame.size.width, height: IdeaRegistFormView.Const.height)
-//        }
-//    }
     var wordEntities:Results<Words>? = nil
     var operatorName:[String] = ["Plus", "Minus", "Multiply", "Divide"]
     var ideaItem = Idea()    
@@ -78,10 +73,6 @@ class IdeasSlotViewController: UIViewController {
             me.playSlotPicker(view: self!.ideaSlotPickerView2)
         }
 
-        //regist form
-        //***********************************************************************//
-//        registForm = UINib(nibName: "IdeaRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaRegistFormView
-        
         //operator
         //***********************************************************************//
         dropdown.anchorView = operatorButton
@@ -119,7 +110,6 @@ class IdeasSlotViewController: UIViewController {
         self.view.addSubview(ideaSlotPickerView2)
         self.view.addSubview(shuffleButton)
         self.view.addSubview(pickupButton)
-//        self.view.addSubview(registForm)
     }
     
     /**
@@ -161,7 +151,7 @@ class IdeasSlotViewController: UIViewController {
     
     @objc func setRegistForm() {
         let ideaRegistFormViewController = IdeaRegistFormViewController()
-        print(ideaItem)
+        ideaRegistFormViewController.ideaItem = ideaItem
         PopupWindowManager.shared.changeKeyWindow(rootViewController: ideaRegistFormViewController)
     }
     
@@ -210,18 +200,15 @@ class IdeasSlotViewController: UIViewController {
         if view.wordNameList!.count > 0 {
             view.wordsPickerView.selectRow(view.randomNumber(size: view.pickerViewRows), inComponent: 0, animated: true)
         }
-        let rowWord = view.wordNameList![view.wordsPickerView.selectedRow(inComponent: 0) % view.wordNameList!.count]
-        
+        let rowWord = view.wordList![view.wordsPickerView.selectedRow(inComponent: 0) % view.wordNameList!.count]
         //set idea's data
         switch view.slotFlg {
         case 1:
-            ideaItem.wordId1 = rowWord
+            ideaItem.words.insert(rowWord, at: 0)
         case 2:
-            ideaItem.wordId2 = rowWord
+            ideaItem.words.insert(rowWord, at: 1)
         default:
             break
         }
-        
-        print(ideaItem)
     }
 }

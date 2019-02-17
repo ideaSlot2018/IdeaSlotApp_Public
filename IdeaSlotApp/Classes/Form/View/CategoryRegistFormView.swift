@@ -58,13 +58,7 @@ class CategoryRegistFormView: UIView, PopupViewContainable{
     override func awakeFromNib() {
         super.awakeFromNib()
         containerView.backgroundColor = UIColor.AppColor.formBackgroundColor
-        
-        let border = CALayer()
-        border.borderColor = UIColor.black.cgColor
-        border.frame = CGRect(x: 0, y: textFrom.frame.size.height, width: textFrom.frame.size.width, height: 1)
-        border.borderWidth = CGFloat(2.0)
-        
-        textFrom.layer.addSublayer(border)
+        addBottomBorder(view: textFrom, height: 2.0, color: UIColor.darkGray.cgColor)
     }
     
     override init(frame: CGRect) {
