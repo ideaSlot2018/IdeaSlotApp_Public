@@ -22,17 +22,20 @@ class IdeaRegisterFormViewController: BasePopupViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(ideaItem)
         
         var ideaRegisterFormView = IdeaRegisterFormView()
         ideaRegisterFormView = UINib(nibName: "IdeaRegisterFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaRegisterFormView
         ideaRegisterFormView.wordText1.text = ideaItem?.words[0].word
         ideaRegisterFormView.wordText2.text = ideaItem?.words[1].word
         ideaRegisterFormView.operatorName.text = ideaItem?.operatorId1
+        ideaRegisterFormView.dropdown.dataSource = arrayCategoryList(listFlg: 0)
 
         let popupItem = PopupItem(view: ideaRegisterFormView, height: IdeaRegisterFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
         configurePopupItem(popupItem)
         
+        ideaRegisterFormView.categoryButtonTapHandler = { [weak self] in
+            self!.ideaItem?.categoryName = ideaRegisterFormView.categoryName!
+        }
         ideaRegisterFormView.saveButtonTapHandler = { [weak self] in
             guard let me = self else { return }
             me.showCompletionView(formView: ideaRegisterFormView)
@@ -42,13 +45,25 @@ class IdeaRegisterFormViewController: BasePopupViewController {
     private func showCompletionView(formView: IdeaRegisterFormView){
         let popupItem = PopupItem(view: formView, height: CategoryDeleteAlertView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
         
-        transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
-            guard let me = self else { return }
-            me.replacePopupView(with: popupItem)
-            me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction){ _ in
-                PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
+        ideaItem?.ideaName = formView.ideaTitle.text
+        ideaItem?.details = formView.detailsTextView.text
+        
+        let ideaSlotViewCotroller = IdeasSlotViewController()
+        
+        let result:Bool = ideaSlotViewCotroller.registerIdea(newIdea: ideaItem!)
+        print("do degister")
+        if result {
+            transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+                guard let me = self else { return }
+                me.replacePopupView(with: popupItem)
+                me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction){ _ in
+                    PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
+                }
             }
+        } else {
+            print("failure")
         }
+        
     }
 
 }

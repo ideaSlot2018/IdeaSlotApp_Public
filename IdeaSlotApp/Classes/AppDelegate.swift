@@ -24,11 +24,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             userDefaulft.set(false, forKey: "firstLaunch")
             RealmInitializer.setUp()
         }
+        
+//        let realmInitializer = RealmInitializer()
+//        realmInitializer.removeRealmFile()
+        
         // Realm Migration
         let config = Realm.Configuration(
-            schemaVersion: 5,
+            schemaVersion: 1,
             migrationBlock: { migration, oldSchemaVersion in
-                if (oldSchemaVersion < 5) {}
+                if (oldSchemaVersion < 1) {}
         })
         Realm.Configuration.defaultConfiguration = config
         createMenuView()

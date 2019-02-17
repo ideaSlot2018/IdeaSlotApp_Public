@@ -7,8 +7,12 @@
 //
 
 import UIKit
+import RealmSwift
 
 class IdeasListViewController: UIViewController {
+    
+    let realm = try! Realm()
+    var ideaEntites:Results<Idea>? = nil
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +22,8 @@ class IdeasListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        ideaEntites = realm.objects(Idea.self)
+        print(ideaEntites)
 
     }
 
