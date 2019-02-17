@@ -1,5 +1,5 @@
 //
-//  IdeaRegistFormView.swift
+//  IdeaRegisterFormView.swift
 //  IdeaSlotApp
 //
 //  Created by yuta akazawa on 2019/01/14.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-class IdeaRegistFormView: UIView {
+class IdeaRegisterFormView: UIView {
     enum Const {
         static let height:CGFloat = 600
     }

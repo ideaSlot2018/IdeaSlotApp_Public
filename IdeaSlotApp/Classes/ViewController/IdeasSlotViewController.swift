@@ -99,7 +99,7 @@ class IdeasSlotViewController: UIViewController {
         pickupButton.setTitle("Pick Up", for: .normal)
         pickupButton.frame = CGRect(x: 100, y: 500, width: 200, height: 40)
         pickupButton.backgroundColor = UIColor.AppColor.buttonColor
-        pickupButton.addTarget(self, action: #selector(setRegistForm), for: .touchUpInside)
+        pickupButton.addTarget(self, action: #selector(setRegisterForm), for: .touchUpInside)
         pickupButton.layer.masksToBounds = true
         pickupButton.layer.cornerRadius = 5.0
 
@@ -149,10 +149,10 @@ class IdeasSlotViewController: UIViewController {
         playSlotPicker(view: ideaSlotPickerView2)
     }
     
-    @objc func setRegistForm() {
-        let ideaRegistFormViewController = IdeaRegistFormViewController()
-        ideaRegistFormViewController.ideaItem = ideaItem
-        PopupWindowManager.shared.changeKeyWindow(rootViewController: ideaRegistFormViewController)
+    @objc func setRegisterForm() {
+        let ideaRegisterFormViewController = IdeaRegisterFormViewController()
+        ideaRegisterFormViewController.ideaItem = ideaItem
+        PopupWindowManager.shared.changeKeyWindow(rootViewController: ideaRegisterFormViewController)
     }
     
     //create word's name list

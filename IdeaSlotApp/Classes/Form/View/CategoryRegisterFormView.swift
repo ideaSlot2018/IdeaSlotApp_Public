@@ -1,5 +1,5 @@
 //
-//  CategoryRegistFormView.swift
+//  CategoryRegisterFormView.swift
 //  IdeaSlotApp
 //
 //  Created by yuta akazawa on 2018/12/16.
@@ -9,7 +9,7 @@
 import UIKit
 import PopupWindow
 
-class CategoryRegistFormView: UIView, PopupViewContainable{
+class CategoryRegisterFormView: UIView, PopupViewContainable{
     enum Const {
         static let height: CGFloat = 500
     }
@@ -21,20 +21,20 @@ class CategoryRegistFormView: UIView, PopupViewContainable{
         }
     }
     
-    @IBOutlet weak var textFrom: UITextField!{
+    @IBOutlet weak var textForm: UITextField!{
         didSet{
-            textFrom.placeholder = "please type \'New Category\' in 15 characters"
+            textForm.placeholder = "please type \'New Category\' in 15 characters"
         }
     }
     
-    @IBOutlet weak var registButton: UIButton!{
+    @IBOutlet weak var registerButton: UIButton!{
         didSet{
-            registButton.setTitle("Continue", for: .normal)
-            registButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
-            registButton.backgroundColor = UIColor.AppColor.buttonColor
-            registButton.tintColor = UIColor.AppColor.buttonTextColor
-            registButton.layer.cornerRadius = 5.0
-            registButton.layer.masksToBounds = true
+            registerButton.setTitle("Continue", for: .normal)
+            registerButton.titleLabel?.font = UIFont.systemFont(ofSize: 20)
+            registerButton.backgroundColor = UIColor.AppColor.buttonColor
+            registerButton.tintColor = UIColor.AppColor.buttonTextColor
+            registerButton.layer.cornerRadius = 5.0
+            registerButton.layer.masksToBounds = true
         }
     }
     @IBOutlet weak var closeButton: UIButton!{
@@ -44,7 +44,7 @@ class CategoryRegistFormView: UIView, PopupViewContainable{
         }
     }
     
-    @IBAction func RegistAction(_ sender: Any) {
+    @IBAction func RegisterAction(_ sender: Any) {
         registerButtonTapHandler?()
     }
     
@@ -58,7 +58,7 @@ class CategoryRegistFormView: UIView, PopupViewContainable{
     override func awakeFromNib() {
         super.awakeFromNib()
         containerView.backgroundColor = UIColor.AppColor.formBackgroundColor
-        addBottomBorder(view: textFrom, height: 2.0, color: UIColor.darkGray.cgColor)
+        addBottomBorder(view: textForm, height: 2.0, color: UIColor.darkGray.cgColor)
     }
     
     override init(frame: CGRect) {

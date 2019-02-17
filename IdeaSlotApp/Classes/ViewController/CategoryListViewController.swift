@@ -56,15 +56,15 @@ class CategoryListViewController: UIViewController {
     }
     
     override func rightButtonAction() {
-        setRegistFrom(category: Category())
+        setRegisterFrom(category: Category())
     }
     
-    //display category regist form
-    func setRegistFrom(category:Category){
-        let categoryRegistFormViewController = CategoryRegistFormViewController()
-        categoryRegistFormViewController.categoryTableView = self.tableView
-        categoryRegistFormViewController.category = category
-        PopupWindowManager.shared.changeKeyWindow(rootViewController: categoryRegistFormViewController)
+    //display category register form
+    func setRegisterFrom(category:Category){
+        let categoryRegisterFormViewController = CategoryRegisterFormViewController()
+        categoryRegisterFormViewController.categoryTableView = self.tableView
+        categoryRegisterFormViewController.category = category
+        PopupWindowManager.shared.changeKeyWindow(rootViewController: categoryRegisterFormViewController)
     }
     
     //display delete alert
@@ -75,8 +75,8 @@ class CategoryListViewController: UIViewController {
         PopupWindowManager.shared.changeKeyWindow(rootViewController: categoryDeleteAlertViewController)
     }
     
-    //regist or update category
-    func registCategory(category: Category, formText: String) -> Bool {
+    //register or update category
+    func registerCategory(category: Category, formText: String) -> Bool {
         let item: [String: Any]
         
         if category.categoryId != 0 {
@@ -187,7 +187,7 @@ extension CategoryListViewController:SwipeTableViewCellDelegate{
         guard orientation == .right else { return nil }
         
         let editAction = SwipeAction(style: .default, title: "Edit") { action, indexPath in
-            self.setRegistFrom(category: self.categoryEntities![indexPath.row])
+            self.setRegisterFrom(category: self.categoryEntities![indexPath.row])
         }
         editAction.transitionDelegate = ScaleTransition.default
         editAction.image = UIImage(named: "Edit")
