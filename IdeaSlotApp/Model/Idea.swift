@@ -63,13 +63,13 @@ class Idea: Base {
     @objc dynamic var ideaName: String? = ""
     let category = LinkingObjects(fromType: Category.self, property: "ideas")
     //    @objc dynamic var userId: String? = ""
-    @objc dynamic var wordId1: String? = ""
-    @objc dynamic var operatorId1: String? = ""
-    @objc dynamic var wordId2: String? = ""
-    @objc dynamic var operatorId2: String? = ""
-    @objc dynamic var wordId3: String? = ""
-    @objc dynamic var operatorId3: String? = ""
+    //@objc dynamic var wordId1: String? = ""
+    @objc dynamic var operatorId1: String? = "Plus"
+    //@objc dynamic var wordId2: String? = ""
+    //@objc dynamic var operatorId2: String? = ""
+    //@objc dynamic var wordId3: String? = ""
     @objc dynamic var detail: String? = ""
+    let words = List<Words>()
     
     override class func primaryKey() -> String {
         return "ideaId"

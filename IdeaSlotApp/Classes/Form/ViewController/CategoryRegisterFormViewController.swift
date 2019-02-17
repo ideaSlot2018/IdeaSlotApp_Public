@@ -1,5 +1,5 @@
 //
-//  CategoryRegistFormViewController.swift
+//  CategoryRegisterFormViewController.swift
 //  IdeaSlotApp
 //
 //  Created by yuta akazawa on 2018/12/19.
@@ -9,7 +9,7 @@
 import UIKit
 import PopupWindow
 
-class CategoryRegistFormViewController: BasePopupViewController {
+class CategoryRegisterFormViewController: BasePopupViewController {
     enum Const {
         static let popupDuration: TimeInterval = 0.3
         static let transformDuration: TimeInterval = 0.4
@@ -24,32 +24,32 @@ class CategoryRegistFormViewController: BasePopupViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        var categoryRegistFormView = CategoryRegistFormView()
-        categoryRegistFormView = UINib(nibName: "CategoryRegistFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! CategoryRegistFormView
+        var categoryRegisterFormView = CategoryRegisterFormView()
+        categoryRegisterFormView = UINib(nibName: "CategoryRegisterFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! CategoryRegisterFormView
         if self.category?.categoryId != 0 {
-            categoryRegistFormView.textFrom.text = self.category?.categoryName
+            categoryRegisterFormView.textForm.text = self.category?.categoryName
         }
         
-        let popupItem = PopupItem(view: categoryRegistFormView, height: CategoryRegistFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
+        let popupItem = PopupItem(view: categoryRegisterFormView, height: CategoryRegisterFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
         configurePopupItem(popupItem)
         
-        categoryRegistFormView.registerButtonTapHandler = { [weak self] in
+        categoryRegisterFormView.registerButtonTapHandler = { [weak self] in
             guard let me = self else { return }
-            me.showCompletionView(formView: categoryRegistFormView)
+            me.showCompletionView(formView: categoryRegisterFormView)
         }
         
-        categoryRegistFormView.closeButtonTapHandler = { [weak self] in
+        categoryRegisterFormView.closeButtonTapHandler = { [weak self] in
             self?.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: .bottom) { _ in }
         }
     }
     
-    private func showCompletionView(formView: CategoryRegistFormView) {
-        let popupItem = PopupItem(view: formView, height: CategoryRegistFormView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
+    private func showCompletionView(formView: CategoryRegisterFormView) {
+        let popupItem = PopupItem(view: formView, height: CategoryRegisterFormView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
         
-        //Regist Category
+        //Register Category
         var result:Bool = false
         let categoryListViewControler = CategoryListViewController()
-        result = categoryListViewControler.registCategory(category: self.category!,formText: formView.textFrom.text!)
+        result = categoryListViewControler.registerCategory(category: self.category!,formText: formView.textForm.text!)
         if result {
             categoryTableView.reloadData()
             transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in

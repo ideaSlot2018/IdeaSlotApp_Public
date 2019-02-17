@@ -34,12 +34,9 @@ extension UIViewController{
     
     @objc func rightButtonAction() {}
     
-    func setNavigationBarTitle(title: String){
-        let navigationTitle = UILabel(frame: CGRect(x: 0, y: 0, width: 100, height: 100))
-        navigationTitle.font = UIFont.systemFont(ofSize: 21)
-        navigationTitle.text = title
-        navigationTitle.textAlignment = .center
-        navigationTitle.textColor = UIColor.AppColor.navigationTitle
+    func setNavigationBarTitle(){
+        let navigationTitle = UIImageView(image: UIImage(named: "Header"))
+        navigationTitle.frame = CGRect(x: 0, y: 0, width: 100, height: 20)
         self.navigationItem.titleView = navigationTitle
     }
     

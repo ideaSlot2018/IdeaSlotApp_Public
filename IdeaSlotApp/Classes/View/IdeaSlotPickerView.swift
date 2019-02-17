@@ -43,16 +43,17 @@ class IdeaSlotPickerView: UIView {
         didSet{
         }
     }
+    let dropdown = DropDown()
+    var pickerViewRows = 0
+    var pickerViewMiddle = 0
     var categoryButtonTapHandler: (() -> Void)?
     var playButtonTapHandler: (() -> Void)?
+
     var wordList:Array<Words>? = nil
     var wordNameList:Array<String>? = nil
     var categoryName:String? = nil
     var category:Category? = nil
-    
-    let dropdown = DropDown()
-    var pickerViewRows = 0
-    var pickerViewMiddle = 0
+    var slotFlg:Int = 0
     
     @IBAction func playButtonAction(_ sender: Any) {
         playButtonTapHandler?()

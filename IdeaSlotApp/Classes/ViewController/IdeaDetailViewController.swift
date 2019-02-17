@@ -13,12 +13,13 @@ class IdeaDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setNavigationBarTitle()
+        setNavigationBarItem()
 
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        setNavigationBarTitle(title: "Idea Detail")
 
     }
     

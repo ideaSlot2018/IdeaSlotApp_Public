@@ -11,12 +11,14 @@ import PopupWindow
 
 class CategoryDeleteAlertView: UIView, PopupViewContainable {
     enum Const {
-        static let height: CGFloat = 150
+        static let height: CGFloat = 500
     }
     
     @IBOutlet weak var containerView: UIView!{
         didSet{
             containerView.layer.masksToBounds = true
+            containerView.layer.cornerRadius = 5.0
+            containerView.backgroundColor = UIColor.AppColor.formBackgroundColor
         }
     }
     
