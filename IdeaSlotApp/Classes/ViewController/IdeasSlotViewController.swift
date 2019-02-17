@@ -37,7 +37,7 @@ class IdeasSlotViewController: UIViewController {
     
     var wordEntities:Results<Words>? = nil
     var operatorName:[String] = ["Plus", "Minus", "Multiply", "Divide"]
-    var ideaItem = Idea()    
+    var ideaItem:Idea? = Idea()
     let realm = try!Realm()
     let dropdown = DropDown()
 
@@ -79,7 +79,7 @@ class IdeasSlotViewController: UIViewController {
         dropdown.dataSource = operatorName
         dropdown.selectionAction = {(index, item) in
             self.operatorButton.setImage(UIImage(named: "Operator-\(self.operatorName[index])"), for: .normal)
-            self.ideaItem.operatorId1 = item
+            self.ideaItem!.operatorId1 = item
         }
         operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 40, y: 210, width: 80, height: 80)
         operatorButton.setImage(UIImage(named: "Operator-Plus"), for: .normal)
@@ -204,11 +204,30 @@ class IdeasSlotViewController: UIViewController {
         //set idea's data
         switch view.slotFlg {
         case 1:
-            ideaItem.words.insert(rowWord, at: 0)
+            ideaItem!.words.insert(rowWord, at: 0)
         case 2:
-            ideaItem.words.insert(rowWord, at: 1)
+            ideaItem!.words.insert(rowWord, at: 1)
         default:
             break
         }
+    }
+    
+    //register idea
+    func registerIdea(newIdea:Idea) -> Bool {
+        print("register idea")
+//        print(newIdea)
+        var category:Category? = nil
+        if newIdea.categoryName != nil {
+            category = findCategoryItem(categoryName: newIdea.categoryName!)
+        }
+        
+        try! realm.write {
+            realm.add(newIdea)
+            if category != nil && category?.categoryId != 0{
+                category?.ideas.append(newIdea)
+            }
+        }
+        
+        return true
     }
 }
