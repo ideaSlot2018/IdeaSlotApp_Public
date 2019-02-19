@@ -96,7 +96,7 @@ extension UIViewController{
     func getCategoryMaxId() -> Int {
         let realm = try!Realm()
         var categoryMaxId:Int = 1
-        let category = realm.objects(Category.self).last
+        let category:Category? = realm.objects(Category.self).last
         if category != nil {
             categoryMaxId =  category!.categoryId + 1
         }        
