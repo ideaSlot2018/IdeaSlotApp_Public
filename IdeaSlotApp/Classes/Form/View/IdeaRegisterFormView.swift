@@ -28,6 +28,7 @@ class IdeaRegisterFormView: UIView {
             saveButton.layer.masksToBounds = true
             saveButton.layer.cornerRadius = 5.0
             saveButton.setImage(UIImage(named: "Check-OK"), for: .normal)
+            saveButton.isEnabled = false
         }
     }
     @IBOutlet weak var wordText1: UILabel!
@@ -72,6 +73,7 @@ class IdeaRegisterFormView: UIView {
         addBottomBorder(view: wordText1, height: 1.0, color: UIColor.darkGray.cgColor)
         addBottomBorder(view: wordText2, height: 1.0, color: UIColor.darkGray.cgColor)
         addBottomBorder(view: operatorName, height: 1.0, color: UIColor.darkGray.cgColor)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeNotifyTextField(sender:)), name: UITextField.textDidChangeNotification, object: nil)
     }
     
     override init(frame: CGRect) {
@@ -82,12 +84,23 @@ class IdeaRegisterFormView: UIView {
         super.init(coder: aDecoder)
     }
     
+    //set drop down function
     func setDropDown(button:UIButton, dropdown:DropDown){
         dropdown.anchorView = button
         dropdown.selectionAction = {(index, item) in
             button.setTitle(item, for: .normal)
             self.categoryName = item
             self.categoryButtonTapHandler?()
+        }
+    }
+    
+    //notify ideaTitle's change
+    @objc public func changeNotifyTextField (sender: NSNotification) {
+        guard let textfield = sender.object as? UITextField else {
+            return
+        }
+        if textfield.text != nil {
+            saveButton.isEnabled = textfield.text != ""
         }
     }
 }

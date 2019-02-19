@@ -35,6 +35,7 @@ class CategoryRegisterFormView: UIView, PopupViewContainable{
             registerButton.tintColor = UIColor.AppColor.buttonTextColor
             registerButton.layer.cornerRadius = 5.0
             registerButton.layer.masksToBounds = true
+            registerButton.isEnabled = false
         }
     }
     @IBOutlet weak var closeButton: UIButton!{
@@ -59,6 +60,7 @@ class CategoryRegisterFormView: UIView, PopupViewContainable{
         super.awakeFromNib()
         containerView.backgroundColor = UIColor.AppColor.formBackgroundColor
         addBottomBorder(view: textForm, height: 2.0, color: UIColor.darkGray.cgColor)
+        NotificationCenter.default.addObserver(self, selector: #selector(changeNotifyTextField(sender:)), name: UITextField.textDidChangeNotification, object: nil)
     }
     
     override init(frame: CGRect) {
@@ -67,6 +69,16 @@ class CategoryRegisterFormView: UIView, PopupViewContainable{
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
+    }
+    
+    //notify textForm's change
+    @objc public func changeNotifyTextField (sender: NSNotification) {
+        guard let textfield = sender.object as? UITextField else {
+            return
+        }
+        if textfield.text != nil {
+            registerButton.isEnabled = textfield.text != ""
+        }
     }
 }
 

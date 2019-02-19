@@ -42,6 +42,12 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         }
     }
     
+    override func tapPopupContainerView(_ gestureRecognizer: UITapGestureRecognizer) {
+        if gestureRecognizer.state == .ended && canTapDismiss {
+            dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: .bottom) { _ in }
+        }
+    }
+    
     private func showCompletionView(formView: IdeaRegisterFormView){
         let popupItem = PopupItem(view: formView, height: CategoryDeleteAlertView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
         
@@ -51,11 +57,9 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         let ideaSlotViewCotroller = IdeasSlotViewController()
         
         let result:Bool = ideaSlotViewCotroller.registerIdea(newIdea: ideaItem!)
-        print("do degister")
         if result {
             transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
                 guard let me = self else { return }
-                me.replacePopupView(with: popupItem)
                 me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction){ _ in
                     PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
                 }

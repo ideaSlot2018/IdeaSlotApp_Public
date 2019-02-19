@@ -96,7 +96,6 @@ extension IdeaSlotPickerView: UIPickerViewDelegate{
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         let newRow = pickerViewMiddle + (row % wordNameList!.count)
         pickerView.selectRow(newRow, inComponent: 0, animated: false)
-        print("Resetting row to \(newRow)")
     }
 }
 

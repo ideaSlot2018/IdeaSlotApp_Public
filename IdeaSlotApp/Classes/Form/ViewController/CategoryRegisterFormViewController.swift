@@ -42,7 +42,13 @@ class CategoryRegisterFormViewController: BasePopupViewController {
             self?.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: .bottom) { _ in }
         }
     }
-    
+
+    override func tapPopupContainerView(_ gestureRecognizer: UITapGestureRecognizer) {
+        if gestureRecognizer.state == .ended && canTapDismiss {
+            dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: .bottom) { _ in }
+        }
+    }
+
     private func showCompletionView(formView: CategoryRegisterFormView) {
         let popupItem = PopupItem(view: formView, height: CategoryRegisterFormView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
         
@@ -54,7 +60,6 @@ class CategoryRegisterFormViewController: BasePopupViewController {
             categoryTableView.reloadData()
             transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
                 guard let me = self else { return }
-                me.replacePopupView(with: popupItem)
                 me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction) { _ in
                     PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
                 }
