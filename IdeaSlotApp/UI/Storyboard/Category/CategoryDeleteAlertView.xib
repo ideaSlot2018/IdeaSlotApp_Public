@@ -16,7 +16,7 @@
             <rect key="frame" x="0.0" y="0.0" width="409" height="180"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="h7z-Fd-EJ3">
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="h7z-Fd-EJ3">
                     <rect key="frame" x="0.0" y="0.0" width="409" height="180"/>
                     <subviews>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Delete Category" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wft-dC-XS4">
@@ -81,6 +81,8 @@
             </subviews>
             <constraints>
                 <constraint firstItem="h7z-Fd-EJ3" firstAttribute="width" secondItem="iN0-l3-epB" secondAttribute="width" id="ieO-VZ-C2U"/>
+                <constraint firstItem="h7z-Fd-EJ3" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="kri-AW-ISq"/>
+                <constraint firstItem="h7z-Fd-EJ3" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="vpn-h8-jBj"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
