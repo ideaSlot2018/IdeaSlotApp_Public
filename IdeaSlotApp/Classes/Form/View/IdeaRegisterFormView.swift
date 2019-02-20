@@ -27,8 +27,10 @@ class IdeaRegisterFormView: UIView {
         didSet{
             saveButton.layer.masksToBounds = true
             saveButton.layer.cornerRadius = 5.0
-            saveButton.setImage(UIImage(named: "Check-OK"), for: .normal)
+            saveButton.setTitle("Create", for: .normal)
             saveButton.isEnabled = false
+            saveButton.backgroundColor = UIColor.AppColor.buttonColor
+            saveButton.tintColor = UIColor.AppColor.buttonTextColor
         }
     }
     @IBOutlet weak var wordText1: UILabel!
@@ -52,8 +54,15 @@ class IdeaRegisterFormView: UIView {
             categoryButton.titleLabel?.lineBreakMode = .byTruncatingTail
         }
     }
+    @IBOutlet weak var closeButton: UIButton!{
+        didSet{
+            closeButton.setImage(UIImage(named: "Close"), for: .normal)
+            closeButton.tintColor = UIColor.gray
+        }
+    }
     var saveButtonTapHandler:(() -> Void)?
     var categoryButtonTapHandler:(() -> Void)?
+    var closeButtonTapHandler:(() -> Void)?
     var categoryName:String? = nil
     
     let dropdown = DropDown()
@@ -66,6 +75,9 @@ class IdeaRegisterFormView: UIView {
         dropdown.show()
     }
     
+    @IBAction func closeButtonAction(_ sender: Any) {
+        closeButtonTapHandler?()
+    }
     override func awakeFromNib() {
         super.awakeFromNib()
         setDropDown(button: categoryButton, dropdown: dropdown)

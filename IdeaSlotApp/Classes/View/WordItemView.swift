@@ -14,6 +14,9 @@ protocol InputTextDelegate {
 }
 
 class WordItemView: UIView {
+    enum Const {
+        static let height:CGFloat = 55.0
+    }
     
     @IBOutlet weak var textfield: UITextField!{
         didSet{
@@ -47,6 +50,7 @@ class WordItemView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setDropDown(button: categorybutton, dropdown: dropdown)
+        addBottomBorder(view: textfield, height: 1.0, color: UIColor.darkGray.cgColor)
     }
     
     override init(frame: CGRect) {

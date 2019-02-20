@@ -198,11 +198,11 @@ extension WordsListViewController: UITableViewDelegate{
         }
         
         if #available(iOS 11.0, *) {
-            headerview.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 45)
-            item.frame = CGRect(x:0, y:0, width:self.view.frame.size.width, height:44)
+            headerview.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 55)
+            item.frame = CGRect(x:0, y:0, width:self.view.frame.size.width, height:WordItemView.Const.height)
         } else {
-            headerview.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 45)
-            item.frame = CGRect(x:0, y:0, width:self.view.frame.size.width, height:44)
+            headerview.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 55)
+            item.frame = CGRect(x:0, y:0, width:self.view.frame.size.width, height:WordItemView.Const.height)
         }
         headerview.addSubview(item)
         
@@ -214,11 +214,20 @@ extension WordsListViewController: UITableViewDelegate{
      **/
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat{
         if #available(iOS 11.0, *) {
-            return 45
+            return WordItemView.Const.height
         }else{
             return 100
         }
     }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return WordItemView.Const.height
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return WordItemView.Const.height
+    }
+    
 }
 
 /**
@@ -237,10 +246,6 @@ extension WordsListViewController: UITableViewDataSource{
         return 0
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 55
-    }
-    
     //display cell details
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let words: Words
@@ -249,6 +254,7 @@ extension WordsListViewController: UITableViewDataSource{
         
         var itemView = WordItemView()
         itemView = UINib(nibName: "WordItemView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! WordItemView
+        itemView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
         
         if isFiltering(){
             words = filteredWords[indexPath.row]
