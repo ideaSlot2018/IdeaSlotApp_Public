@@ -38,17 +38,6 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
-                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnV-rM-4Rr">
-                            <rect key="frame" x="381" y="17" width="20" height="20"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="20" id="Rx5-6p-htL"/>
-                                <constraint firstAttribute="height" constant="20" id="hh5-y8-bJC"/>
-                            </constraints>
-                            <state key="normal" title="Button"/>
-                            <connections>
-                                <action selector="closeButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="hgb-HJ-s1R"/>
-                            </connections>
-                        </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBd-lN-izr">
                             <rect key="frame" x="40" y="122" width="150" height="38"/>
                             <constraints>
@@ -59,11 +48,22 @@
                                 <action selector="canselButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="dKR-HB-FhE"/>
                             </connections>
                         </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nnV-rM-4Rr">
+                            <rect key="frame" x="381" y="8" width="20" height="20"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="20" id="Rx5-6p-htL"/>
+                                <constraint firstAttribute="height" constant="20" id="hh5-y8-bJC"/>
+                            </constraints>
+                            <state key="normal" title="Button"/>
+                            <connections>
+                                <action selector="closeButtonAction:" destination="iN0-l3-epB" eventType="touchUpInside" id="hgb-HJ-s1R"/>
+                            </connections>
+                        </button>
                     </subviews>
                     <constraints>
                         <constraint firstAttribute="bottom" secondItem="aBd-lN-izr" secondAttribute="bottom" constant="20" id="96c-zI-Wtg"/>
                         <constraint firstItem="nnV-rM-4Rr" firstAttribute="trailing" secondItem="h7z-Fd-EJ3" secondAttribute="trailingMargin" id="C3V-w2-B7X"/>
-                        <constraint firstItem="nnV-rM-4Rr" firstAttribute="top" secondItem="h7z-Fd-EJ3" secondAttribute="top" constant="17" id="Ehb-iU-Arj"/>
+                        <constraint firstItem="nnV-rM-4Rr" firstAttribute="top" secondItem="h7z-Fd-EJ3" secondAttribute="top" constant="8" id="Ehb-iU-Arj"/>
                         <constraint firstAttribute="width" secondItem="h7z-Fd-EJ3" secondAttribute="height" multiplier="409:180" id="GbH-NT-UuI"/>
                         <constraint firstItem="Wft-dC-XS4" firstAttribute="leading" secondItem="h7z-Fd-EJ3" secondAttribute="leading" constant="24" id="Guz-HM-RS8"/>
                         <constraint firstItem="aBd-lN-izr" firstAttribute="baseline" secondItem="prq-1u-OZN" secondAttribute="baseline" id="LDM-Fr-mkT"/>
