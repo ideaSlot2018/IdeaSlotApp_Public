@@ -17,23 +17,10 @@ class CategoryTableViewCell: SwipeTableViewCell {
         }
     }
     @IBOutlet weak var categoryTitle: UILabel!
-    let nextImage = UIImage(named: "Into")
-    
 
     override func awakeFromNib() {
         super.awakeFromNib()
-        setCategoryItem()
+        setImage(image: "Into")
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-    }
-    
-    func setCategoryItem(){
-        let imageview = UIImageView(image: nextImage)
-        imageview.frame = CGRect(x:self.frame.width - 20, y:25, width:20, height:20)
-        self.addSubview(imageview)
-    }
-
 
 }

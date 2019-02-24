@@ -18,21 +18,30 @@
                 <rect key="frame" x="0.0" y="0.0" width="375" height="64.5"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9T-fy-T3P">
-                        <rect key="frame" x="16" y="11" width="250" height="35"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="q9T-fy-T3P">
+                        <rect key="frame" x="16" y="9" width="250" height="35"/>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
-                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKk-AG-5Rw">
-                        <rect key="frame" x="16" y="36" width="20" height="20"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cKk-AG-5Rw">
+                        <rect key="frame" x="16" y="41" width="20" height="20"/>
+                        <constraints>
+                            <constraint firstAttribute="width" constant="20" id="Acd-yo-BFa"/>
+                        </constraints>
                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
+                <constraints>
+                    <constraint firstItem="q9T-fy-T3P" firstAttribute="leading" secondItem="cKk-AG-5Rw" secondAttribute="leading" id="DeF-FR-q49"/>
+                    <constraint firstItem="q9T-fy-T3P" firstAttribute="top" secondItem="hjq-EH-3SI" secondAttribute="topMargin" constant="-2" id="S9K-9E-3Sv"/>
+                    <constraint firstAttribute="bottomMargin" secondItem="q9T-fy-T3P" secondAttribute="bottom" constant="10" id="ZE7-uq-A1C"/>
+                    <constraint firstItem="q9T-fy-T3P" firstAttribute="leading" secondItem="hjq-EH-3SI" secondAttribute="leadingMargin" id="b3Z-ct-ceJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="q9T-fy-T3P" secondAttribute="trailing" constant="93" id="d7p-u8-Afg"/>
+                    <constraint firstItem="cKk-AG-5Rw" firstAttribute="top" secondItem="hjq-EH-3SI" secondAttribute="topMargin" constant="30" id="xJG-LS-iND"/>
+                </constraints>
             </tableViewCellContentView>
             <connections>
                 <outlet property="categoryTitle" destination="q9T-fy-T3P" id="Err-co-6Re"/>

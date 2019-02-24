@@ -18,16 +18,16 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         static let popupOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .bottom, canTapDismiss: true)
     }
     
-    var ideaItem:Idea? = nil
+    var ideaDto:IdeaDto? = nil
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         var ideaRegisterFormView = IdeaRegisterFormView()
         ideaRegisterFormView = UINib(nibName: "IdeaRegisterFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaRegisterFormView
-        ideaRegisterFormView.wordText1.text = ideaItem?.words[0].word
-        ideaRegisterFormView.wordText2.text = ideaItem?.words[1].word
-        ideaRegisterFormView.operatorName.text = ideaItem?.operatorId1
+        ideaRegisterFormView.wordText1.text = ideaDto?.words[0].word
+        ideaRegisterFormView.wordText2.text = ideaDto?.words[1].word
+        ideaRegisterFormView.operatorName.text = ideaDto?.operator1
         ideaRegisterFormView.dropdown.dataSource = arrayCategoryList(listFlg: 0)
 
         let popupItem = PopupItem(view: ideaRegisterFormView, height: IdeaRegisterFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
@@ -35,7 +35,7 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         
         //category drop dwon tapped
         ideaRegisterFormView.categoryButtonTapHandler = { [weak self] in
-            self!.ideaItem?.categoryName = ideaRegisterFormView.categoryName!
+            self!.ideaDto?.categoryName = ideaRegisterFormView.categoryName!
         }
         
         //save button tapped
@@ -59,12 +59,12 @@ class IdeaRegisterFormViewController: BasePopupViewController {
     private func showCompletionView(formView: IdeaRegisterFormView){
         let popupItem = PopupItem(view: formView, height: CategoryDeleteAlertView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
         
-        ideaItem?.ideaName = formView.ideaTitle.text
-        ideaItem?.details = formView.detailsTextView.text
+        ideaDto?.ideaName = formView.ideaTitle.text
+        ideaDto?.details = formView.detailsTextView.text
         
         let ideaSlotViewCotroller = IdeasSlotViewController()
         
-        let result:Bool = ideaSlotViewCotroller.registerIdea(newIdea: ideaItem!)
+        let result:Bool = ideaSlotViewCotroller.registerIdea(newIdea: ideaDto!)
         if result {
             transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
                 guard let me = self else { return }

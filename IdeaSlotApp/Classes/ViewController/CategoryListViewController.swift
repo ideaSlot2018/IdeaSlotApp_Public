@@ -15,7 +15,6 @@ class CategoryListViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     var categoryEntities: Results<Category>? = nil
-    var category: Category? = nil
 
     let realm = try! Realm()
     
@@ -152,24 +151,23 @@ extension CategoryListViewController: UITableViewDelegate{
  **/
 extension CategoryListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        if let categoryEntity = categoryEntities{
-            return categoryEntity.count
+        if let categoryList = categoryEntities{
+            return categoryList.count
         }
         return 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let categories:Category
+        let category:Category = categoryEntities![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "CategoryItem",for: indexPath) as! CategoryTableViewCell
+
         cell.delegate = self
-        categories = categoryEntities![indexPath.row]
-        
-        cell.categoryTitle.text = categories.categoryName
+        cell.categoryTitle.text = category.categoryName
         cell.categoryTitle.numberOfLines = 0
         cell.categoryTitle.sizeToFit()
         cell.categoryTitle.lineBreakMode = .byClipping
-        cell.includeWordsCount.text = String(categories.words.count)
+        cell.includeWordsCount.text = String(category.words.count)
         
         return cell
     }

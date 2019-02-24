@@ -139,10 +139,10 @@
             </objects>
             <point key="canvasLocation" x="190" y="1053"/>
         </scene>
-        <!--Idea Detail View Controller-->
+        <!--Idea Details View Controller-->
         <scene sceneID="qVS-p9-xpr">
             <objects>
-                <viewController storyboardIdentifier="IdeaDetail" id="WN8-F4-Cnb" customClass="IdeaDetailViewController" customModule="IdeaSlotApp" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="IdeaDetails" id="WN8-F4-Cnb" customClass="IdeaDetailsViewController" customModule="IdeaSlotApp" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="m6U-nw-NV7"/>
                         <viewControllerLayoutGuide type="bottom" id="Lhw-pJ-a9N"/>
@@ -151,7 +151,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IdeaDetailViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBA-IM-7la">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="IdeaDetailsViewController" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YBA-IM-7la">
                                 <rect key="frame" x="117" y="344" width="180" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -210,8 +210,8 @@
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
-                                    <outlet property="dataSource" destination="VJQ-YZ-oO3" id="dyX-sh-aNB"/>
-                                    <outlet property="delegate" destination="VJQ-YZ-oO3" id="8Ik-hT-dVy"/>
+                                    <outlet property="dataSource" destination="VJQ-YZ-oO3" id="qOj-zn-pRb"/>
+                                    <outlet property="delegate" destination="VJQ-YZ-oO3" id="nfv-ow-ErN"/>
                                 </connections>
                             </tableView>
                         </subviews>
@@ -224,7 +224,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <segue destination="WN8-F4-Cnb" kind="show" identifier="ToIdeaDetail" id="XjW-a2-zvh"/>
+                        <outlet property="tableView" destination="aBD-GG-x5L" id="2Hc-UJ-OSs"/>
+                        <segue destination="WN8-F4-Cnb" kind="show" identifier="toIdeaDetails" id="XjW-a2-zvh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="8fX-kT-DSd" userLabel="First Responder" sceneMemberID="firstResponder"/>

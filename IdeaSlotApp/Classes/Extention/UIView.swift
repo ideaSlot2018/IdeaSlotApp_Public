@@ -16,5 +16,11 @@ extension UIView {
         border.borderWidth = height
         view.layer.addSublayer(border)
     }
+    
+    func setImage(image:String){
+        let imageview = UIImageView(image: UIImage(named: image))
+        imageview.frame = CGRect(x:self.frame.width - 10, y:25, width:20, height:20)
+        self.addSubview(imageview)
+    }
 
 }

@@ -10,15 +10,17 @@ import UIKit
 
 class IdeaTableViewCell: UITableViewCell {
 
+    @IBOutlet weak var ideaTitle: UILabel!
+    @IBOutlet weak var categoryTitle: UILabel!{
+        didSet{
+            categoryTitle.textColor = UIColor.AppColor.textColor
+        }
+    }
+    var idea:Idea? = nil
+    
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        setImage(image: "Into")
     }
 
 }
