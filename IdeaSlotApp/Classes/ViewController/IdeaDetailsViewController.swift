@@ -1,5 +1,5 @@
 //
-//  IdeaDetailViewController.swift
+//  IdeaDetailsViewController.swift
 //  IdeaSlotApp
 //
 //  Created by yuta akazawa on 2018/09/29.
@@ -9,7 +9,7 @@
 import UIKit
 //import RealmSwift
 
-class IdeaDetailViewController: UIViewController {
+class IdeaDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

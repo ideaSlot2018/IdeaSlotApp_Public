@@ -11,6 +11,14 @@ import RealmSwift
 import DropDown
 import PopupWindow
 
+class IdeaDto: Object {
+    var ideaName: String? = nil
+    var categoryName: String? = "No Category"
+    var operator1: String? = "Plus"
+    var details: String? = nil
+    let words = List<Words>(repeating: Words(), count: 2)
+}
+
 class IdeasSlotViewController: UIViewController {
 
     var ideaSlotPickerView = IdeaSlotPickerView(){
@@ -37,7 +45,7 @@ class IdeasSlotViewController: UIViewController {
     
     var wordEntities:Results<Words>? = nil
     var operatorName:[String] = ["Plus", "Minus", "Multiply", "Divide"]
-    var ideaItem:Idea? = Idea()
+    var ideaDto:IdeaDto? = IdeaDto()
     let realm = try!Realm()
     let dropdown = DropDown()
 
@@ -79,7 +87,7 @@ class IdeasSlotViewController: UIViewController {
         dropdown.dataSource = operatorName
         dropdown.selectionAction = {(index, item) in
             self.operatorButton.setImage(UIImage(named: "Operator-\(self.operatorName[index])"), for: .normal)
-            self.ideaItem!.operatorId1 = item
+            self.ideaDto!.operator1 = item
         }
         operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 40, y: 210, width: 80, height: 80)
         operatorButton.setImage(UIImage(named: "Operator-Plus"), for: .normal)
@@ -156,7 +164,7 @@ class IdeasSlotViewController: UIViewController {
     //show register form
     @objc func setRegisterForm() {
         let ideaRegisterFormViewController = IdeaRegisterFormViewController()
-        ideaRegisterFormViewController.ideaItem = ideaItem
+        ideaRegisterFormViewController.ideaDto = ideaDto
         PopupWindowManager.shared.changeKeyWindow(rootViewController: ideaRegisterFormViewController)
     }
     
@@ -220,31 +228,43 @@ class IdeasSlotViewController: UIViewController {
         //set idea's data
         switch view.slotFlg {
         case 1:
-            ideaItem?.words.remove(at: 0)
-            ideaItem?.words.insert(rowWord, at: 0)
+            ideaDto?.words.remove(at: 0)
+            ideaDto?.words.insert(rowWord, at: 0)
         case 2:
-            ideaItem?.words.remove(at: 1)
-            ideaItem?.words.insert(rowWord, at: 1)
+            ideaDto?.words.remove(at: 1)
+            ideaDto?.words.insert(rowWord, at: 1)
         default:
             break
         }
-        
-        print(view.slotFlg, rowWord)
-        print(ideaItem?.words)
     }
     
     //register idea
-    func registerIdea(newIdea:Idea) -> Bool {
-        var category:Category? = nil
-        if newIdea.categoryName != nil {
-            category = findCategoryItem(categoryName: newIdea.categoryName!)
+    func registerIdea(newIdea:IdeaDto) -> Bool {
+        let category:Category? = findCategoryItem(categoryName: newIdea.categoryName!)
+        let item: [String:Any]
+        
+        if category != nil && category?.categoryId != 0 {
+            item = ["ideaName": newIdea.ideaName!,
+                    "categoryName": newIdea.categoryName!,
+                    "operatorId1": newIdea.operator1!,
+                    "details": newIdea.details!,
+                    "words": newIdea.words
+            ]
+        } else {
+            item = ["ideaName": newIdea.ideaName!,
+                    "categoryName": "No Category",
+                    "operatorId1": newIdea.operator1!,
+                    "details": newIdea.details!,
+                    "words": newIdea.words
+            ]
         }
         
         try! realm.write {
-            realm.add(newIdea)
             if category != nil && category?.categoryId != 0{
-                category?.ideas.append(newIdea)
+                category?.ideas.append(Idea(value: item))
             }
+            
+            realm.add(Idea(value: item))
         }
         
         return true

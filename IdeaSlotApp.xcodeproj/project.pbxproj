@@ -44,7 +44,7 @@
 		CEBBC64F21DCA66900DA33BC /* IdeaSlotPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */; };
 		CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */; };
 		CEBD041C21EA1DD300491AD7 /* WordSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD041B21EA1DD300491AD7 /* WordSeed.swift */; };
-		CED3DB1F215F5939008B6A0D /* IdeaDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3DB1E215F5939008B6A0D /* IdeaDetailViewController.swift */; };
+		CED3DB1F215F5939008B6A0D /* IdeaDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3DB1E215F5939008B6A0D /* IdeaDetailsViewController.swift */; };
 		CEDB938E21BCEA3F00099D1B /* PopupWindow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDB938D21BCEA3F00099D1B /* PopupWindow.framework */; };
 		CEE38EAB2180BAE300BBD07F /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE38EA72180BAE300BBD07F /* DropDown.framework */; };
 		CEE38EAC2180BAE300BBD07F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE38EA82180BAE300BBD07F /* Realm.framework */; };
@@ -115,7 +115,7 @@
 		CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaSlotPickerView.xib; sourceTree = "<group>"; };
 		CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaSlotPickerView.swift; sourceTree = "<group>"; };
 		CEBD041B21EA1DD300491AD7 /* WordSeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSeed.swift; sourceTree = "<group>"; };
-		CED3DB1E215F5939008B6A0D /* IdeaDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailViewController.swift; sourceTree = "<group>"; };
+		CED3DB1E215F5939008B6A0D /* IdeaDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailsViewController.swift; sourceTree = "<group>"; };
 		CEDB938D21BCEA3F00099D1B /* PopupWindow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PopupWindow.framework; path = Carthage/Build/iOS/PopupWindow.framework; sourceTree = "<group>"; };
 		CEE38EA72180BAE300BBD07F /* DropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropDown.framework; path = Carthage/Build/iOS/DropDown.framework; sourceTree = "<group>"; };
 		CEE38EA82180BAE300BBD07F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
@@ -194,7 +194,7 @@
 				CE5E1F40211FFE7B00523D96 /* CategoryListViewController.swift */,
 				CE5E1F42211FFE8800523D96 /* IdeasListViewController.swift */,
 				CE988D40215D1919000B1345 /* IdeasSlotViewController.swift */,
-				CED3DB1E215F5939008B6A0D /* IdeaDetailViewController.swift */,
+				CED3DB1E215F5939008B6A0D /* IdeaDetailsViewController.swift */,
 				CEEDE3EC2143929C00D05F61 /* SlideMenuViewController.swift */,
 			);
 			path = ViewController;
@@ -594,7 +594,7 @@
 				CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */,
 				CE4BD71522191C5200878860 /* UIView.swift in Sources */,
 				CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */,
-				CED3DB1F215F5939008B6A0D /* IdeaDetailViewController.swift in Sources */,
+				CED3DB1F215F5939008B6A0D /* IdeaDetailsViewController.swift in Sources */,
 				CEEDE3ED2143929C00D05F61 /* SlideMenuViewController.swift in Sources */,
 				CE5B626121E07EF4006D428D /* CategoryDeleteAlertViewController.swift in Sources */,
 				CE5E1F41211FFE7B00523D96 /* CategoryListViewController.swift in Sources */,
