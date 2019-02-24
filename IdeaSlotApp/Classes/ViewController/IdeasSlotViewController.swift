@@ -102,6 +102,7 @@ class IdeasSlotViewController: UIViewController {
         pickupButton.addTarget(self, action: #selector(setRegisterForm), for: .touchUpInside)
         pickupButton.layer.masksToBounds = true
         pickupButton.layer.cornerRadius = 5.0
+        pickupButton.isEnabled = false
 
         //addSubView
         //***********************************************************************//
@@ -132,6 +133,9 @@ class IdeasSlotViewController: UIViewController {
         ideaSlotPickerView2.pickerViewRows = ideaSlotPickerView2.wordNameList!.count * 10
         ideaSlotPickerView2.pickerViewMiddle = ideaSlotPickerView2.pickerViewRows / 2
         ideaSlotPickerView2.wordsPickerView.selectRow(ideaSlotPickerView2.pickerViewMiddle, inComponent: 0, animated: false)
+        
+        setIdeaData(view: ideaSlotPickerView)
+        setIdeaData(view: ideaSlotPickerView2)
     }
     
     override func didReceiveMemoryWarning() {
@@ -149,6 +153,7 @@ class IdeasSlotViewController: UIViewController {
         playSlotPicker(view: ideaSlotPickerView2)
     }
     
+    //show register form
     @objc func setRegisterForm() {
         let ideaRegisterFormViewController = IdeaRegisterFormViewController()
         ideaRegisterFormViewController.ideaItem = ideaItem
@@ -177,12 +182,12 @@ class IdeasSlotViewController: UIViewController {
     //set pickerview's property
     func setPickerViewData(view: IdeaSlotPickerView,setFlg:Int) -> IdeaSlotPickerView{
         switch setFlg {
-        case 0:
+        case 0: //all
             view.category = self.findCategoryItem(categoryName: "")
             view.wordList = self.filteredWordList(category: Category())
             view.wordNameList = self.arrayWordList(wordList: view.wordList!)
 
-        case 1:
+        case 1: //selected category
             view.category = self.findCategoryItem(categoryName: view.categoryName!)
             view.wordList = self.filteredWordList(category: view.category!)
             view.wordNameList = self.arrayWordList(wordList: view.wordList!)
@@ -200,22 +205,36 @@ class IdeasSlotViewController: UIViewController {
         if view.wordNameList!.count > 0 {
             view.wordsPickerView.selectRow(view.randomNumber(size: view.pickerViewRows), inComponent: 0, animated: true)
         }
+        
+        //set picker's text
+        setIdeaData(view: view)
+        
+        if pickupButton.isEnabled == false{
+            pickupButton.isEnabled = true
+        }
+    }
+    
+    //set idea's data
+    func setIdeaData(view: IdeaSlotPickerView){
         let rowWord = view.wordList![view.wordsPickerView.selectedRow(inComponent: 0) % view.wordNameList!.count]
         //set idea's data
         switch view.slotFlg {
         case 1:
-            ideaItem!.words.insert(rowWord, at: 0)
+            ideaItem?.words.remove(at: 0)
+            ideaItem?.words.insert(rowWord, at: 0)
         case 2:
-            ideaItem!.words.insert(rowWord, at: 1)
+            ideaItem?.words.remove(at: 1)
+            ideaItem?.words.insert(rowWord, at: 1)
         default:
             break
         }
+        
+        print(view.slotFlg, rowWord)
+        print(ideaItem?.words)
     }
     
     //register idea
     func registerIdea(newIdea:Idea) -> Bool {
-        print("register idea")
-//        print(newIdea)
         var category:Category? = nil
         if newIdea.categoryName != nil {
             category = findCategoryItem(categoryName: newIdea.categoryName!)

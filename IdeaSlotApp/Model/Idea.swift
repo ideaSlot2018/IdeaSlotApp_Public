@@ -69,7 +69,7 @@ class Idea: Base {
     //@objc dynamic var operatorId2: String? = ""
     //@objc dynamic var wordId3: String? = ""
     @objc dynamic var details: String? = ""
-    let words = List<Words>()
+    let words = List<Words>(repeating: Words(), count: 2)
     
     override class func primaryKey() -> String {
         return "ideaId"
