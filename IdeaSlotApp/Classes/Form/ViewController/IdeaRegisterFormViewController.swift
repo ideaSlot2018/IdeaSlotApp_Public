@@ -33,12 +33,20 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         let popupItem = PopupItem(view: ideaRegisterFormView, height: IdeaRegisterFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
         configurePopupItem(popupItem)
         
+        //category drop dwon tapped
         ideaRegisterFormView.categoryButtonTapHandler = { [weak self] in
             self!.ideaItem?.categoryName = ideaRegisterFormView.categoryName!
         }
+        
+        //save button tapped
         ideaRegisterFormView.saveButtonTapHandler = { [weak self] in
             guard let me = self else { return }
             me.showCompletionView(formView: ideaRegisterFormView)
+        }
+        
+        //close button tapped
+        ideaRegisterFormView.closeButtonTapHandler = { [weak self] in
+            self?.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: .bottom) { _ in}
         }
     }
     

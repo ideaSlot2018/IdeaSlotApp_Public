@@ -33,11 +33,13 @@ class CategoryRegisterFormViewController: BasePopupViewController {
         let popupItem = PopupItem(view: categoryRegisterFormView, height: CategoryRegisterFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
         configurePopupItem(popupItem)
         
+        //register button tapped
         categoryRegisterFormView.registerButtonTapHandler = { [weak self] in
             guard let me = self else { return }
             me.showCompletionView(formView: categoryRegisterFormView)
         }
         
+        //close button tapped
         categoryRegisterFormView.closeButtonTapHandler = { [weak self] in
             self?.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: .bottom) { _ in }
         }
