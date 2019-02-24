@@ -31,7 +31,7 @@ class CategoryTableViewCell: SwipeTableViewCell {
     
     func setCategoryItem(){
         let imageview = UIImageView(image: nextImage)
-        imageview.frame = CGRect(x:self.frame.width - 20, y:25, width:20, height:20)
+        imageview.frame = CGRect(x:self.frame.width - 10, y:25, width:20, height:20)
         self.addSubview(imageview)
     }
 

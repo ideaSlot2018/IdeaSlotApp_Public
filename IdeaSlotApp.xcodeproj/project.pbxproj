@@ -40,6 +40,7 @@
 		CE929FDE22114D4C006634A6 /* IdeaRegisterFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929FDD22114D4C006634A6 /* IdeaRegisterFormViewController.swift */; };
 		CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE988D40215D1919000B1345 /* IdeasSlotViewController.swift */; };
 		CE988D43215D1F97000B1345 /* IdeaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE988D42215D1F97000B1345 /* IdeaTableViewCell.swift */; };
+		CEB1162322224AC50087226B /* IdeaItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB1162222224AC50087226B /* IdeaItemCell.xib */; };
 		CEBBC64F21DCA66900DA33BC /* IdeaSlotPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */; };
 		CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */; };
 		CEBD041C21EA1DD300491AD7 /* WordSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD041B21EA1DD300491AD7 /* WordSeed.swift */; };
@@ -110,6 +111,7 @@
 		CE929FDD22114D4C006634A6 /* IdeaRegisterFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaRegisterFormViewController.swift; sourceTree = "<group>"; };
 		CE988D40215D1919000B1345 /* IdeasSlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasSlotViewController.swift; sourceTree = "<group>"; };
 		CE988D42215D1F97000B1345 /* IdeaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTableViewCell.swift; sourceTree = "<group>"; };
+		CEB1162222224AC50087226B /* IdeaItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaItemCell.xib; sourceTree = "<group>"; };
 		CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaSlotPickerView.xib; sourceTree = "<group>"; };
 		CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaSlotPickerView.swift; sourceTree = "<group>"; };
 		CEBD041B21EA1DD300491AD7 /* WordSeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSeed.swift; sourceTree = "<group>"; };
@@ -361,6 +363,7 @@
 			children = (
 				CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */,
 				CE62C4CD21ECC650003BDE0B /* IdeaRegisterFormView.xib */,
+				CEB1162222224AC50087226B /* IdeaItemCell.xib */,
 			);
 			path = Idea;
 			sourceTree = "<group>";
@@ -495,6 +498,7 @@
 				CEBBC64F21DCA66900DA33BC /* IdeaSlotPickerView.xib in Resources */,
 				CE8B79FE21047601009BD29F /* Assets.xcassets in Resources */,
 				CE8B79FC210475FF009BD29F /* Main.storyboard in Resources */,
+				CEB1162322224AC50087226B /* IdeaItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
