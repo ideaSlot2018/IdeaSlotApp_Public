@@ -33,7 +33,6 @@ class IdeasListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ideaEntites = realm.objects(Idea.self)
-        print(ideaEntites)
         tableView.reloadData()
 
     }
@@ -75,7 +74,6 @@ extension IdeasListViewController: UITableViewDelegate{
 extension IdeasListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let ideaList = ideaEntites{
-            print(ideaList.count)
             return ideaList.count
         }
         return 0
