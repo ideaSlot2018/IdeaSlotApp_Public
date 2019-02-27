@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import SwipeCellKit
 
 class IdeasListViewController: UIViewController {
     
@@ -32,6 +33,7 @@ class IdeasListViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         ideaEntites = realm.objects(Idea.self)
+        print(ideaEntites)
         tableView.reloadData()
 
     }
@@ -49,8 +51,17 @@ class IdeasListViewController: UIViewController {
         }
     }
     
+    func deleteIdea(idea: Idea) {
+        try! realm.write {
+            realm.delete(idea)
+        }
+    }
+    
 }
 
+/**
+ TableView Delegate
+**/
 extension IdeasListViewController: UITableViewDelegate{
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
        self.performSegue(withIdentifier: "toIdeaDetails", sender: nil)
@@ -58,9 +69,13 @@ extension IdeasListViewController: UITableViewDelegate{
     
 }
 
+/**
+ TabelView DataSource
+ **/
 extension IdeasListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let ideaList = ideaEntites{
+            print(ideaList.count)
             return ideaList.count
         }
         return 0
@@ -70,6 +85,7 @@ extension IdeasListViewController: UITableViewDataSource{
         let idea:Idea = ideaEntites![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "IdeaItem", for: indexPath) as! IdeaTableViewCell
         
+        cell.delegate = self
         cell.idea = idea
         cell.ideaTitle.text = idea.ideaName
         cell.categoryTitle.text = idea.categoryName
@@ -79,5 +95,32 @@ extension IdeasListViewController: UITableViewDataSource{
     
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 65
+    }
+}
+
+/**
+ SwipeCellKit SwipeTableViewCellDelegate
+ **/
+extension IdeasListViewController: SwipeTableViewCellDelegate{
+    func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
+        guard orientation == .right else { return nil }
+        
+        let editAction = SwipeAction(style: .default, title: "Delete") { action, indexPath in
+            self.deleteIdea(idea: self.ideaEntites![indexPath.row])
+            tableView.reloadData()
+        }
+        editAction.image = UIImage(named: "Trash")
+        editAction.backgroundColor = UIColor.AppColor.deleteBackGroundColor
+        
+        return [editAction]
+    }
+    
+    func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
+        var options = SwipeOptions()
+        options.expansionStyle = .destructive(automaticallyDelete: false)
+        options.expansionDelegate = ScaleAndAlphaExpansion.default
+        options.transitionStyle = .reveal
+        
+        return options
     }
 }

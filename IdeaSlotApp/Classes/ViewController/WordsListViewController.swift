@@ -94,7 +94,7 @@ class WordsListViewController: UIViewController{
         
         try! realm.write(){
             realm.add(newWord)
-            if category != nil{
+            if category?.categoryId != 0{
                 category?.words.append(newWord)
             }
         }
@@ -146,13 +146,10 @@ class WordsListViewController: UIViewController{
     }
     
     //delete word
-    func deleteWord(_ tableView: UITableView, forRowAt indexPath: IndexPath){
+    func deleteWord(word: Words){
         try! realm.write {
-            if let wordEntities = wordEntities{
-                realm.delete(wordEntities[indexPath.row])
-            }
+            realm.delete(word)
         }
-        tableView.reloadData()
     }
 
     
@@ -320,12 +317,13 @@ extension WordsListViewController: UISearchResultsUpdating{
 /**
  SwipeCellKit SwipeTableViewCellDelegate
  **/
-extension WordsListViewController:SwipeTableViewCellDelegate{
+extension WordsListViewController: SwipeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
         let deleteAction = SwipeAction(style: .default, title: "Delete") { action, indexPath in
-            self.deleteWord(tableView, forRowAt: indexPath)
+            self.deleteWord(word: self.wordEntities![indexPath.row])
+            tableView.reloadData()
         }
         deleteAction.image = UIImage(named: "Trash")
         deleteAction.backgroundColor = UIColor.AppColor.deleteBackGroundColor

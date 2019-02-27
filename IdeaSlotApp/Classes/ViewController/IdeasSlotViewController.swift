@@ -243,7 +243,7 @@ class IdeasSlotViewController: UIViewController {
         let category:Category? = findCategoryItem(categoryName: newIdea.categoryName!)
         let item: [String:Any]
         
-        if category != nil && category?.categoryId != 0 {
+        if category?.categoryId != 0 {
             item = ["ideaName": newIdea.ideaName!,
                     "categoryName": newIdea.categoryName!,
                     "operatorId1": newIdea.operator1!,
@@ -259,12 +259,12 @@ class IdeasSlotViewController: UIViewController {
             ]
         }
         
+        let insetIdea = Idea(value: item)
         try! realm.write {
-            if category != nil && category?.categoryId != 0{
-                category?.ideas.append(Idea(value: item))
+            realm.add(insetIdea)
+            if category?.categoryId != 0{
+                category?.ideas.append(insetIdea)
             }
-            
-            realm.add(Idea(value: item))
         }
         
         return true

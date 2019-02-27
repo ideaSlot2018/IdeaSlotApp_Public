@@ -29,6 +29,9 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         ideaRegisterFormView.wordText2.text = ideaDto?.words[1].word
         ideaRegisterFormView.operatorName.text = ideaDto?.operator1
         ideaRegisterFormView.dropdown.dataSource = arrayCategoryList(listFlg: 0)
+        
+        print(ideaRegisterFormView.categoryName)
+        ideaRegisterFormView.categoryButton.setTitle(ideaDto?.categoryName, for: .normal)
 
         let popupItem = PopupItem(view: ideaRegisterFormView, height: IdeaRegisterFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
         configurePopupItem(popupItem)
@@ -66,6 +69,7 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         
         let result:Bool = ideaSlotViewCotroller.registerIdea(newIdea: ideaDto!)
         if result {
+            ideaSlotViewCotroller.ideaDto = IdeaDto()
             transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
                 guard let me = self else { return }
                 me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction){ _ in
