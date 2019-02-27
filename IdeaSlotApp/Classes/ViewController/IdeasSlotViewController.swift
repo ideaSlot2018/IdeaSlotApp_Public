@@ -13,7 +13,7 @@ import PopupWindow
 
 class IdeaDto: Object {
     var ideaName: String? = nil
-    var categoryName: String? = "No Category"
+    var categoryName: String? = ""
     var operator1: String? = "Plus"
     var details: String? = nil
     let words = List<Words>(repeating: Words(), count: 2)
@@ -164,6 +164,7 @@ class IdeasSlotViewController: UIViewController {
     //show register form
     @objc func setRegisterForm() {
         let ideaRegisterFormViewController = IdeaRegisterFormViewController()
+        self.ideaDto?.categoryName = "No Category"
         ideaRegisterFormViewController.ideaDto = ideaDto
         PopupWindowManager.shared.changeKeyWindow(rootViewController: ideaRegisterFormViewController)
     }
@@ -243,7 +244,7 @@ class IdeasSlotViewController: UIViewController {
         let category:Category? = findCategoryItem(categoryName: newIdea.categoryName!)
         let item: [String:Any]
         
-        if category != nil && category?.categoryId != 0 {
+        if category?.categoryId != 0 {
             item = ["ideaName": newIdea.ideaName!,
                     "categoryName": newIdea.categoryName!,
                     "operatorId1": newIdea.operator1!,
@@ -259,12 +260,12 @@ class IdeasSlotViewController: UIViewController {
             ]
         }
         
+        let insetIdea = Idea(value: item)
         try! realm.write {
-            if category != nil && category?.categoryId != 0{
-                category?.ideas.append(Idea(value: item))
+            realm.add(insetIdea)
+            if category?.categoryId != 0{
+                category?.ideas.append(insetIdea)
             }
-            
-            realm.add(Idea(value: item))
         }
         
         return true
