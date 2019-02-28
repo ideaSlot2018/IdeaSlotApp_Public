@@ -89,7 +89,7 @@ class IdeasSlotViewController: UIViewController {
             self.operatorButton.setImage(UIImage(named: "Operator-\(self.operatorName[index])"), for: .normal)
             self.ideaDto!.operator1 = item
         }
-        operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 40, y: 210, width: 80, height: 80)
+        operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 25, y: 220, width: 50, height: 50)
         operatorButton.setImage(UIImage(named: "Operator-Plus"), for: .normal)
         operatorButton.addTarget(self, action: #selector(showOperator), for: .touchUpInside)
 
