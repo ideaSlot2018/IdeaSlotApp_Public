@@ -45,6 +45,7 @@ class IdeasListViewController: UIViewController {
         switch segue.identifier {
         case "toIdeaDetails":
             let ideaDetailsViewController = segue.destination as! IdeaDetailsViewController
+            ideaDetailsViewController.idea = ideaEntites![tableView.indexPathForSelectedRow!.row]
         default:
             break
         }

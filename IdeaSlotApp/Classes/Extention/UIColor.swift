@@ -29,5 +29,9 @@ extension UIColor{
         static let backgroundLeftmenu = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
         static let separatorColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         static let leftmenuCellColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
+        
+        //picker
+        static let pickerColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
+        static let pickerTextColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
     }
 }

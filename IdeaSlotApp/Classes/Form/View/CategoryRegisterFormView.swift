@@ -23,7 +23,7 @@ class CategoryRegisterFormView: UIView, PopupViewContainable{
     
     @IBOutlet weak var textForm: UITextField!{
         didSet{
-            textForm.placeholder = "please type \'New Category\' in 15 characters"
+            textForm.placeholder = "Please type in 15 characters"
         }
     }
     

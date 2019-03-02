@@ -102,4 +102,13 @@ extension UIViewController{
         }        
         return categoryMaxId
     }
+    
+    func addBottomBorder(view:UIView, height:CGFloat, color:CGColor) {
+        let border = CALayer()
+        border.frame = CGRect(x: 0, y: view.frame.size.height, width: view.frame.size.width, height: height)
+        border.borderColor = color
+        border.borderWidth = height
+        view.layer.addSublayer(border)
+    }
+
 }

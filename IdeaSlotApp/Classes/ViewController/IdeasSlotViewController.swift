@@ -81,7 +81,7 @@ class IdeasSlotViewController: UIViewController {
             me.playSlotPicker(view: self!.ideaSlotPickerView2)
         }
 
-        //operator
+        //operator button
         //***********************************************************************//
         dropdown.anchorView = operatorButton
         dropdown.dataSource = operatorName
@@ -89,9 +89,10 @@ class IdeasSlotViewController: UIViewController {
             self.operatorButton.setImage(UIImage(named: "Operator-\(self.operatorName[index])"), for: .normal)
             self.ideaDto!.operator1 = item
         }
-        operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 40, y: 210, width: 80, height: 80)
+        operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 15, y: 235, width: 30, height: 30)
         operatorButton.setImage(UIImage(named: "Operator-Plus"), for: .normal)
         operatorButton.addTarget(self, action: #selector(showOperator), for: .touchUpInside)
+        
 
         //shuffle button
         //***********************************************************************//
