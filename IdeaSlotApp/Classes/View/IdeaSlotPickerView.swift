@@ -39,10 +39,7 @@ class IdeaSlotPickerView: UIView {
             playButton.imageView?.tintColor = UIColor.black
         }
     }
-    @IBOutlet weak var wordsPickerView: UIPickerView!{
-        didSet{
-        }
-    }
+    @IBOutlet weak var wordsPickerView: UIPickerView!
     let dropdown = DropDown()
     var pickerViewRows = 0
     var pickerViewMiddle = 0
@@ -105,6 +102,11 @@ extension IdeaSlotPickerView: UIPickerViewDataSource{
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        
+        pickerView.subviews.forEach({
+            $0.isHidden = $0.frame.height < 1.0
+        })
+        
         if wordNameList!.count > 1 {
             return pickerViewRows
         }

@@ -89,11 +89,9 @@ class IdeasSlotViewController: UIViewController {
             self.operatorButton.setImage(UIImage(named: "Operator-\(self.operatorName[index])"), for: .normal)
             self.ideaDto!.operator1 = item
         }
-        operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 15, y: self.ideaSlotPickerView.frame.size.height / 2, width: 30, height: 30)
+        operatorButton.frame = CGRect(x: self.view.frame.size.width / 2 - 15, y: 235, width: 30, height: 30)
         operatorButton.setImage(UIImage(named: "Operator-Plus"), for: .normal)
         operatorButton.addTarget(self, action: #selector(showOperator), for: .touchUpInside)
-//        operatorButton.backgroundColor = UIColor.blue
-        print(operatorButton.frame)
         
 
         //shuffle button
