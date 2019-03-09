@@ -49,6 +49,11 @@ class CategoryManager {
      @param newCategoryName : String
      */
     func register(newCategoryName: String) -> Bool {
+        //check new category name exists
+        if !checkIncludeCategoryName(categoryName: newCategoryName) {
+            return false
+        }
+        
         let item: [String: Any] = ["categoryId":getCategoryMaxId(),
                                    "categoryName":newCategoryName,
                                    ]
@@ -71,6 +76,11 @@ class CategoryManager {
      @param newCategoryName : String
      */
     func update(category: Category, newCategoryName: String) -> Bool {
+        //check new category name exists
+        if !checkIncludeCategoryName(categoryName: newCategoryName) {
+            return false
+        }
+
         let newWords = wordManager.convertWordList(category: category, categoryName: newCategoryName)
         let item: [String: Any] = ["categoryId":category.categoryId,
                                    "categoryName":newCategoryName,
@@ -154,9 +164,8 @@ class CategoryManager {
         let category = getResultsCategory(filterName: "categoryName", filterItem: categoryName, sort: nil, ascending: nil)?.first
         if category != nil {
             return category
-        } else {
-            return nil
         }
+        return nil
     }
     
     /*
@@ -172,4 +181,18 @@ class CategoryManager {
         return categoryMaxId
     }
     
+    /*
+     check new category name already exists
+     @param categoryName : String
+     @return Bool
+     */
+    func checkIncludeCategoryName(categoryName: String) -> Bool {
+        let categoryList = getResultsCategory(filterName: "categoryName", filterItem: categoryName, sort: nil, ascending: nil)?.value(forKey: "categoryName") as! Array<Any>
+        
+        print("category name list", categoryList)
+        if categoryList.count != 0  {
+            return false
+        }
+        return true
+    }
 }
