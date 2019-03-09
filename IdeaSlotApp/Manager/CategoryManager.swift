@@ -165,9 +165,9 @@ class CategoryManager {
      */
     func getCategoryMaxId() -> Int {
         var categoryMaxId:Int = 1
-        let category:Category? = getResultsCategory(filterName: nil, filterItem: nil, sort: "categoryName", ascending: false)?.first
+        let category = getResultsCategory(filterName: nil, filterItem: nil, sort: nil, ascending: nil)
         if category != nil {
-            categoryMaxId =  category!.categoryId + 1
+            categoryMaxId = category!.max(ofProperty: "categoryId")! + 1
         }
         return categoryMaxId
     }
