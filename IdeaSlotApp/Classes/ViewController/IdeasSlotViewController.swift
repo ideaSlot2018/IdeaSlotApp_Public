@@ -46,9 +46,10 @@ class IdeasSlotViewController: UIViewController {
     var wordEntities:Results<Words>? = nil
     var operatorName:[String] = ["Plus", "Minus", "Multiply", "Divide"]
     var ideaDto:IdeaDto? = IdeaDto()
-    let realm = try!Realm()
     let dropdown = DropDown()
+    let wordManager = WordManager()
     let categoryManager = CategoryManager()
+    let ideaManager = IdeaManager()
 
     /**
      viewDidLoad
@@ -128,7 +129,7 @@ class IdeasSlotViewController: UIViewController {
      **/
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        wordEntities = realm.objects(Words.self).sorted(byKeyPath: "updateDate", ascending: false)
+        wordEntities = wordManager.getResultsWords(filterName: nil, filterItem: nil, sort: "updateDate", ascending: false)
         
         //picker 1
         //***********************************************************************//
@@ -241,35 +242,4 @@ class IdeasSlotViewController: UIViewController {
         }
     }
     
-    //register idea
-    func registerIdea(newIdea:IdeaDto) -> Bool {
-        let category:Category? = categoryManager.findCategoryItem(categoryName: newIdea.categoryName!)
-        let item: [String:Any]
-        
-        if category?.categoryId != 0 {
-            item = ["ideaName": newIdea.ideaName!,
-                    "categoryName": newIdea.categoryName!,
-                    "operatorId1": newIdea.operator1!,
-                    "details": newIdea.details!,
-                    "words": newIdea.words
-            ]
-        } else {
-            item = ["ideaName": newIdea.ideaName!,
-                    "categoryName": "No Category",
-                    "operatorId1": newIdea.operator1!,
-                    "details": newIdea.details!,
-                    "words": newIdea.words
-            ]
-        }
-        
-        let insetIdea = Idea(value: item)
-        try! realm.write {
-            realm.add(insetIdea)
-            if category?.categoryId != 0{
-                category?.ideas.append(insetIdea)
-            }
-        }
-        
-        return true
-    }
 }

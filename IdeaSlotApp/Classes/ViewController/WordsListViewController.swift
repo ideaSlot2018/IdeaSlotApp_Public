@@ -19,7 +19,6 @@ class WordsListViewController: UIViewController{
     var filteredWords = [Words]()
     var wordList = [Words]()
     
-    let realm = try! Realm()
     let wordManager = WordManager()
     let categoryManager = CategoryManager()
     

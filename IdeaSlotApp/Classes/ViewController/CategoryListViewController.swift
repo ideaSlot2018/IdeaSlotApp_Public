@@ -16,7 +16,6 @@ class CategoryListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var categoryEntities: Results<Category>? = nil
 
-    let realm = try! Realm()
     let categoryManager = CategoryManager()
     
     override func viewDidLoad() {

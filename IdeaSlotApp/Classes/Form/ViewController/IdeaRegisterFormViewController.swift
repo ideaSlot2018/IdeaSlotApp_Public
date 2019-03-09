@@ -64,12 +64,9 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         ideaDto?.ideaName = formView.ideaTitle.text
         ideaDto?.details = formView.detailsTextView.text
         
-        let ideaSlotViewCotroller = IdeasSlotViewController()
-        
-        let result:Bool = ideaSlotViewCotroller.registerIdea(newIdea: ideaDto!)
+        let ideaManager = IdeaManager()
+        let result:Bool = ideaManager.register(idea: ideaDto!)
         if result {
-            ideaSlotViewCotroller.ideaDto = IdeaDto()
-            
             transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
                 guard let me = self else { return }
                 me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction){ _ in
