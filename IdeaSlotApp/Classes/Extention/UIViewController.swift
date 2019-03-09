@@ -83,13 +83,16 @@ extension UIViewController{
     }
     
     //return one item Category filter by categoryName
-    func findCategoryItem(categoryName: String) -> Category {
+    func findCategoryItem(categoryName: String) -> Category? {
         let realm = try!Realm()
         let categoryItem = realm.objects(Category.self).filter("categoryName = %@",categoryName)
+        
+        print(categoryItem)
+        
         if categoryItem.first != nil {
             return categoryItem.first!
         } else {
-            return Category()
+            return nil
         }
     }
     

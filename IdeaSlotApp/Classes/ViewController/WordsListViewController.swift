@@ -20,6 +20,7 @@ class WordsListViewController: UIViewController{
     var wordList = [Words]()
     
     let realm = try! Realm()
+    let wordManager = WordManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,9 +42,9 @@ class WordsListViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if category != nil {
-            wordEntities = realm.objects(Words.self).filter("categoryId == %@", category!.categoryId).sorted(byKeyPath: "updateDate", ascending: false)
+            wordEntities = wordManager.getResultsWords(filterName: "categoryId", filterItem: category!.categoryId, sort: "updateDate", ascending: false)
         }else{
-            wordEntities = realm.objects(Words.self).sorted(byKeyPath: "updateDate", ascending: false)
+            wordEntities = wordManager.getResultsWords(filterName: nil, filterItem: nil, sort: "updateDate", ascending: false)
         }
         tableView.reloadData()
     }
@@ -52,106 +53,29 @@ class WordsListViewController: UIViewController{
         super.didReceiveMemoryWarning()
     }
     
-    func saveWord(Id: String, text: String, category: String){
+    func saveWord(Id: String, wordName: String, categoryName: String){
         var wordItem:Results<Words>? = nil
         var item:Words? = nil
+        let categoryItem:Category? = findCategoryItem(categoryName: categoryName)
+        var result:Bool = false
         
-        //No Category
-        if !category.isEmpty{
-            wordItem = wordEntities?.filter("wordId == %@", Id)
+        //No selected category
+        if !categoryName.isEmpty{
+            wordItem = wordManager.getResultsWords(filterName: "wordId", filterItem: Id, sort: nil, ascending: nil)
             item = wordItem?.first
         }
         
         if item == nil{
-            //insert
-            insertWord(text: text, categoryName: category)
+            //register
+            result = wordManager.insert(wordName: wordName, category: categoryItem)
         }else{
             //update
-            updateWord(text: text, categoryName: category, wordItem: item!)
+            let oldCategory:Category? = findCategoryItem(categoryName: item!.categoryName!)
+            result = wordManager.update(wordName: wordName, category: categoryItem, wordItem: item!, oldCategory: oldCategory)
         }
+        print(result)
         tableView.reloadData()
     }
-    
-    //insert new word
-    func insertWord(text: String, categoryName: String){
-        var category:Category? = nil
-        var item: [String: Any]? = nil
-        
-        if !categoryName.isEmpty{
-            category = findCategoryItem(categoryName: categoryName)
-            if category?.categoryId != 0{
-                item = ["word": text,
-                    "categoryId": category!.categoryId,
-                    "categoryName": categoryName]
-            }
-        }else{
-            item = ["word": text,
-                    "categoryId": 0,
-                    "categoryName": "No Category"]
-        }
-        
-        let newWord = Words(value: item!)
-        
-        try! realm.write(){
-            realm.add(newWord)
-            if category?.categoryId != 0{
-                category?.words.append(newWord)
-            }
-        }
-    }
-    
-    //update word
-    func updateWord(text: String, categoryName: String, wordItem: Words){
-        var category:Category? = nil
-        let item: [String: Any]
-        
-        category = findCategoryItem(categoryName: categoryName)
-        if category?.categoryId != 0 {
-            item = ["wordId": wordItem.wordId!,
-                    "word": text,
-                    "categoryId": category!.categoryId,
-                    "categoryName": category!.categoryName,
-                    "createDate":wordItem.createDate
-            ]
-        }else{
-            item = ["wordId": wordItem.wordId!,
-                    "word": text,
-                    "categoryName": "No Category",
-                    "createDate":wordItem.createDate
-            ]
-        }
-        
-        var oldCategoryItem:Category? = nil
-        var removeWordItemIndex:Int? = nil
-        var oldCategory:Category? = nil
-        
-        if wordItem.categoryId != 0{
-            oldCategoryItem = findCategoryItem(categoryName: wordItem.categoryName!)
-            removeWordItemIndex = oldCategoryItem!.words.index(matching: "wordId == %@", wordItem.wordId!)
-            oldCategory = Category(value: oldCategoryItem!)
-        }
-        
-        
-        let editWord = Words(value: item)
-        try! realm.write(){
-            realm.add(editWord, update: true)
-            if category != nil{
-                category!.words.append(editWord)
-            }
-            if removeWordItemIndex != nil{
-                oldCategory!.words.remove(at: removeWordItemIndex!)
-                realm.create(Category.self, value: oldCategory!, update: true)
-            }
-        }
-    }
-    
-    //delete word
-    func deleteWord(word: Words){
-        try! realm.write {
-            realm.delete(word)
-        }
-    }
-
     
     //set up searchcontroller
     func setSearchController(){
@@ -280,7 +204,7 @@ extension WordsListViewController: InputTextDelegate{
     //textfield has finished to edit
     func textFieldDidEndEditing(item: WordItemView, value: String) -> () {
         if value != item.beforeWord || item.categoryName != item.beforecategoryName {
-            saveWord(Id: item.wordId!, text: value, category: item.categoryName!)
+            saveWord(Id: item.wordId!, wordName: value, categoryName: item.categoryName!)
         }
     }
 }
@@ -322,7 +246,7 @@ extension WordsListViewController: SwipeTableViewCellDelegate{
         guard orientation == .right else { return nil }
         
         let deleteAction = SwipeAction(style: .default, title: "Delete") { action, indexPath in
-            self.deleteWord(word: self.wordEntities![indexPath.row])
+            self.wordManager.delete(word: self.wordEntities![indexPath.row])
             tableView.reloadData()
         }
         deleteAction.image = UIImage(named: "Trash")
