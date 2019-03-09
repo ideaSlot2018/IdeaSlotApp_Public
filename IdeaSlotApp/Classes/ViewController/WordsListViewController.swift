@@ -21,6 +21,7 @@ class WordsListViewController: UIViewController{
     
     let realm = try! Realm()
     let wordManager = WordManager()
+    let categoryManager = CategoryManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,10 +54,10 @@ class WordsListViewController: UIViewController{
         super.didReceiveMemoryWarning()
     }
     
-    func saveWord(Id: String, wordName: String, categoryName: String){
+    func registerWord(Id: String, wordName: String, categoryName: String){
         var wordItem:Results<Words>? = nil
         var item:Words? = nil
-        let categoryItem:Category? = findCategoryItem(categoryName: categoryName)
+        let categoryItem:Category? = categoryManager.findCategoryItem(categoryName: categoryName)
         var result:Bool = false
         
         //No selected category
@@ -70,7 +71,7 @@ class WordsListViewController: UIViewController{
             result = wordManager.insert(wordName: wordName, category: categoryItem)
         }else{
             //update
-            let oldCategory:Category? = findCategoryItem(categoryName: item!.categoryName!)
+            let oldCategory:Category? = categoryManager.findCategoryItem(categoryName: item!.categoryName!)
             result = wordManager.update(wordName: wordName, category: categoryItem, wordItem: item!, oldCategory: oldCategory)
         }
         print(result)
@@ -113,7 +114,7 @@ extension WordsListViewController: UITableViewDelegate{
         var item = WordItemView()
         item = Bundle.main.loadNibNamed("WordItemView", owner: self, options: nil)!.first! as! WordItemView
         item.delegate = self
-        item.dropdown.dataSource = arrayCategoryList(listFlg: 0)
+        item.dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 0)
         if category != nil{
             item.categorybutton.setTitle(category?.categoryName, for: .normal)
         }
@@ -184,7 +185,7 @@ extension WordsListViewController: UITableViewDataSource{
         }
         
         itemView.delegate = self
-        itemView.dropdown.dataSource = arrayCategoryList(listFlg: 0)
+        itemView.dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 0)
         itemView.textfield.text = words.word
         itemView.wordId = words.wordId
         itemView.beforeWord = words.word
@@ -204,7 +205,7 @@ extension WordsListViewController: InputTextDelegate{
     //textfield has finished to edit
     func textFieldDidEndEditing(item: WordItemView, value: String) -> () {
         if value != item.beforeWord || item.categoryName != item.beforecategoryName {
-            saveWord(Id: item.wordId!, wordName: value, categoryName: item.categoryName!)
+            registerWord(Id: item.wordId!, wordName: value, categoryName: item.categoryName!)
         }
     }
 }
@@ -246,7 +247,7 @@ extension WordsListViewController: SwipeTableViewCellDelegate{
         guard orientation == .right else { return nil }
         
         let deleteAction = SwipeAction(style: .default, title: "Delete") { action, indexPath in
-            self.wordManager.delete(word: self.wordEntities![indexPath.row])
+            let result:Bool = self.wordManager.delete(word: self.wordEntities![indexPath.row])
             tableView.reloadData()
         }
         deleteAction.image = UIImage(named: "Trash")

@@ -162,14 +162,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		CE3D1C2322334E090014F28F /* Dao */ = {
+		CE3D1C2322334E090014F28F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
 				CE3D1C2422334E490014F28F /* WordManager.swift */,
 				CE3D1C2622334EF90014F28F /* CategoryManager.swift */,
 				CE3D1C2822334F230014F28F /* IdeaManager.swift */,
 			);
-			path = Dao;
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		CE5585842115739E00E66A6C /* Classes */ = {
@@ -310,7 +310,7 @@
 			isa = PBXGroup;
 			children = (
 				CE5585842115739E00E66A6C /* Classes */,
-				CE3D1C2322334E090014F28F /* Dao */,
+				CE3D1C2322334E090014F28F /* Manager */,
 				CE78631A2116E54C0053B87B /* Model */,
 				CE558585211573B400E66A6C /* Others */,
 				CE78631B2116E5570053B87B /* Resource */,

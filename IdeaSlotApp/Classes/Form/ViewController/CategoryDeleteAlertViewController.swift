@@ -27,7 +27,7 @@ class CategoryDeleteAlertViewController: BasePopupViewController {
         var categoryDeleteAlertView = CategoryDeleteAlertView()
         categoryDeleteAlertView = UINib(nibName: "CategoryDeleteAlertView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! CategoryDeleteAlertView
         if self.category != nil {
-            categoryDeleteAlertView.deleteDescription.text = "Do you really want to delete \" \(category!.categoryName) \" ?"
+            categoryDeleteAlertView.deleteDescription.text = "Do you really want to delete \' \(category!.categoryName) \' ?"
         }
         
         let popupItem = PopupItem(view: categoryDeleteAlertView, height: CategoryDeleteAlertView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
@@ -61,9 +61,8 @@ class CategoryDeleteAlertViewController: BasePopupViewController {
         
         //delete Category
         var result:Bool = false
-        let categoryListViewController = CategoryListViewController()
-        result = categoryListViewController.deleteCategory(category: self.category!)
-        
+        let categoryManager = CategoryManager()
+        result = categoryManager.delete(category: self.category!)
         if result {
             categoryTableView.reloadData()
             transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in

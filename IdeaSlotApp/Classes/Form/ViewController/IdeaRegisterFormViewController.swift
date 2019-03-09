@@ -19,6 +19,8 @@ class IdeaRegisterFormViewController: BasePopupViewController {
     }
     
     var ideaDto:IdeaDto? = nil
+    let categoryManager = CategoryManager()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +30,7 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         ideaRegisterFormView.wordText1.text = ideaDto?.words[0].word
         ideaRegisterFormView.wordText2.text = ideaDto?.words[1].word
         ideaRegisterFormView.operatorName.text = ideaDto?.operator1
-        ideaRegisterFormView.dropdown.dataSource = arrayCategoryList(listFlg: 0)
+        ideaRegisterFormView.dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 0)
 
         let popupItem = PopupItem(view: ideaRegisterFormView, height: IdeaRegisterFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
         configurePopupItem(popupItem)

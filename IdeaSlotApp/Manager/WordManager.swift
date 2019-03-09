@@ -23,6 +23,7 @@ class WordManager {
      */
     func getResultsWords(filterName:String?, filterItem:Any?, sort:String?, ascending:Bool?) -> Results<Words>? {
         guard var wordsArray:Results<Words> = realm.objects(Words.self) else {
+            print("Realm Error, select words")
             return nil
         }
         //add filter
@@ -44,15 +45,15 @@ class WordManager {
      @param text : String
      @param categoryName : String
      @return Bool
-    */
+     */
     func insert(wordName: String, category: Category?) -> Bool{
         var item: [String: Any]? = nil
         
         //selected category
-        if category?.categoryId != 0{
-                item = ["word": wordName,
-                        "categoryId": category!.categoryId,
-                        "categoryName": category!.categoryName]
+        if category != nil {
+            item = ["word": wordName,
+                    "categoryId": category!.categoryId,
+                    "categoryName": category!.categoryName]
         }else{
             item = ["word": wordName,
                     "categoryId": 0,
@@ -68,7 +69,7 @@ class WordManager {
                 }
             }
         } catch {
-            print("NSError")
+            print("Realm Error, insert word")
             return false
         }
         return true
@@ -84,10 +85,9 @@ class WordManager {
      */
     func update(wordName: String, category: Category?, wordItem: Words, oldCategory: Category?) -> Bool{
         let item: [String: Any]
-
+        
         //selected category
         if category != nil {
-            print("selected category")
             item = ["wordId": wordItem.wordId!,
                     "word": wordName,
                     "categoryId": category!.categoryId,
@@ -95,7 +95,6 @@ class WordManager {
                     "createDate":wordItem.createDate
             ]
         }else{
-            print("no select category")
             item = ["wordId": wordItem.wordId!,
                     "word": wordName,
                     "categoryName": "No Category",
@@ -121,7 +120,7 @@ class WordManager {
                 }
             }
         } catch  {
-            print("NSError")
+            print("Realm Error, update word")
             return false
         }
         return true
@@ -138,10 +137,35 @@ class WordManager {
                 realm.delete(word)
             }
         } catch  {
-            print("Realm Error")
+            print("Realm Error, delete word")
             return false
         }
         return true
+    }
+    
+    //update word's category name when category cahnged
+    func convertWordList(category:Category, categoryName:String) -> Array<Words> {
+        var newWords:Array<Words>? = Array()
+        let oldCategory:Category? = category
+        do {
+            try realm.write {
+                category.categoryName = categoryName
+            }
+        } catch  {
+            print("Realm Error, set category name for cnvert")
+            return Array()
+        }
+        
+        let words:Results<Words>? = getResultsWords(filterName: "categoryId", filterItem: category.categoryId, sort: nil, ascending: nil)
+        
+        for word in words! {
+            let result = update(wordName: word.word!, category: category, wordItem: word, oldCategory: oldCategory)
+            if result {
+                newWords?.append(word)
+            }
+        }
+        
+        return newWords!
     }
     
 }
