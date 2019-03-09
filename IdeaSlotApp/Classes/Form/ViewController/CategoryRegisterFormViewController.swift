@@ -26,7 +26,7 @@ class CategoryRegisterFormViewController: BasePopupViewController {
         
         var categoryRegisterFormView = CategoryRegisterFormView()
         categoryRegisterFormView = UINib(nibName: "CategoryRegisterFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! CategoryRegisterFormView
-        if self.category?.categoryId != 0 {
+        if self.category != nil {
             categoryRegisterFormView.textForm.text = self.category?.categoryName
         }
         
@@ -56,8 +56,8 @@ class CategoryRegisterFormViewController: BasePopupViewController {
         
         //Register Category
         var result:Bool = false
-        let categoryListViewControler = CategoryListViewController()
-        result = categoryListViewControler.registerCategory(category: self.category!,formText: formView.textForm.text!)
+        let categoryManager = CategoryManager()
+        result = categoryManager.register(category: self.category,newCategoryName: formView.textForm.text!)
         if result {
             categoryTableView.reloadData()
             transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in

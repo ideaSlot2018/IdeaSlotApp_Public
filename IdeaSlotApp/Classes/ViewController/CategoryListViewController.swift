@@ -16,7 +16,7 @@ class CategoryListViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     var categoryEntities: Results<Category>? = nil
 
-    let realm = try! Realm()
+    let categoryManager = CategoryManager()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class CategoryListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        categoryEntities = realm.objects(Category.self)
+        categoryEntities = categoryManager.getResultsCategory(filterName: nil, filterItem: nil, sort: "categoryId", ascending: true)
         tableView.reloadData()
     }
 
@@ -55,11 +55,11 @@ class CategoryListViewController: UIViewController {
     }
     
     override func rightButtonAction() {
-        setRegisterFrom(category: Category())
+        setRegisterFrom(category: nil)
     }
     
     //display category register form
-    func setRegisterFrom(category:Category){
+    func setRegisterFrom(category:Category?){
         let categoryRegisterFormViewController = CategoryRegisterFormViewController()
         categoryRegisterFormViewController.categoryTableView = self.tableView
         categoryRegisterFormViewController.category = category
@@ -74,66 +74,6 @@ class CategoryListViewController: UIViewController {
         PopupWindowManager.shared.changeKeyWindow(rootViewController: categoryDeleteAlertViewController)
     }
     
-    //register or update category
-    func registerCategory(category: Category, formText: String) -> Bool {
-        let item: [String: Any]
-        
-        if category.categoryId != 0 {
-            let newWords = self.convertWords(category: category, categoryName: formText)
-            item = ["categoryId":category.categoryId,
-                    "categoryName":formText,
-                    "words":newWords,
-                    "createDate":category.createDate
-            ]
-        }else{
-            item = ["categoryId":getCategoryMaxId(),
-                    "categoryName":formText,
-            ]
-        }
-        
-        let editCategory = Category(value: item)
-        try! realm.write {
-            realm.add(editCategory, update: true)
-        }
-        
-        return true
-    }
-    
-    //update word's category name when category cahnged
-    private func convertWords(category:Category, categoryName:String) -> Array<Words>{
-        var newWords:Array<Words>? = Array()
-        let words:Results<Words>? = realm.objects(Words.self).filter("categoryId == %@", category.categoryId)
-        
-        try! realm.write {
-            for word in words! {
-                word.categoryName = categoryName
-                word.updateDate = Date()
-                newWords?.append(word)
-            }
-        }
-        return newWords!
-    }
-    
-    //delete category
-    func deleteCategory(category: Category) -> Bool{
-        let categoryId = category.categoryId
-        let words:Results<Words>? = realm.objects(Words.self).filter("categoryId == %@", categoryId)
-        
-        //update words
-        try! realm.write {
-            for word in words!{
-                word.categoryId = 0
-                word.categoryName = "No Category"
-                word.updateDate = Date()
-            }
-        }
-        
-        //delete category
-        try! realm.write {
-            realm.delete(category)
-        }
-        return true
-    }
 }
 
 /**

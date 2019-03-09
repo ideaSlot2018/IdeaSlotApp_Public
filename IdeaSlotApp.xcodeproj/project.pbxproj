@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		CE22FC1121DF495D00EB51A3 /* CategoryDeleteAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */; };
 		CE22FC1321DF497500EB51A3 /* CategoryDeleteAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE22FC1221DF497500EB51A3 /* CategoryDeleteAlertView.xib */; };
+		CE3D1C2522334E490014F28F /* WordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D1C2422334E490014F28F /* WordManager.swift */; };
+		CE3D1C2722334EF90014F28F /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D1C2622334EF90014F28F /* CategoryManager.swift */; };
+		CE3D1C2922334F230014F28F /* IdeaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D1C2822334F230014F28F /* IdeaManager.swift */; };
 		CE43D50021BB9C540089764A /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */; };
 		CE4B2BE2218D627F009A94B2 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */; };
 		CE4BD71522191C5200878860 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BD71422191C5200878860 /* UIView.swift */; };
@@ -74,6 +77,9 @@
 /* Begin PBXFileReference section */
 		CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDeleteAlertView.swift; sourceTree = "<group>"; };
 		CE22FC1221DF497500EB51A3 /* CategoryDeleteAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryDeleteAlertView.xib; sourceTree = "<group>"; };
+		CE3D1C2422334E490014F28F /* WordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordManager.swift; sourceTree = "<group>"; };
+		CE3D1C2622334EF90014F28F /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
+		CE3D1C2822334F230014F28F /* IdeaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaManager.swift; sourceTree = "<group>"; };
 		CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = Carthage/Build/iOS/SlideMenuControllerSwift.framework; sourceTree = "<group>"; };
 		CE4BD71422191C5200878860 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
@@ -156,6 +162,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CE3D1C2322334E090014F28F /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				CE3D1C2422334E490014F28F /* WordManager.swift */,
+				CE3D1C2622334EF90014F28F /* CategoryManager.swift */,
+				CE3D1C2822334F230014F28F /* IdeaManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
 		CE5585842115739E00E66A6C /* Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -293,11 +309,12 @@
 		CE8B79F5210475FF009BD29F /* IdeaSlotApp */ = {
 			isa = PBXGroup;
 			children = (
-				CE78631C2116E5C60053B87B /* UI */,
-				CE78631B2116E5570053B87B /* Resource */,
+				CE5585842115739E00E66A6C /* Classes */,
+				CE3D1C2322334E090014F28F /* Manager */,
 				CE78631A2116E54C0053B87B /* Model */,
 				CE558585211573B400E66A6C /* Others */,
-				CE5585842115739E00E66A6C /* Classes */,
+				CE78631B2116E5570053B87B /* Resource */,
+				CE78631C2116E5C60053B87B /* UI */,
 			);
 			path = IdeaSlotApp;
 			sourceTree = "<group>";
@@ -585,12 +602,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE3D1C2522334E490014F28F /* WordManager.swift in Sources */,
 				CE7497292143F7D100F51E91 /* UIApplication.swift in Sources */,
 				CE8B79F9210475FF009BD29F /* WordsListViewController.swift in Sources */,
 				CE62C4CC21ECC632003BDE0B /* IdeaRegisterFormView.swift in Sources */,
 				CE5585832115701600E66A6C /* Idea.swift in Sources */,
 				CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */,
 				CE929FDE22114D4C006634A6 /* IdeaRegisterFormViewController.swift in Sources */,
+				CE3D1C2722334EF90014F28F /* CategoryManager.swift in Sources */,
 				CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */,
 				CE4BD71522191C5200878860 /* UIView.swift in Sources */,
 				CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */,
@@ -603,6 +622,7 @@
 				CE5A635B212948BC007E4887 /* CategorySeed.swift in Sources */,
 				CE5E1F43211FFE8800523D96 /* IdeasListViewController.swift in Sources */,
 				CE988D43215D1F97000B1345 /* IdeaTableViewCell.swift in Sources */,
+				CE3D1C2922334F230014F28F /* IdeaManager.swift in Sources */,
 				CE5E1F3F211FFE5600523D96 /* LeftMenuViewController.swift in Sources */,
 				CE79C6A221CA884B00B3BC63 /* CategoryRegisterFormViewController.swift in Sources */,
 				CE22FC1121DF495D00EB51A3 /* CategoryDeleteAlertView.swift in Sources */,

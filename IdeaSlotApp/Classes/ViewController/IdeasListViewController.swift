@@ -12,7 +12,8 @@ import SwipeCellKit
 
 class IdeasListViewController: UIViewController {
     
-    let realm = try! Realm()
+    let ideaManager = IdeaManager()
+    
     var ideaEntites:Results<Idea>? = nil
     @IBOutlet weak var tableView: UITableView!
     
@@ -32,7 +33,7 @@ class IdeasListViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        ideaEntites = realm.objects(Idea.self)
+        ideaEntites = ideaManager.getResultsIdeas(filterName: nil, filterItem: nil, sort: "updateDate", ascending: false)
         tableView.reloadData()
 
     }
@@ -48,12 +49,6 @@ class IdeasListViewController: UIViewController {
             ideaDetailsViewController.idea = ideaEntites![tableView.indexPathForSelectedRow!.row]
         default:
             break
-        }
-    }
-    
-    func deleteIdea(idea: Idea) {
-        try! realm.write {
-            realm.delete(idea)
         }
     }
     
@@ -105,7 +100,7 @@ extension IdeasListViewController: SwipeTableViewCellDelegate{
         guard orientation == .right else { return nil }
         
         let editAction = SwipeAction(style: .default, title: "Delete") { action, indexPath in
-            self.deleteIdea(idea: self.ideaEntites![indexPath.row])
+            let result = self.ideaManager.delete(idea: self.ideaEntites![indexPath.row])
             tableView.reloadData()
         }
         editAction.image = UIImage(named: "Trash")

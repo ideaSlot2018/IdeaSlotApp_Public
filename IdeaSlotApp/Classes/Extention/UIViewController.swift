@@ -59,50 +59,6 @@ extension UIViewController{
         self.navigationController?.popViewController(animated: true)
     }
     
-    //return category name list
-    func arrayCategoryList(listFlg: Int) -> Array<String> {
-        let realm = try!Realm()
-        var CategoryNameList: [String] = []
-        let CategoryList = realm.objects(Category.self)
-        
-        //IdeaSlotViewController append "All"
-        switch listFlg {
-        case 0:
-            CategoryNameList.append("No Category")
-        case 1:
-            CategoryNameList.append("All")
-        default:
-            break
-        }
-        
-        //create ArrayList only categoryName
-        for Category in CategoryList{
-            CategoryNameList.append(Category.categoryName)
-        }
-        return CategoryNameList
-    }
-    
-    //return one item Category filter by categoryName
-    func findCategoryItem(categoryName: String) -> Category {
-        let realm = try!Realm()
-        let categoryItem = realm.objects(Category.self).filter("categoryName = %@",categoryName)
-        if categoryItem.first != nil {
-            return categoryItem.first!
-        } else {
-            return Category()
-        }
-    }
-    
-    func getCategoryMaxId() -> Int {
-        let realm = try!Realm()
-        var categoryMaxId:Int = 1
-        let category:Category? = realm.objects(Category.self).last
-        if category != nil {
-            categoryMaxId =  category!.categoryId + 1
-        }        
-        return categoryMaxId
-    }
-    
     func addBottomBorder(view:UIView, height:CGFloat, color:CGColor) {
         let border = CALayer()
         border.frame = CGRect(x: 0, y: view.frame.size.height, width: view.frame.size.width, height: height)

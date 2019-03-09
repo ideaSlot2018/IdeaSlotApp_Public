@@ -24,14 +24,14 @@ class IdeasSlotViewController: UIViewController {
     var ideaSlotPickerView = IdeaSlotPickerView(){
         didSet{
             ideaSlotPickerView.frame = CGRect(x: 0, y: 100, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
-            ideaSlotPickerView.dropdown.dataSource = arrayCategoryList(listFlg: 1)
+            ideaSlotPickerView.dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 1)
             ideaSlotPickerView.slotFlg = 1
         }
     }
     var ideaSlotPickerView2 = IdeaSlotPickerView(){
         didSet{
             ideaSlotPickerView2.frame = CGRect(x: self.view.frame.width - IdeaSlotPickerView.Const.width, y: 100, width: IdeaSlotPickerView.Const.width, height: IdeaSlotPickerView.Const.height)
-            ideaSlotPickerView2.dropdown.dataSource = arrayCategoryList(listFlg: 1)
+            ideaSlotPickerView2.dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 1)
             ideaSlotPickerView2.slotFlg = 2
         }
     }
@@ -46,8 +46,10 @@ class IdeasSlotViewController: UIViewController {
     var wordEntities:Results<Words>? = nil
     var operatorName:[String] = ["Plus", "Minus", "Multiply", "Divide"]
     var ideaDto:IdeaDto? = IdeaDto()
-    let realm = try!Realm()
     let dropdown = DropDown()
+    let wordManager = WordManager()
+    let categoryManager = CategoryManager()
+    let ideaManager = IdeaManager()
 
     /**
      viewDidLoad
@@ -127,7 +129,7 @@ class IdeasSlotViewController: UIViewController {
      **/
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        wordEntities = realm.objects(Words.self).sorted(byKeyPath: "updateDate", ascending: false)
+        wordEntities = wordManager.getResultsWords(filterName: nil, filterItem: nil, sort: "updateDate", ascending: false)
         
         //picker 1
         //***********************************************************************//
@@ -181,25 +183,25 @@ class IdeasSlotViewController: UIViewController {
     }
     
     //create filtered words list
-    func filteredWordList(category:Category) -> Array<Words>? {
-        var wordList = wordEntities
-        if category.categoryId != 0 {
-            wordList = wordList?.filter("categoryId == %@", category.categoryId)
+    func filteredWordList(category:Category?) -> Array<Words>? {
+        var wordList:Array<Words> = Array(wordEntities!)
+        if category != nil && category?.categoryId != 0 {
+            wordList = Array(category!.words)
         }
-        return Array(wordList!)
+        return wordList
     }
     
     //set pickerview's property
     func setPickerViewData(view: IdeaSlotPickerView,setFlg:Int) -> IdeaSlotPickerView{
         switch setFlg {
         case 0: //all
-            view.category = self.findCategoryItem(categoryName: "")
-            view.wordList = self.filteredWordList(category: Category())
+            view.category = categoryManager.findCategoryItem(categoryName: "")
+            view.wordList = self.filteredWordList(category: nil)
             view.wordNameList = self.arrayWordList(wordList: view.wordList!)
 
         case 1: //selected category
-            view.category = self.findCategoryItem(categoryName: view.categoryName!)
-            view.wordList = self.filteredWordList(category: view.category!)
+            view.category = categoryManager.findCategoryItem(categoryName: view.categoryName!)
+            view.wordList = self.filteredWordList(category: view.category)
             view.wordNameList = self.arrayWordList(wordList: view.wordList!)
             view.wordsPickerView.reloadAllComponents()
             view.wordsPickerView.selectRow(view.randomNumber(size: view.pickerViewRows), inComponent: 0, animated: false)
@@ -240,35 +242,4 @@ class IdeasSlotViewController: UIViewController {
         }
     }
     
-    //register idea
-    func registerIdea(newIdea:IdeaDto) -> Bool {
-        let category:Category? = findCategoryItem(categoryName: newIdea.categoryName!)
-        let item: [String:Any]
-        
-        if category?.categoryId != 0 {
-            item = ["ideaName": newIdea.ideaName!,
-                    "categoryName": newIdea.categoryName!,
-                    "operatorId1": newIdea.operator1!,
-                    "details": newIdea.details!,
-                    "words": newIdea.words
-            ]
-        } else {
-            item = ["ideaName": newIdea.ideaName!,
-                    "categoryName": "No Category",
-                    "operatorId1": newIdea.operator1!,
-                    "details": newIdea.details!,
-                    "words": newIdea.words
-            ]
-        }
-        
-        let insetIdea = Idea(value: item)
-        try! realm.write {
-            realm.add(insetIdea)
-            if category?.categoryId != 0{
-                category?.ideas.append(insetIdea)
-            }
-        }
-        
-        return true
-    }
 }
