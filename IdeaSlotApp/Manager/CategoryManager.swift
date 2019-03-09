@@ -45,25 +45,38 @@ class CategoryManager {
     }
     
     /*
-     register or update category
-     @param category : Category
-     @param formtext : String
+     register category
+     @param newCategoryName : String
      */
-    func register(category: Category?, newCategoryName: String) -> Bool {
-        let item: [String: Any]
+    func register(newCategoryName: String) -> Bool {
+        let item: [String: Any] = ["categoryId":getCategoryMaxId(),
+                                   "categoryName":newCategoryName,
+                                   ]
         
-        if category != nil { //update
-            let newWords = wordManager.convertWordList(category: category!, categoryName: newCategoryName)
-            item = ["categoryId":category!.categoryId,
-                    "categoryName":newCategoryName,
-                    "words":newWords,
-                    "createDate":category!.createDate
-            ]
-        }else{ //insert
-            item = ["categoryId":getCategoryMaxId(),
-                    "categoryName":newCategoryName,
-            ]
+        let editCategory = Category(value: item)
+        do {
+            try realm.write {
+                realm.add(editCategory)
+            }
+        } catch  {
+            print("Realm Error, register category")
+            return false
         }
+        return true
+    }
+    
+    /*
+     update category
+     @param category : Category(not nil)
+     @param newCategoryName : String
+     */
+    func update(category: Category, newCategoryName: String) -> Bool {
+        let newWords = wordManager.convertWordList(category: category, categoryName: newCategoryName)
+        let item: [String: Any] = ["categoryId":category.categoryId,
+                                   "categoryName":newCategoryName,
+                                   "words":newWords,
+                                   "createDate":category.createDate
+        ]
         
         let editCategory = Category(value: item)
         do {
@@ -74,11 +87,15 @@ class CategoryManager {
             print("Realm Error, register category")
             return false
         }
-        
         return true
     }
     
     //delete category
+    /*
+     delete category
+     @param category : Category
+     @return : Bool
+     */
     func delete(category: Category) -> Bool{
         let words:Results<Words>? = wordManager.getResultsWords(filterName: "categoryId", filterItem: category.categoryId, sort: nil, ascending: nil)
         let oldCategory:Category = category
@@ -126,7 +143,6 @@ class CategoryManager {
         return CategoryNameList
     }
     
-    //return one item Category filter by categoryName
     /*
      return one item Category filter by categoryName
      @param categiryName : String
