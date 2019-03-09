@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         userDefaulft.register(defaults: dict)
         if userDefaulft.bool(forKey: "firstLaunch") {
             userDefaulft.set(false, forKey: "firstLaunch")
-            RealmInitializer.setUp()
+//            RealmInitializer.setUp()
         }
         
 //        let realmInitializer = RealmInitializer()

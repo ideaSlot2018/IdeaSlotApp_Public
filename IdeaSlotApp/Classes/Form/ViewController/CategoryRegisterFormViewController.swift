@@ -57,7 +57,13 @@ class CategoryRegisterFormViewController: BasePopupViewController {
         //Register Category
         var result:Bool = false
         let categoryManager = CategoryManager()
-        result = categoryManager.register(category: self.category,newCategoryName: formView.textForm.text!)
+        
+        if self.category != nil {
+            result = categoryManager.update(category: self.category!,newCategoryName: formView.textForm.text!)
+        } else {
+            result = categoryManager.register(newCategoryName: formView.textForm.text!)
+        }
+        
         if result {
             categoryTableView.reloadData()
             transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
