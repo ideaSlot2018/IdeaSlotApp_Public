@@ -55,6 +55,11 @@ class IdeaManager {
         var insertWord: Words? = nil
         var categoryLinkedWord: Category? = nil
         
+        //check idea name
+        if !checkIncludeIdeaName(ideaname: idea.ideaName!, category: category) {
+            return false
+        }
+        
         if category != nil {
             wordItem = ["word": idea.ideaName!,
                         "categoryId": category!.categoryId,
@@ -121,6 +126,26 @@ class IdeaManager {
             }
         } catch {
             print("Realm Error, delete idea")
+            return false
+        }
+        return true
+    }
+    
+    /*
+     check new idea name already exists
+     @param ideaname : String
+     @param category : Category
+     @return : Bool
+     */
+    func checkIncludeIdeaName(ideaname: String, category: Category?) -> Bool {
+        var categoryParam = [0]
+        if category != nil {
+            categoryParam = [category!.categoryId]
+        }
+
+        let ideaList = getResultsIdeas(filterName: "ideaName", filterItem: ideaname, sort: nil, ascending: nil)!.filter("ANY category.categoryId IN %@", categoryParam).value(forKey: "ideaName") as! Array<Any>
+        
+        if ideaList.count > 0 {
             return false
         }
         return true

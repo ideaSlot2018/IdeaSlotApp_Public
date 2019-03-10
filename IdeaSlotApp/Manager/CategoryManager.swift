@@ -189,8 +189,7 @@ class CategoryManager {
     func checkIncludeCategoryName(categoryName: String) -> Bool {
         let categoryList = getResultsCategory(filterName: "categoryName", filterItem: categoryName, sort: nil, ascending: nil)?.value(forKey: "categoryName") as! Array<Any>
         
-        print("category name list", categoryList)
-        if categoryList.count != 0  {
+        if categoryList.count > 0  {
             return false
         }
         return true
