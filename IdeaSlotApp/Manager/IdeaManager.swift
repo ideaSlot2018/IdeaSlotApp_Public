@@ -12,6 +12,7 @@ import RealmSwift
 class IdeaManager {
     
     let realm = try! Realm()
+    let wordManager = WordManager()
     let categoryManager = CategoryManager()
     
     /*
@@ -50,21 +51,46 @@ class IdeaManager {
     func register(idea:IdeaDto) -> Bool {
         let category:Category? = categoryManager.findCategoryItem(categoryName: idea.categoryName!)
         let item: [String:Any]
+        let wordItem: [String:Any]
+        var insertWord: Words? = nil
+        var categoryLinkedWord: Category? = nil
         
         if category != nil {
+            wordItem = ["word": idea.ideaName!,
+                        "categoryId": category!.categoryId,
+                        "categoryName": category!.categoryName,
+                        "ideaFlg": 1
+            ]
+            insertWord = Words(value: wordItem)
+            categoryLinkedWord = category
+            
             item = ["ideaName": idea.ideaName!,
                     "categoryName": category!.categoryName,
                     "operatorId1": idea.operator1!,
                     "details": idea.details!,
-                    "words": idea.words
+                    "words": idea.words,
+                    "createdWord": insertWord!
             ]
         } else {
+            wordItem = ["word": idea.ideaName!,
+                        "categoryId": 0,
+                        "categoryName": idea.categoryName!,
+                        "ideaFlg": 1
+            ]
+            insertWord = Words(value: wordItem)
+            
             item = ["ideaName": idea.ideaName!,
                     "categoryName": idea.categoryName!,
                     "operatorId1": idea.operator1!,
                     "details": idea.details!,
-                    "words": idea.words
+                    "words": idea.words,
+                    "createdWord": insertWord!
             ]
+        }
+        
+        //inset word
+        if !wordManager.insert(wordName: insertWord!.word!, category: categoryLinkedWord) {
+            return false
         }
         
         let insetIdea = Idea(value: item)
@@ -84,6 +110,8 @@ class IdeaManager {
     
     /*
      delete idea
+     @param idea : Idea
+     @return : Bool
      */
     func delete(idea: Idea) -> Bool{
         
@@ -91,7 +119,7 @@ class IdeaManager {
             try realm.write {
                 realm.delete(idea)
             }
-        } catch  {
+        } catch {
             print("Realm Error, delete idea")
             return false
         }
