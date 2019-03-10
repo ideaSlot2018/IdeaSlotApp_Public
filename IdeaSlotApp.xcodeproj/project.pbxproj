@@ -15,7 +15,7 @@
 		CE43D50021BB9C540089764A /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */; };
 		CE4B2BE2218D627F009A94B2 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */; };
 		CE4BD71522191C5200878860 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BD71422191C5200878860 /* UIView.swift */; };
-		CE5585832115701600E66A6C /* Idea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5585822115701600E66A6C /* Idea.swift */; };
+		CE5585832115701600E66A6C /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5585822115701600E66A6C /* RealmModel.swift */; };
 		CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58047A214420C700BEDA1A /* BaseTableViewCell.swift */; };
 		CE5A635B212948BC007E4887 /* CategorySeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A635A212948BC007E4887 /* CategorySeed.swift */; };
 		CE5A635D21294E99007E4887 /* RealmInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A635C21294E99007E4887 /* RealmInitializer.swift */; };
@@ -83,7 +83,7 @@
 		CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
 		CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = Carthage/Build/iOS/SlideMenuControllerSwift.framework; sourceTree = "<group>"; };
 		CE4BD71422191C5200878860 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
-		CE5585822115701600E66A6C /* Idea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Idea.swift; sourceTree = "<group>"; };
+		CE5585822115701600E66A6C /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
 		CE58047A214420C700BEDA1A /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
 		CE5A635A212948BC007E4887 /* CategorySeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySeed.swift; sourceTree = "<group>"; };
 		CE5A635C21294E99007E4887 /* RealmInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInitializer.swift; sourceTree = "<group>"; };
@@ -240,7 +240,7 @@
 		CE78631A2116E54C0053B87B /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				CE5585822115701600E66A6C /* Idea.swift */,
+				CE5585822115701600E66A6C /* RealmModel.swift */,
 				CEBD041B21EA1DD300491AD7 /* WordSeed.swift */,
 				CE5A635A212948BC007E4887 /* CategorySeed.swift */,
 				CE5A635C21294E99007E4887 /* RealmInitializer.swift */,
@@ -606,7 +606,7 @@
 				CE7497292143F7D100F51E91 /* UIApplication.swift in Sources */,
 				CE8B79F9210475FF009BD29F /* WordsListViewController.swift in Sources */,
 				CE62C4CC21ECC632003BDE0B /* IdeaRegisterFormView.swift in Sources */,
-				CE5585832115701600E66A6C /* Idea.swift in Sources */,
+				CE5585832115701600E66A6C /* RealmModel.swift in Sources */,
 				CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */,
 				CE929FDE22114D4C006634A6 /* IdeaRegisterFormViewController.swift in Sources */,
 				CE3D1C2722334EF90014F28F /* CategoryManager.swift in Sources */,

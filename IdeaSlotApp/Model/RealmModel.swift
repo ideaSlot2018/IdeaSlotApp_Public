@@ -1,5 +1,5 @@
 //
-//  Idea.swift
+//  RealmModel.swift
 //  IdeaSlotApp
 //
 //  Created by yuta akazawa on 2018/08/04.
@@ -33,7 +33,7 @@ class Words: Base {
     @objc dynamic var categoryId: Int = 0
     @objc dynamic var categoryName: String? = ""
     let category = LinkingObjects(fromType: Category.self, property: "words")
-    
+    let idea = LinkingObjects(fromType: Idea.self, property: "createdWord")
     @objc dynamic var userId: String? = ""
     @objc dynamic var ideaFlag: Int = 0
     
@@ -63,14 +63,12 @@ class Idea: Base {
     @objc dynamic var ideaName: String? = ""
     @objc dynamic var categoryName: String? = ""
     //@objc dynamic var userId: String? = ""
-    //@objc dynamic var wordId1: String? = ""
     @objc dynamic var operatorId1: String? = "Plus"
-    //@objc dynamic var wordId2: String? = ""
     //@objc dynamic var operatorId2: String? = ""
-    //@objc dynamic var wordId3: String? = ""
     @objc dynamic var details: String? = ""
     let words = List<Words>(repeating: Words(), count: 2)
     let category = LinkingObjects(fromType: Category.self, property: "ideas")
+    @objc dynamic var createdWord: Words? = nil
     
     override class func primaryKey() -> String {
         return "ideaId"
