@@ -20,9 +20,9 @@ extension BaseWords {
         return values.map { val in
             let t = SeedType()
             t.word = val[0] as? String
-            t.categoryId = val[1] as! Int
-            t.categoryName = val[2] as? String
-            t.createDate = (val[3] as! Date)
+//            t.categoryId = val[1] as! Int
+//            t.categoryName = val[2] as? String
+            t.createDate = (val[4] as! Date)
             return t
         }
     }

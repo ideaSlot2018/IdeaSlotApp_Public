@@ -42,7 +42,7 @@ class WordsListViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if category != nil {
-            wordEntities = wordManager.getResultsWords(filterName: "categoryId", filterItem: category!.categoryId, sort: "updateDate", ascending: false)
+            wordEntities = wordManager.getResultsByLinkedCategory(categoryId: category!.categoryId, sort: "updateDate", ascending: false)
         }else{
             wordEntities = wordManager.getResultsWords(filterName: nil, filterItem: nil, sort: "updateDate", ascending: false)
         }
@@ -70,7 +70,8 @@ class WordsListViewController: UIViewController{
             result = wordManager.insert(wordName: wordName, category: categoryItem)
         }else{
             //update
-            let oldCategory:Category? = categoryManager.findCategoryItem(categoryName: item!.categoryName!)
+            let oldCategory:Category? = wordManager.getResultByWordId(wordId: Id)?.category.first
+            
             result = wordManager.update(wordName: wordName, category: categoryItem, wordItem: item!, oldCategory: oldCategory)
         }
         print(result)
@@ -188,11 +189,19 @@ extension WordsListViewController: UITableViewDataSource{
         itemView.textfield.text = words.word
         itemView.wordId = words.wordId
         itemView.beforeWord = words.word
-        itemView.categorybutton.setTitle(words.categoryName, for: .normal)
-        itemView.categoryName = words.categoryName
-        itemView.beforecategoryName = words.categoryName
-        cell.contentView.addSubview(itemView)
         
+        if words.category.first != nil {
+            itemView.categorybutton.setTitle(words.category.first?.categoryName, for: .normal)
+            itemView.categoryName = words.category.first?.categoryName
+            itemView.beforecategoryName = words.category.first?.categoryName
+        } else {
+            itemView.categorybutton.setTitle("No Caegory", for: .normal)
+            itemView.categoryName = "No Caegory"
+            itemView.beforecategoryName = "No Caegory"
+        }
+
+
+        cell.contentView.addSubview(itemView)
         return cell
     }
 }
