@@ -169,6 +169,21 @@ class CategoryManager {
     }
     
     /*
+     return one item Category filter by categoryId
+     @param categiryId : Int
+     @return
+     true -> Category()
+     false -> nil
+     */
+    func findCategoryItem(categoryId: Int) -> Category? {
+        let category = getResultsCategory(filterName: "categoryId", filterItem: categoryId, sort: nil, ascending: nil)?.first
+        if category != nil {
+            return category
+        }
+        return nil
+    }
+    
+    /*
      return max category id + 1
      @return Int
      */

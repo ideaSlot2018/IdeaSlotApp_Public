@@ -31,8 +31,9 @@ class IdeaDetailsViewController: UIViewController {
     }
     
     var operatorImage:UIImage? = nil
-    
     var idea:Idea? = nil
+    
+    let categoryManager = CategoryManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,16 +50,20 @@ class IdeaDetailsViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        let linkedCategory = categoryManager.findCategoryItem(categoryId: idea!.categoryId)
         
         //set idea's description
         ideaTitle.text = idea?.ideaName
-//        categoryName.text = idea?.categoryName
+        if linkedCategory != nil {
+            categoryName.text = linkedCategory?.categoryName
+        } else {
+            categoryName.text = "No Category"
+        }
         wordName1.text = idea?.words[0].word
         wordName2.text = idea?.words[1].word
         detailsTextView.text = idea?.details
         operatorImageView.image = UIImage(named: "Operator-\(idea!.operatorId1!)")
         operatorImageView.contentMode = .center
-
     }
     
     override func didReceiveMemoryWarning() {
