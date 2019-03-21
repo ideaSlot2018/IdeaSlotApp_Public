@@ -111,6 +111,7 @@ extension WordsListViewController: UITableViewDelegate{
         if category != nil{
             item.categorybutton.setTitle(category?.categoryName, for: .normal)
         }
+        item.addBottomBorder(view: item.textfield, height: 1.0, color: UIColor.gray.cgColor)
         
         if #available(iOS 11.0, *) {
             headerview.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 55)
@@ -170,19 +171,41 @@ extension WordsListViewController: UITableViewDataSource{
         var itemView = WordItemView()
         itemView = UINib(nibName: "WordItemView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! WordItemView
         itemView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
-        
+        itemView.delegate = self
+        itemView.dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 0)
+        //filterd or not
         if isFiltering(){
             words = filteredWords[indexPath.row]
         }else{
             words = wordEntities![indexPath.row]
         }
         
-        itemView.delegate = self
-        itemView.dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 0)
+        //idea ro word
+        if words.ideaFlg == 1 {
+            itemView.textfield.font = UIFont.italicSystemFont(ofSize: 25)
+            itemView.categorybutton.isEnabled = false
+            itemView.wordItemViewTapHandler = { [weak self] in
+                self?.performSegue(withIdentifier: "toIdeaDetails", sender: nil)
+            }
+        } else {
+            itemView.addBottomBorder(view: itemView.textfield, height: 1.0, color: UIColor.gray.cgColor)
+            itemView.textfield.isEnabled = true
+            itemView.wordItemViewTapHandler = { [weak self] in
+//                if itemView.tapFlg {
+//                    itemView.textfield.layer.borderColor = UIColor.orange.cgColor
+//                    itemView.textfield.isEnabled = false
+//                } else {
+//                    itemView.textfield.layer.borderColor = UIColor.gray.cgColor
+//                    itemView.textfield.isEnabled = true
+//                }
+            }
+        }
+        
         itemView.textfield.text = words.word
         itemView.wordId = words.wordId
         itemView.beforeWord = words.word
         
+        //set category name
         if words.category.first != nil {
             itemView.categorybutton.setTitle(words.category.first?.categoryName, for: .normal)
             itemView.categoryName = words.category.first?.categoryName
@@ -192,7 +215,6 @@ extension WordsListViewController: UITableViewDataSource{
             itemView.categoryName = "No Caegory"
             itemView.beforecategoryName = "No Caegory"
         }
-
 
         cell.contentView.addSubview(itemView)
         return cell

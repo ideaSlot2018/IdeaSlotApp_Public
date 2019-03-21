@@ -40,6 +40,8 @@ class WordItemView: UIView {
     var wordId: String? = ""
     var beforeWord: String? =  ""
     var beforecategoryName: String? = ""
+    var wordItemViewTapHandler:(() -> Void)?
+    var tapFlg = false
     
     let dropdown = DropDown()
     
@@ -50,7 +52,20 @@ class WordItemView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setDropDown(button: categorybutton, dropdown: dropdown)
-        addBottomBorder(view: textfield, height: 1.0, color: UIColor.darkGray.cgColor)
+        textfield.isEnabled = false
+        
+        self.isUserInteractionEnabled = true
+        
+        let doubleTap =  UITapGestureRecognizer(target: self, action: #selector(self.doubleTapAction(sender:)))
+        doubleTap.numberOfTapsRequired = 2
+        doubleTap.numberOfTouchesRequired = 1
+        self.addGestureRecognizer(doubleTap)
+
+        let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.singleTapAction(sender:)))
+        singleTap.numberOfTapsRequired = 1
+        singleTap.numberOfTouchesRequired = 1
+        singleTap.require(toFail: doubleTap)
+        self.addGestureRecognizer(singleTap)
     }
     
     override init(frame: CGRect) {
@@ -70,6 +85,16 @@ class WordItemView: UIView {
                 self.textFieldDidEndEditing(self.textfield)
             }
         }
+    }
+    
+    @objc func singleTapAction(sender: UIGestureRecognizer) {
+        tapFlg = true
+        wordItemViewTapHandler?()
+    }
+    
+    @objc func doubleTapAction(sender: UIGestureRecognizer) {
+        tapFlg = false
+        wordItemViewTapHandler?()
     }
 }
 

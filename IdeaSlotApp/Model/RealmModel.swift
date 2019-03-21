@@ -33,7 +33,7 @@ class Words: Base {
     let category = LinkingObjects(fromType: Category.self, property: "words")
     let idea = LinkingObjects(fromType: Idea.self, property: "createdWord")
     @objc dynamic var userId: String? = ""
-    @objc dynamic var ideaFlag: Int = 0
+    @objc dynamic var ideaFlg: Int = 0
     
     override class func primaryKey() -> String {
         return "wordId"
