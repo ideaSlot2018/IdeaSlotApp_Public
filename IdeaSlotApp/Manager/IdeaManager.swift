@@ -51,59 +51,45 @@ class IdeaManager {
     func register(idea:IdeaDto) -> Bool {
         let category:Category? = categoryManager.findCategoryItem(categoryName: idea.categoryName!)
         let item: [String:Any]
-        let wordItem: [String:Any]
-        var insertWord: Words? = nil
-        var categoryLinkedWord: Category? = nil
         
         //check idea name
         if !checkIncludeIdeaName(ideaname: idea.ideaName!, category: category) {
             return false
         }
         
+        //set word data
+        let wordItem: [String:Any] = ["word": idea.ideaName!,
+                    "ideaFlg": 1
+        ]
+        let insertWord = Words(value: wordItem)
+
+        //set idea data
         if category != nil {
-            wordItem = ["word": idea.ideaName!,
-                        "categoryId": category!.categoryId,
-                        "categoryName": category!.categoryName,
-                        "ideaFlg": 1
-            ]
-            insertWord = Words(value: wordItem)
-            categoryLinkedWord = category
             
             item = ["ideaName": idea.ideaName!,
-                    "categoryName": category!.categoryName,
+                    "categoryId": category!.categoryId,
                     "operatorId1": idea.operator1!,
                     "details": idea.details!,
                     "words": idea.words,
-                    "createdWord": insertWord!
+                    "createdWord": insertWord
             ]
         } else {
-            wordItem = ["word": idea.ideaName!,
-                        "categoryId": 0,
-                        "categoryName": idea.categoryName!,
-                        "ideaFlg": 1
-            ]
-            insertWord = Words(value: wordItem)
-            
             item = ["ideaName": idea.ideaName!,
-                    "categoryName": idea.categoryName!,
                     "operatorId1": idea.operator1!,
                     "details": idea.details!,
                     "words": idea.words,
-                    "createdWord": insertWord!
+                    "createdWord": insertWord
             ]
         }
         
-        //inset word
-        if !wordManager.insert(wordName: insertWord!.word!, category: categoryLinkedWord) {
-            return false
-        }
-        
-        let insetIdea = Idea(value: item)
+        //insert
+        let insertIdea = Idea(value: item)
         do {
             try realm.write {
-                realm.add(insetIdea)
+                realm.add(insertIdea)
                 if category != nil {
-                    category?.ideas.append(insetIdea)
+                    category?.ideas.append(insertIdea)
+                    category?.words.append(insertWord)
                 }
             }
         } catch {
@@ -138,12 +124,15 @@ class IdeaManager {
      @return : Bool
      */
     func checkIncludeIdeaName(ideaname: String, category: Category?) -> Bool {
-        var categoryParam = [0]
+        var param:Int = 0
         if category != nil {
-            categoryParam = [category!.categoryId]
+            param = category!.categoryId
         }
-
-        let ideaList = getResultsIdeas(filterName: "ideaName", filterItem: ideaname, sort: nil, ascending: nil)!.filter("ANY category.categoryId IN %@", categoryParam).value(forKey: "ideaName") as! Array<Any>
+        
+        
+        let ideaList = getResultsIdeas(filterName: "ideaName", filterItem: ideaname, sort: nil, ascending: nil)!
+            .filter("categoryId == %@", param)
+            .value(forKey: "ideaName") as! Array<Any>
         
         if ideaList.count > 0 {
             return false

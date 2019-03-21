@@ -54,16 +54,9 @@ class WordsListViewController: UIViewController{
     }
     
     func registerWord(Id: String, wordName: String, categoryName: String){
-        var wordItem:Results<Words>? = nil
-        var item:Words? = nil
+        let item:Words? = wordManager.getResultByWordId(wordId: Id)
         let categoryItem:Category? = categoryManager.findCategoryItem(categoryName: categoryName)
         var result:Bool = false
-        
-        //No selected category
-        if !categoryName.isEmpty{
-            wordItem = wordManager.getResultsWords(filterName: "wordId", filterItem: Id, sort: nil, ascending: nil)
-            item = wordItem?.first
-        }
         
         if item == nil{
             //register

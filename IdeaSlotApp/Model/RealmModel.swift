@@ -59,7 +59,7 @@ class Category: Base {
 class Idea: Base {
     @objc dynamic var ideaId: String? = "IID" + NSUUID().uuidString
     @objc dynamic var ideaName: String? = ""
-    @objc dynamic var categoryName: String? = ""
+    @objc dynamic var categoryId: Int = 0
     //@objc dynamic var userId: String? = ""
     @objc dynamic var operatorId1: String? = "Plus"
     //@objc dynamic var operatorId2: String? = ""

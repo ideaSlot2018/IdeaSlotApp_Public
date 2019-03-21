@@ -52,7 +52,7 @@ class IdeaDetailsViewController: UIViewController {
         
         //set idea's description
         ideaTitle.text = idea?.ideaName
-        categoryName.text = idea?.categoryName
+//        categoryName.text = idea?.categoryName
         wordName1.text = idea?.words[0].word
         wordName2.text = idea?.words[1].word
         detailsTextView.text = idea?.details

@@ -82,7 +82,7 @@ extension IdeasListViewController: UITableViewDataSource{
         cell.delegate = self
         cell.idea = idea
         cell.ideaTitle.text = idea.ideaName
-        cell.categoryTitle.text = idea.categoryName
+//        cell.categoryTitle.text = idea.categoryName
         
         return cell
     }
