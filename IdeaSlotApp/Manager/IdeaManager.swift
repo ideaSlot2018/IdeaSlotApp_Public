@@ -161,13 +161,13 @@ class IdeaManager {
     func delete(idea: Idea) -> Bool{
         
         do {
-            try realm.write {
-                realm.delete(idea)
-            }
-            
             let result = wordManager.delete(word: idea.createdWord!)
             if !result {
                 print("failure ")
+            }
+
+            try realm.write {
+                realm.delete(idea)
             }
             
         } catch {

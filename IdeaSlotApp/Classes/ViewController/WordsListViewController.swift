@@ -281,7 +281,11 @@ extension WordsListViewController: SwipeTableViewCellDelegate{
         deleteAction.image = UIImage(named: "Trash")
         deleteAction.backgroundColor = UIColor.AppColor.deleteBackGroundColor
 
-        return [deleteAction]
+        let word = wordEntities![indexPath.row]
+        if word.ideaFlg == 0 {
+            return [deleteAction]
+        }
+        return []
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
