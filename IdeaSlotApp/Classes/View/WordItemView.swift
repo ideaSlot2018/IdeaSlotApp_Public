@@ -55,16 +55,16 @@ class WordItemView: UIView {
         textfield.isEnabled = false
         
         self.isUserInteractionEnabled = true
-        
-        let doubleTap =  UITapGestureRecognizer(target: self, action: #selector(self.doubleTapAction(sender:)))
-        doubleTap.numberOfTapsRequired = 2
-        doubleTap.numberOfTouchesRequired = 1
-        self.addGestureRecognizer(doubleTap)
-
+//
+//        let doubleTap =  UITapGestureRecognizer(target: self, action: #selector(self.doubleTapAction(sender:)))
+//        doubleTap.numberOfTapsRequired = 2
+//        doubleTap.numberOfTouchesRequired = 1
+//        self.addGestureRecognizer(doubleTap)
+//
         let singleTap = UITapGestureRecognizer(target: self, action: #selector(self.singleTapAction(sender:)))
         singleTap.numberOfTapsRequired = 1
         singleTap.numberOfTouchesRequired = 1
-        singleTap.require(toFail: doubleTap)
+//        singleTap.require(toFail: doubleTap)
         self.addGestureRecognizer(singleTap)
     }
     
@@ -91,11 +91,11 @@ class WordItemView: UIView {
         tapFlg = true
         wordItemViewTapHandler?()
     }
-    
-    @objc func doubleTapAction(sender: UIGestureRecognizer) {
-        tapFlg = false
-        wordItemViewTapHandler?()
-    }
+
+//    @objc func doubleTapAction(sender: UIGestureRecognizer) {
+//        tapFlg = false
+//        wordItemViewTapHandler?()
+//    }
 }
 
 extension WordItemView: UITextFieldDelegate{

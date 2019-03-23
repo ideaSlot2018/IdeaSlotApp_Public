@@ -18,6 +18,7 @@ class WordsListViewController: UIViewController{
     var searchController:UISearchController!
     var filteredWords = [Words]()
     var wordList = [Words]()
+    var linkedIdea:Idea? = nil
     
     let wordManager = WordManager()
     let categoryManager = CategoryManager()
@@ -89,6 +90,17 @@ class WordsListViewController: UIViewController{
         }
         self.definesPresentationContext = true
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "toIdeaDetailsFromWord":
+            let ideaDetailsViewController = segue.destination as! IdeaDetailsViewController
+            ideaDetailsViewController.idea = linkedIdea
+        default:
+            break
+        }
+    }
+
     
 }
 
@@ -185,20 +197,14 @@ extension WordsListViewController: UITableViewDataSource{
             itemView.textfield.font = UIFont.italicSystemFont(ofSize: 25)
             itemView.categorybutton.isEnabled = false
             itemView.wordItemViewTapHandler = { [weak self] in
-                self?.performSegue(withIdentifier: "toIdeaDetails", sender: nil)
+                self!.linkedIdea = words.idea.first
+                self?.performSegue(withIdentifier: "toIdeaDetailsFromWord", sender: nil)
             }
         } else {
             itemView.addBottomBorder(view: itemView.textfield, height: 1.0, color: UIColor.gray.cgColor)
             itemView.textfield.isEnabled = true
-            itemView.wordItemViewTapHandler = { [weak self] in
-//                if itemView.tapFlg {
-//                    itemView.textfield.layer.borderColor = UIColor.orange.cgColor
-//                    itemView.textfield.isEnabled = false
-//                } else {
-//                    itemView.textfield.layer.borderColor = UIColor.gray.cgColor
-//                    itemView.textfield.isEnabled = true
-//                }
-            }
+//            itemView.wordItemViewTapHandler = { [weak self] in
+//            }
         }
         
         itemView.textfield.text = words.word
@@ -211,9 +217,9 @@ extension WordsListViewController: UITableViewDataSource{
             itemView.categoryName = words.category.first?.categoryName
             itemView.beforecategoryName = words.category.first?.categoryName
         } else {
-            itemView.categorybutton.setTitle("No Caegory", for: .normal)
-            itemView.categoryName = "No Caegory"
-            itemView.beforecategoryName = "No Caegory"
+            itemView.categorybutton.setTitle("No Category", for: .normal)
+            itemView.categoryName = "No Category"
+            itemView.beforecategoryName = "No Category"
         }
 
         cell.contentView.addSubview(itemView)
