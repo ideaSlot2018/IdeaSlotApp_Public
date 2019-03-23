@@ -14,7 +14,6 @@ class CategoryManager {
     let realm = try! Realm()
     let wordManager = WordManager()
     
-    
     /*
      get realm categiries results
      @param filterName : String
@@ -81,17 +80,10 @@ class CategoryManager {
             return false
         }
 
-        let newWords = wordManager.convertWordList(category: category, categoryName: newCategoryName)
-        let item: [String: Any] = ["categoryId":category.categoryId,
-                                   "categoryName":newCategoryName,
-                                   "words":newWords,
-                                   "createDate":category.createDate
-        ]
-        
-        let editCategory = Category(value: item)
         do {
             try realm.write {
-                realm.add(editCategory, update: true)
+                category.categoryName = newCategoryName
+                category.updateDate = Date()
             }
         } catch  {
             print("Realm Error, register category")
@@ -107,14 +99,6 @@ class CategoryManager {
      @return : Bool
      */
     func delete(category: Category) -> Bool{
-        let words:Results<Words>? = wordManager.getResultsByLinkedCategory(categoryId: category.categoryId, sort: nil, ascending: nil)
-        let oldCategory:Category = category
-        
-        //convert words
-        for word in words!{
-            let result = wordManager.update(wordName: word.word!, category: nil, wordItem: word, oldCategory: oldCategory)
-            print("convert word:", word.word!, result)
-        }
         
         do {
             try realm.write {
@@ -190,7 +174,7 @@ class CategoryManager {
     func getCategoryMaxId() -> Int {
         var categoryMaxId:Int = 1
         let category = getResultsCategory(filterName: nil, filterItem: nil, sort: nil, ascending: nil)
-        if category != nil {
+        if category != nil && category!.count > 0 {
             categoryMaxId = category!.max(ofProperty: "categoryId")! + 1
         }
         return categoryMaxId

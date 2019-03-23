@@ -13,7 +13,6 @@ class IdeaManager {
     
     let realm = try! Realm()
     let wordManager = WordManager()
-    let categoryManager = CategoryManager()
     
     /*
      get realm words results
@@ -48,8 +47,7 @@ class IdeaManager {
      register idea
      @param new
      */
-    func register(idea:IdeaDto) -> Bool {
-        let category:Category? = categoryManager.findCategoryItem(categoryName: idea.categoryName!)
+    func register(idea:IdeaDto, category:Category?) -> Bool {
         let item: [String:Any]
         
         //check idea name
@@ -70,15 +68,13 @@ class IdeaManager {
                     "categoryId": category!.categoryId,
                     "operatorId1": idea.operator1!,
                     "details": idea.details!,
-                    "words": idea.words,
-                    "createdWord": insertWord
+                    "words": idea.words
             ]
         } else {
             item = ["ideaName": idea.ideaName!,
                     "operatorId1": idea.operator1!,
                     "details": idea.details!,
-                    "words": idea.words,
-                    "createdWord": insertWord
+                    "words": idea.words
             ]
         }
         
@@ -87,6 +83,7 @@ class IdeaManager {
         do {
             try realm.write {
                 realm.add(insertIdea)
+                insertIdea.createdWord = insertWord
                 if category != nil {
                     category?.ideas.append(insertIdea)
                     category?.words.append(insertWord)
@@ -100,6 +97,63 @@ class IdeaManager {
     }
     
     /*
+     update idea
+     @param idea : Idea
+     @param ideaName : String
+     @param details : String
+     @param category : Category
+     @return Bool
+     */
+    func update(idea: Idea, ideaName:String, details:String, category: Category?) -> Bool {
+        var removeIdeaIndex:Int? = nil
+        let oldCategory = idea.category.first
+        
+        print(idea)
+        
+        //check duplicated
+        if ideaName != idea.ideaName {
+            if !checkIncludeIdeaName(ideaname: ideaName, category: category){
+                return false
+            }
+        }
+        //get index of old category
+        if oldCategory != nil {
+            removeIdeaIndex = oldCategory?.ideas.index(matching: "ideaId == %@", idea.ideaId!)
+        }
+        
+        do {
+            try realm.write {
+                if category != nil{
+                    idea.ideaName = ideaName
+                    idea.categoryId = category!.categoryId
+                    idea.details = details
+                    idea.updateDate = Date()
+                    category?.ideas.append(idea)
+                } else {
+                    idea.ideaName = ideaName
+                    idea.categoryId = 0
+                    idea.details = details
+                    idea.updateDate = Date()
+                }
+                if removeIdeaIndex != nil {
+                    oldCategory?.ideas.remove(at: removeIdeaIndex!)
+                    realm.create(Category.self, value: oldCategory!, update: true)
+                }
+            }
+            
+            let result = wordManager.update(wordName: ideaName, category: category, wordItem: idea.createdWord!)
+            if !result {
+                throw NSError(domain: "errorメッセージ", code: -1, userInfo: nil)
+            }
+        } catch {
+            print("Realm Error, update idea")
+            return false
+        }
+        
+        return true
+    }
+    
+    /*
      delete idea
      @param idea : Idea
      @return : Bool
@@ -107,9 +161,15 @@ class IdeaManager {
     func delete(idea: Idea) -> Bool{
         
         do {
+            let result = wordManager.delete(word: idea.createdWord!)
+            if !result {
+                print("failure ")
+            }
+
             try realm.write {
                 realm.delete(idea)
             }
+            
         } catch {
             print("Realm Error, delete idea")
             return false

@@ -64,9 +64,7 @@ class WordsListViewController: UIViewController{
             result = wordManager.insert(wordName: wordName, category: categoryItem)
         }else{
             //update
-            let oldCategory:Category? = wordManager.getResultByWordId(wordId: Id)?.category.first
-            
-            result = wordManager.update(wordName: wordName, category: categoryItem, wordItem: item!, oldCategory: oldCategory)
+            result = wordManager.update(wordName: wordName, category: categoryItem, wordItem: item!)
         }
         print(result)
         tableView.reloadData()
@@ -195,6 +193,7 @@ extension WordsListViewController: UITableViewDataSource{
         //idea ro word
         if words.ideaFlg == 1 {
             itemView.textfield.font = UIFont.italicSystemFont(ofSize: 25)
+            itemView.textfield.isEnabled = false
             itemView.categorybutton.isEnabled = false
             itemView.wordItemViewTapHandler = { [weak self] in
                 self!.linkedIdea = words.idea.first
@@ -282,7 +281,11 @@ extension WordsListViewController: SwipeTableViewCellDelegate{
         deleteAction.image = UIImage(named: "Trash")
         deleteAction.backgroundColor = UIColor.AppColor.deleteBackGroundColor
 
-        return [deleteAction]
+        let word = wordEntities![indexPath.row]
+        if word.ideaFlg == 0 {
+            return [deleteAction]
+        }
+        return []
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {

@@ -114,26 +114,20 @@ class WordManager {
      @param oldCategory : Category
      @return Bool
      */
-    func update(wordName: String, category: Category?, wordItem: Words, oldCategory: Category?) -> Bool{
-        let item: [String: Any]
-        
-        //selected category
-        item = ["wordId": wordItem.wordId!,
-                "word": wordName,
-                "createDate":wordItem.createDate
-        ]
+    func update(wordName: String, category: Category?, wordItem: Words) -> Bool{
+        let oldCategory = wordItem.category.first
         
         var removeWordItemIndex:Int? = nil
         if oldCategory != nil {
             removeWordItemIndex = oldCategory!.words.index(matching: "wordId == %@", wordItem.wordId!)
         }
         
-        let editWord = Words(value: item)
         do {
             try realm.write(){
-                realm.add(editWord, update: true)
+                wordItem.word = wordName
+                wordItem.updateDate = Date()
                 if category != nil{
-                    category!.words.append(editWord)
+                    category!.words.append(wordItem)
                 }
                 if removeWordItemIndex != nil{
                     oldCategory!.words.remove(at: removeWordItemIndex!)
@@ -162,31 +156,6 @@ class WordManager {
             return false
         }
         return true
-    }
-    
-    //update word's category name when category cahnged
-    func convertWordList(category:Category, categoryName:String) -> Array<Words> {
-        var newWords:Array<Words>? = Array()
-        let oldCategory:Category? = category
-        do {
-            try realm.write {
-                category.categoryName = categoryName
-            }
-        } catch  {
-            print("Realm Error, set category name for cnvert")
-            return Array()
-        }
-        
-        let words:Results<Words>? = getResultsByLinkedCategory(categoryId: category.categoryId, sort: nil, ascending: nil)
-        
-        for word in words! {
-            let result = update(wordName: word.word!, category: category, wordItem: word, oldCategory: oldCategory)
-            if result {
-                newWords?.append(word)
-            }
-        }
-        
-        return newWords!
     }
     
 }
