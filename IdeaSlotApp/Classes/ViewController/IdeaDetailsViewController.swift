@@ -12,9 +12,17 @@ import RealmSwift
 class IdeaDetailsViewController: UIViewController {
     
     @IBOutlet weak var ideaTitle: UITextField!
-    @IBOutlet weak var categoryName: UILabel!
     @IBOutlet weak var wordName1: UILabel!
     @IBOutlet weak var wordName2: UILabel!
+    @IBOutlet weak var categoryButton: UIButton!{
+        didSet{
+            categoryButton.layer.masksToBounds = true
+            categoryButton.layer.cornerRadius = 5.0
+            categoryButton.backgroundColor = UIColor.AppColor.buttonColor
+            categoryButton.tintColor = UIColor.AppColor.buttonTextColor
+            categoryButton.titleLabel?.font = UIFont.systemFont(ofSize: 20.0)
+        }
+    }
     @IBOutlet weak var operatorImageView: UIImageView!{
         didSet{
             operatorImageView.contentMode = .scaleAspectFill
@@ -42,10 +50,12 @@ class IdeaDetailsViewController: UIViewController {
         
         //bottom border
         addBottomBorder(view: ideaTitle, height: 1.0, color: UIColor.gray.cgColor)
-        addBottomBorder(view: categoryName, height: 1.0, color: UIColor.gray.cgColor)
         addBottomBorder(view: wordName1, height: 1.0, color: UIColor.gray.cgColor)
         addBottomBorder(view: wordName2, height: 1.0, color: UIColor.gray.cgColor)
-
+        
+        ideaTitle.isEnabled = false
+        categoryButton.isEnabled = false
+        detailsTextView.isEditable = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -55,9 +65,9 @@ class IdeaDetailsViewController: UIViewController {
         //set idea's description
         ideaTitle.text = idea?.ideaName
         if linkedCategory != nil {
-            categoryName.text = linkedCategory?.categoryName
+            categoryButton.setTitle(linkedCategory?.categoryName, for: .normal)
         } else {
-            categoryName.text = "No Category"
+            categoryButton.setTitle("No Category", for: .normal)
         }
         wordName1.text = idea?.words[0].word
         wordName2.text = idea?.words[1].word
