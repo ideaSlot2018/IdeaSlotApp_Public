@@ -107,7 +107,7 @@ class CategoryManager {
      @return : Bool
      */
     func delete(category: Category) -> Bool{
-        let words:Results<Words>? = wordManager.getResultsWords(filterName: "categoryId", filterItem: category.categoryId, sort: nil, ascending: nil)
+        let words:Results<Words>? = wordManager.getResultsByLinkedCategory(categoryId: category.categoryId, sort: nil, ascending: nil)
         let oldCategory:Category = category
         
         //convert words
@@ -162,6 +162,21 @@ class CategoryManager {
      */
     func findCategoryItem(categoryName: String) -> Category? {
         let category = getResultsCategory(filterName: "categoryName", filterItem: categoryName, sort: nil, ascending: nil)?.first
+        if category != nil {
+            return category
+        }
+        return nil
+    }
+    
+    /*
+     return one item Category filter by categoryId
+     @param categiryId : Int
+     @return
+     true -> Category()
+     false -> nil
+     */
+    func findCategoryItem(categoryId: Int) -> Category? {
+        let category = getResultsCategory(filterName: "categoryId", filterItem: categoryId, sort: nil, ascending: nil)?.first
         if category != nil {
             return category
         }

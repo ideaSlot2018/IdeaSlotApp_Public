@@ -15,7 +15,7 @@ class Base: Object{
 }
 
 class User: Base{
-    @objc dynamic var userId: String? = NSUUID().uuidString
+    @objc dynamic var userId: String? = "UID" + NSUUID().uuidString
     @objc dynamic var userName: String? = ""
     @objc dynamic var password: String? = ""
     
@@ -28,14 +28,12 @@ class User: Base{
 }
 
 class Words: Base {
-    @objc dynamic var wordId: String? = NSUUID().uuidString
+    @objc dynamic var wordId: String? = "WID" + NSUUID().uuidString
     @objc dynamic var word: String? = ""
-    @objc dynamic var categoryId: Int = 0
-    @objc dynamic var categoryName: String? = ""
     let category = LinkingObjects(fromType: Category.self, property: "words")
     let idea = LinkingObjects(fromType: Idea.self, property: "createdWord")
     @objc dynamic var userId: String? = ""
-    @objc dynamic var ideaFlag: Int = 0
+    @objc dynamic var ideaFlg: Int = 0
     
     override class func primaryKey() -> String {
         return "wordId"
@@ -59,9 +57,9 @@ class Category: Base {
 }
 
 class Idea: Base {
-    @objc dynamic var ideaId: String? = NSUUID().uuidString
+    @objc dynamic var ideaId: String? = "IID" + NSUUID().uuidString
     @objc dynamic var ideaName: String? = ""
-    @objc dynamic var categoryName: String? = ""
+    @objc dynamic var categoryId: Int = 0
     //@objc dynamic var userId: String? = ""
     @objc dynamic var operatorId1: String? = "Plus"
     //@objc dynamic var operatorId2: String? = ""

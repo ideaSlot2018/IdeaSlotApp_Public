@@ -51,7 +51,7 @@ struct RealmInitializer {
         try! realm.write {
             T.items().forEach { val in
                 realm.add(val, update: true)
-                let category = realm.objects(Category.self).filter("categoryId == %@", val.categoryId)
+                let category = realm.objects(Category.self).filter("categoryId == %@", val.category.first?.categoryId)
                 category.first?.words.append(val)
             }
         }

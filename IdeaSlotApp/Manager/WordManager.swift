@@ -41,6 +41,45 @@ class WordManager {
         return wordsArray
     }
     
+    /*
+     get realm results by linkedobject category
+     @param categoryId : Int
+     @param sort : String
+     @param ascending : Bool
+     @return Results<Words>
+     */
+    func getResultsByLinkedCategory(categoryId: Int, sort:String?, ascending:Bool?) -> Results<Words>? {
+        
+        //add filter
+        guard var wordsArray:Results<Words> = realm.objects(Words.self).filter("ANY category.categoryId IN %@", [categoryId])
+             else {
+            print("Realm Error, select words")
+            return nil
+        }
+
+        //add sort
+        if sort != nil {
+            if !sort!.isEmpty {
+                wordsArray = wordsArray.sorted(byKeyPath: sort!, ascending: ascending!)
+            }
+        }
+        return wordsArray
+    }
+    
+    /*
+     get realm result one by wordId
+     @param wordId : String
+     @return Words
+     */
+    func getResultByWordId(wordId: String) -> Words? {
+        guard let word:Words = realm.object(ofType: Words.self, forPrimaryKey: wordId)
+            else {
+            print("Realm Error, select words")
+            return nil
+        }
+        return word
+    }
+    
     /* insert new word
      @param text : String
      @param categoryName : String
@@ -50,15 +89,7 @@ class WordManager {
         var item: [String: Any]? = nil
         
         //selected category
-        if category != nil {
-            item = ["word": wordName,
-                    "categoryId": category!.categoryId,
-                    "categoryName": category!.categoryName]
-        }else{
-            item = ["word": wordName,
-                    "categoryId": 0,
-                    "categoryName": "No Category"]
-        }
+        item = ["word": wordName]
         
         let newWord = Words(value: item!)
         do {
@@ -87,20 +118,10 @@ class WordManager {
         let item: [String: Any]
         
         //selected category
-        if category != nil {
-            item = ["wordId": wordItem.wordId!,
-                    "word": wordName,
-                    "categoryId": category!.categoryId,
-                    "categoryName": category!.categoryName,
-                    "createDate":wordItem.createDate
-            ]
-        }else{
-            item = ["wordId": wordItem.wordId!,
-                    "word": wordName,
-                    "categoryName": "No Category",
-                    "createDate":wordItem.createDate
-            ]
-        }
+        item = ["wordId": wordItem.wordId!,
+                "word": wordName,
+                "createDate":wordItem.createDate
+        ]
         
         var removeWordItemIndex:Int? = nil
         if oldCategory != nil {
@@ -156,7 +177,7 @@ class WordManager {
             return Array()
         }
         
-        let words:Results<Words>? = getResultsWords(filterName: "categoryId", filterItem: category.categoryId, sort: nil, ascending: nil)
+        let words:Results<Words>? = getResultsByLinkedCategory(categoryId: category.categoryId, sort: nil, ascending: nil)
         
         for word in words! {
             let result = update(wordName: word.word!, category: category, wordItem: word, oldCategory: oldCategory)

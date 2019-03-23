@@ -13,6 +13,7 @@ import SwipeCellKit
 class IdeasListViewController: UIViewController {
     
     let ideaManager = IdeaManager()
+    let categoryManager = CategoryManager()
     
     var ideaEntites:Results<Idea>? = nil
     @IBOutlet weak var tableView: UITableView!
@@ -78,11 +79,16 @@ extension IdeasListViewController: UITableViewDataSource{
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let idea:Idea = ideaEntites![indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: "IdeaItem", for: indexPath) as! IdeaTableViewCell
+        let linkedCategory = categoryManager.findCategoryItem(categoryId: idea.categoryId)
         
         cell.delegate = self
         cell.idea = idea
         cell.ideaTitle.text = idea.ideaName
-        cell.categoryTitle.text = idea.categoryName
+        if linkedCategory != nil {
+            cell.categoryTitle.text = linkedCategory?.categoryName
+        } else {
+            cell.categoryTitle.text = "No Category"
+        }
         
         return cell
     }

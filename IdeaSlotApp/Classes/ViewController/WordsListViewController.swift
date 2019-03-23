@@ -18,6 +18,7 @@ class WordsListViewController: UIViewController{
     var searchController:UISearchController!
     var filteredWords = [Words]()
     var wordList = [Words]()
+    var linkedIdea:Idea? = nil
     
     let wordManager = WordManager()
     let categoryManager = CategoryManager()
@@ -42,7 +43,7 @@ class WordsListViewController: UIViewController{
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         if category != nil {
-            wordEntities = wordManager.getResultsWords(filterName: "categoryId", filterItem: category!.categoryId, sort: "updateDate", ascending: false)
+            wordEntities = wordManager.getResultsByLinkedCategory(categoryId: category!.categoryId, sort: "updateDate", ascending: false)
         }else{
             wordEntities = wordManager.getResultsWords(filterName: nil, filterItem: nil, sort: "updateDate", ascending: false)
         }
@@ -54,23 +55,17 @@ class WordsListViewController: UIViewController{
     }
     
     func registerWord(Id: String, wordName: String, categoryName: String){
-        var wordItem:Results<Words>? = nil
-        var item:Words? = nil
+        let item:Words? = wordManager.getResultByWordId(wordId: Id)
         let categoryItem:Category? = categoryManager.findCategoryItem(categoryName: categoryName)
         var result:Bool = false
-        
-        //No selected category
-        if !categoryName.isEmpty{
-            wordItem = wordManager.getResultsWords(filterName: "wordId", filterItem: Id, sort: nil, ascending: nil)
-            item = wordItem?.first
-        }
         
         if item == nil{
             //register
             result = wordManager.insert(wordName: wordName, category: categoryItem)
         }else{
             //update
-            let oldCategory:Category? = categoryManager.findCategoryItem(categoryName: item!.categoryName!)
+            let oldCategory:Category? = wordManager.getResultByWordId(wordId: Id)?.category.first
+            
             result = wordManager.update(wordName: wordName, category: categoryItem, wordItem: item!, oldCategory: oldCategory)
         }
         print(result)
@@ -96,6 +91,17 @@ class WordsListViewController: UIViewController{
         self.definesPresentationContext = true
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        switch segue.identifier {
+        case "toIdeaDetailsFromWord":
+            let ideaDetailsViewController = segue.destination as! IdeaDetailsViewController
+            ideaDetailsViewController.idea = linkedIdea
+        default:
+            break
+        }
+    }
+
+    
 }
 
 /**
@@ -117,6 +123,7 @@ extension WordsListViewController: UITableViewDelegate{
         if category != nil{
             item.categorybutton.setTitle(category?.categoryName, for: .normal)
         }
+        item.addBottomBorder(view: item.textfield, height: 1.0, color: UIColor.gray.cgColor)
         
         if #available(iOS 11.0, *) {
             headerview.frame = CGRect(x: 0, y: 0, width: self.view.frame.size.width, height: 55)
@@ -176,23 +183,46 @@ extension WordsListViewController: UITableViewDataSource{
         var itemView = WordItemView()
         itemView = UINib(nibName: "WordItemView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! WordItemView
         itemView.frame = CGRect(x: 0, y: 0, width: cell.frame.size.width, height: cell.frame.size.height)
-        
+        itemView.delegate = self
+        itemView.dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 0)
+        //filterd or not
         if isFiltering(){
             words = filteredWords[indexPath.row]
         }else{
             words = wordEntities![indexPath.row]
         }
         
-        itemView.delegate = self
-        itemView.dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 0)
+        //idea ro word
+        if words.ideaFlg == 1 {
+            itemView.textfield.font = UIFont.italicSystemFont(ofSize: 25)
+            itemView.categorybutton.isEnabled = false
+            itemView.wordItemViewTapHandler = { [weak self] in
+                self!.linkedIdea = words.idea.first
+                self?.performSegue(withIdentifier: "toIdeaDetailsFromWord", sender: nil)
+            }
+        } else {
+            itemView.addBottomBorder(view: itemView.textfield, height: 1.0, color: UIColor.gray.cgColor)
+            itemView.textfield.isEnabled = true
+//            itemView.wordItemViewTapHandler = { [weak self] in
+//            }
+        }
+        
         itemView.textfield.text = words.word
         itemView.wordId = words.wordId
         itemView.beforeWord = words.word
-        itemView.categorybutton.setTitle(words.categoryName, for: .normal)
-        itemView.categoryName = words.categoryName
-        itemView.beforecategoryName = words.categoryName
-        cell.contentView.addSubview(itemView)
         
+        //set category name
+        if words.category.first != nil {
+            itemView.categorybutton.setTitle(words.category.first?.categoryName, for: .normal)
+            itemView.categoryName = words.category.first?.categoryName
+            itemView.beforecategoryName = words.category.first?.categoryName
+        } else {
+            itemView.categorybutton.setTitle("No Category", for: .normal)
+            itemView.categoryName = "No Category"
+            itemView.beforecategoryName = "No Category"
+        }
+
+        cell.contentView.addSubview(itemView)
         return cell
     }
 }
