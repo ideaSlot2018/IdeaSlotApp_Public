@@ -158,21 +158,4 @@ class WordManager {
         return true
     }
     
-    /*
-     update word when category changed
-     @param category : Category
-     @return Bool
-     */
-    func convertWordList(category:Category) -> Bool {
-        var result:Bool = true
-        let words:Results<Words>? = getResultsByLinkedCategory(categoryId: category.categoryId, sort: nil, ascending: nil)
-        
-        for word in words! {
-            if !update(wordName: word.word!, category: category, wordItem: word) {
-                result = false
-            }
-        }
-        return result
-    }
-    
 }

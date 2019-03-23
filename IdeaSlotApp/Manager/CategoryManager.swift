@@ -13,7 +13,6 @@ class CategoryManager {
     
     let realm = try! Realm()
     let wordManager = WordManager()
-//    let ideaManager = IdeaManager()
     
     /*
      get realm categiries results
@@ -86,12 +85,6 @@ class CategoryManager {
                 category.categoryName = newCategoryName
                 category.updateDate = Date()
             }
-            if !wordManager.convertWordList(category: category) {
-                return false
-            }
-//            if !ideaManager.convertIdeaList(category: category) {
-//                return false
-//            }
         } catch  {
             print("Realm Error, register category")
             return false
@@ -106,13 +99,6 @@ class CategoryManager {
      @return : Bool
      */
     func delete(category: Category) -> Bool{
-        let words:Results<Words>? = wordManager.getResultsByLinkedCategory(categoryId: category.categoryId, sort: nil, ascending: nil)
-        
-        //convert words
-        for word in words!{
-            let result = wordManager.update(wordName: word.word!, category: nil, wordItem: word)
-            print("convert word:", word.word!, result)
-        }
         
         do {
             try realm.write {
