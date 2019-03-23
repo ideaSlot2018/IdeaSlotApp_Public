@@ -65,7 +65,9 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         ideaDto?.details = formView.detailsTextView.text
         
         let ideaManager = IdeaManager()
-        let result:Bool = ideaManager.register(idea: ideaDto!)
+        let categoryManager = CategoryManager()
+        let category = categoryManager.findCategoryItem(categoryName: ideaDto!.categoryName!)
+        let result:Bool = ideaManager.register(idea: ideaDto!, category: category)
         if result {
             transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
                 guard let me = self else { return }

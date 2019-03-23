@@ -89,6 +89,9 @@ class CategoryManager {
             if !wordManager.convertWordList(category: category) {
                 return false
             }
+//            if !ideaManager.convertIdeaList(category: category) {
+//                return false
+//            }
         } catch  {
             print("Realm Error, register category")
             return false

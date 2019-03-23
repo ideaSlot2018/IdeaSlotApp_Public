@@ -48,8 +48,8 @@ class IdeaManager {
      register idea
      @param new
      */
-    func register(idea:IdeaDto) -> Bool {
-        let category:Category? = categoryManager.findCategoryItem(categoryName: idea.categoryName!)
+    func register(idea:IdeaDto, category:Category?) -> Bool {
+//        let category:Category? = categoryManager.findCategoryItem(categoryName: idea.categoryName!)
         let item: [String:Any]
         
         //check idea name
@@ -202,4 +202,20 @@ class IdeaManager {
         return true
     }
     
+    /*
+     update idea when category changed
+     @param category : Category
+     @return Bool
+     */
+//    func convertIdeaList(category: Category) -> Bool {
+//        var result:Bool = true
+//        let ideas:Results<Idea>? = getResultsIdeas(filterName: "categoryId", filterItem: category.categoryId, sort: nil, ascending: nil)
+//        
+//        for idea in ideas! {
+//            if !update(idea: idea, ideaName: idea.ideaName!, details: idea.details!, category: category) {
+//                result = false
+//            }
+//        }
+//        return result
+//    }
 }

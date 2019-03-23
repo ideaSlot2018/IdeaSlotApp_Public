@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         createMenuView()
         DropDown.startListeningToKeyboard()
         
-//        print(Realm.Configuration.defaultConfiguration.fileURL!)
+        print(Realm.Configuration.defaultConfiguration.fileURL!)
         
         return true
     }
