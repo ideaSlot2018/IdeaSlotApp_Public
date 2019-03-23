@@ -193,7 +193,7 @@
                                 </constraints>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Details:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lBg-HY-lT2">
-                                <rect key="frame" x="20" y="409" width="73" height="27"/>
+                                <rect key="frame" x="20" y="408" width="73" height="28"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="22.5"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -215,6 +215,21 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tpF-oX-Vtq">
                                 <rect key="frame" x="107" y="194" width="200" height="30"/>
+                                <connections>
+                                    <action selector="categoryButtonAction:" destination="WN8-F4-Cnb" eventType="touchUpInside" id="sQN-ao-XiO"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DPL-fb-x0B">
+                                <rect key="frame" x="302" y="407" width="30" height="30"/>
+                                <connections>
+                                    <action selector="editButtonAction:" destination="WN8-F4-Cnb" eventType="touchUpInside" id="d6D-J0-k2K"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sk6-0n-xlK">
+                                <rect key="frame" x="364" y="407" width="30" height="30"/>
+                                <connections>
+                                    <action selector="registerButtonAction:" destination="WN8-F4-Cnb" eventType="touchUpInside" id="d0f-hR-n05"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -225,20 +240,27 @@
                             <constraint firstItem="jYP-cz-e6B" firstAttribute="top" secondItem="tpF-oX-Vtq" secondAttribute="bottom" constant="19" id="3Xp-vH-bhz"/>
                             <constraint firstItem="jla-ln-T7v" firstAttribute="top" secondItem="5bz-JT-oce" secondAttribute="bottom" constant="8" symbolic="YES" id="56g-ak-XEO"/>
                             <constraint firstItem="tpF-oX-Vtq" firstAttribute="top" secondItem="tfK-Xn-gnv" secondAttribute="bottom" constant="8" symbolic="YES" id="5QO-Sg-NI8"/>
+                            <constraint firstItem="DPL-fb-x0B" firstAttribute="centerY" secondItem="lBg-HY-lT2" secondAttribute="centerY" id="5eV-j1-nZ9"/>
+                            <constraint firstItem="sk6-0n-xlK" firstAttribute="baseline" secondItem="DPL-fb-x0B" secondAttribute="baseline" id="68M-ps-IOG"/>
+                            <constraint firstItem="sk6-0n-xlK" firstAttribute="trailing" secondItem="hhj-8F-Ptm" secondAttribute="trailing" id="6PL-il-13b"/>
                             <constraint firstItem="jYP-cz-e6B" firstAttribute="leading" secondItem="lBg-HY-lT2" secondAttribute="leading" id="6vP-xG-r9v"/>
                             <constraint firstItem="Dpg-vJ-xAP" firstAttribute="top" secondItem="jYP-cz-e6B" secondAttribute="bottom" constant="8" symbolic="YES" id="9Ke-6y-acl"/>
                             <constraint firstItem="tpF-oX-Vtq" firstAttribute="leading" secondItem="Dpg-vJ-xAP" secondAttribute="leading" id="Ba4-am-hsb"/>
+                            <constraint firstItem="sk6-0n-xlK" firstAttribute="firstBaseline" secondItem="DPL-fb-x0B" secondAttribute="firstBaseline" id="BkP-Up-I4h"/>
                             <constraint firstItem="Dpg-vJ-xAP" firstAttribute="leading" secondItem="jla-ln-T7v" secondAttribute="leading" id="CMU-2g-rzO"/>
+                            <constraint firstItem="hhj-8F-Ptm" firstAttribute="top" secondItem="DPL-fb-x0B" secondAttribute="bottom" constant="7" id="DtX-wW-L4T"/>
                             <constraint firstItem="5bz-JT-oce" firstAttribute="top" secondItem="Dpg-vJ-xAP" secondAttribute="bottom" constant="8" symbolic="YES" id="FGY-92-f4Z"/>
                             <constraint firstItem="BSb-R0-nvo" firstAttribute="leading" secondItem="tpF-oX-Vtq" secondAttribute="leading" id="FSR-qV-Qnx"/>
                             <constraint firstItem="lBg-HY-lT2" firstAttribute="leading" secondItem="hhj-8F-Ptm" secondAttribute="leading" id="LG0-EY-GnO"/>
                             <constraint firstItem="hhj-8F-Ptm" firstAttribute="top" secondItem="jla-ln-T7v" secondAttribute="bottom" constant="59" id="Ujp-IT-TnH"/>
                             <constraint firstItem="yq2-Hd-xCF" firstAttribute="leading" secondItem="tfK-Xn-gnv" secondAttribute="leading" id="Ylg-B4-lwu"/>
                             <constraint firstItem="yq2-Hd-xCF" firstAttribute="top" secondItem="m6U-nw-NV7" secondAttribute="bottom" constant="49" id="abq-1j-Mo9"/>
+                            <constraint firstItem="sk6-0n-xlK" firstAttribute="leading" secondItem="DPL-fb-x0B" secondAttribute="trailing" constant="32" id="boC-W5-Apd"/>
                             <constraint firstItem="tpF-oX-Vtq" firstAttribute="trailing" secondItem="Dpg-vJ-xAP" secondAttribute="trailing" id="d1i-gU-qVi"/>
                             <constraint firstItem="tfK-Xn-gnv" firstAttribute="top" secondItem="yq2-Hd-xCF" secondAttribute="bottom" constant="63" id="eh4-XO-RAr"/>
                             <constraint firstItem="tfK-Xn-gnv" firstAttribute="leading" secondItem="jYP-cz-e6B" secondAttribute="leading" id="ic9-FQ-wwi"/>
                             <constraint firstItem="Dpg-vJ-xAP" firstAttribute="trailing" secondItem="jla-ln-T7v" secondAttribute="trailing" id="j6r-xt-GUP"/>
+                            <constraint firstItem="sk6-0n-xlK" firstAttribute="top" secondItem="DPL-fb-x0B" secondAttribute="top" id="l0g-mK-5Eq"/>
                             <constraint firstItem="hhj-8F-Ptm" firstAttribute="trailing" secondItem="hu0-yY-6jh" secondAttribute="trailingMargin" id="lSQ-wE-D7q"/>
                             <constraint firstItem="tfK-Xn-gnv" firstAttribute="top" secondItem="BSb-R0-nvo" secondAttribute="bottom" constant="31" id="lYd-xn-0kk"/>
                             <constraint firstItem="BSb-R0-nvo" firstAttribute="leading" secondItem="hu0-yY-6jh" secondAttribute="leadingMargin" constant="87" id="p2g-XA-WWf"/>
@@ -251,8 +273,10 @@
                     <connections>
                         <outlet property="categoryButton" destination="tpF-oX-Vtq" id="GcN-3B-pVJ"/>
                         <outlet property="detailsTextView" destination="hhj-8F-Ptm" id="Yk0-ZB-HNO"/>
+                        <outlet property="editButton" destination="DPL-fb-x0B" id="hh6-0M-263"/>
                         <outlet property="ideaTitle" destination="BSb-R0-nvo" id="WfR-T5-aB6"/>
                         <outlet property="operatorImageView" destination="5bz-JT-oce" id="AFm-6I-LDo"/>
+                        <outlet property="registerButton" destination="sk6-0n-xlK" id="YV9-Wu-Ae5"/>
                         <outlet property="wordName1" destination="Dpg-vJ-xAP" id="mjY-8u-rdg"/>
                         <outlet property="wordName2" destination="jla-ln-T7v" id="Ucj-Gt-KW8"/>
                     </connections>

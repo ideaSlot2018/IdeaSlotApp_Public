@@ -37,6 +37,18 @@ class IdeaDetailsViewController: UIViewController {
             detailsTextView.isEditable = false
         }
     }
+    @IBOutlet weak var editButton: UIButton!{
+        didSet{
+            editButton.setImage(UIImage(named: "Edit"), for: .normal)
+            editButton.tintColor = UIColor.gray
+        }
+    }
+    @IBOutlet weak var registerButton: UIButton!{
+        didSet{
+            registerButton.setImage(UIImage(named: "Done"), for: .normal)
+            registerButton.tintColor = UIColor.green
+        }
+    }
     
     var operatorImage:UIImage? = nil
     var idea:Idea? = nil
@@ -53,9 +65,8 @@ class IdeaDetailsViewController: UIViewController {
         addBottomBorder(view: wordName1, height: 1.0, color: UIColor.gray.cgColor)
         addBottomBorder(view: wordName2, height: 1.0, color: UIColor.gray.cgColor)
         
-        ideaTitle.isEnabled = false
-        categoryButton.isEnabled = false
-        detailsTextView.isEditable = false
+        switchEnabled(editable: false)
+        registerButton.isEnabled = false
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -78,6 +89,26 @@ class IdeaDetailsViewController: UIViewController {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
+    }
+    @IBAction func categoryButtonAction(_ sender: Any) {
+    }
+    @IBAction func editButtonAction(_ sender: Any) {
+        if registerButton.isEnabled {
+            switchEnabled(editable: false)
+        } else {
+            switchEnabled(editable: true)
+        }
+    }
+    @IBAction func registerButtonAction(_ sender: Any) {
+        //update idea
+        switchEnabled(editable: false)
+    }
+    
+    func switchEnabled(editable:Bool) {
+        ideaTitle.isEnabled = editable
+        categoryButton.isEnabled = editable
+        detailsTextView.isEditable = editable
+        registerButton.isEnabled = editable
     }
     
 }
