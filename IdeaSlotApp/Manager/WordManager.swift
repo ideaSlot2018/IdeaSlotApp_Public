@@ -158,28 +158,21 @@ class WordManager {
         return true
     }
     
-    //update word's category name when category cahnged
-    func convertWordList(category:Category, categoryName:String) -> Array<Words> {
-        var newWords:Array<Words>? = Array()
-        do {
-            try realm.write {
-                category.categoryName = categoryName
-            }
-        } catch  {
-            print("Realm Error, set category name for cnvert")
-            return Array()
-        }
-        
+    /*
+     update word when category changed
+     @param category : Category
+     @return Bool
+     */
+    func convertWordList(category:Category) -> Bool {
+        var result:Bool = true
         let words:Results<Words>? = getResultsByLinkedCategory(categoryId: category.categoryId, sort: nil, ascending: nil)
         
         for word in words! {
-            let result = update(wordName: word.word!, category: category, wordItem: word)
-            if result {
-                newWords?.append(word)
+            if !update(wordName: word.word!, category: category, wordItem: word) {
+                result = false
             }
         }
-        
-        return newWords!
+        return result
     }
     
 }
