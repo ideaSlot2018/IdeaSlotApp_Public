@@ -64,9 +64,7 @@ class WordsListViewController: UIViewController{
             result = wordManager.insert(wordName: wordName, category: categoryItem)
         }else{
             //update
-            let oldCategory:Category? = wordManager.getResultByWordId(wordId: Id)?.category.first
-            
-            result = wordManager.update(wordName: wordName, category: categoryItem, wordItem: item!, oldCategory: oldCategory)
+            result = wordManager.update(wordName: wordName, category: categoryItem, wordItem: item!)
         }
         print(result)
         tableView.reloadData()

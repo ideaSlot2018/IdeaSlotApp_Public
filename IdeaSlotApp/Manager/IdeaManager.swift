@@ -143,7 +143,7 @@ class IdeaManager {
                 }
             }
             
-            let result = wordManager.update(wordName: ideaName, category: category, wordItem: idea.createdWord!, oldCategory: oldCategory)
+            let result = wordManager.update(wordName: ideaName, category: category, wordItem: idea.createdWord!)
             if !result {
                 throw NSError(domain: "errorメッセージ", code: -1, userInfo: nil)
             }

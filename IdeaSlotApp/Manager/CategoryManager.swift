@@ -108,11 +108,10 @@ class CategoryManager {
      */
     func delete(category: Category) -> Bool{
         let words:Results<Words>? = wordManager.getResultsByLinkedCategory(categoryId: category.categoryId, sort: nil, ascending: nil)
-        let oldCategory:Category = category
         
         //convert words
         for word in words!{
-            let result = wordManager.update(wordName: word.word!, category: nil, wordItem: word, oldCategory: oldCategory)
+            let result = wordManager.update(wordName: word.word!, category: nil, wordItem: word)
             print("convert word:", word.word!, result)
         }
         
