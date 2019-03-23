@@ -120,6 +120,7 @@ class WordManager {
         //selected category
         item = ["wordId": wordItem.wordId!,
                 "word": wordName,
+                "ideaFlg":wordItem.ideaFlg,
                 "createDate":wordItem.createDate
         ]
         

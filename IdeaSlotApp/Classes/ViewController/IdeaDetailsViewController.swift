@@ -52,8 +52,10 @@ class IdeaDetailsViewController: UIViewController {
     
     var operatorImage:UIImage? = nil
     var idea:Idea? = nil
+    var categoryName: String? = nil
     
     let categoryManager = CategoryManager()
+    let ideaManager = IdeaManager()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -77,8 +79,10 @@ class IdeaDetailsViewController: UIViewController {
         ideaTitle.text = idea?.ideaName
         if linkedCategory != nil {
             categoryButton.setTitle(linkedCategory?.categoryName, for: .normal)
+            categoryName = linkedCategory?.categoryName
         } else {
             categoryButton.setTitle("No Category", for: .normal)
+            categoryName = "No Category"
         }
         wordName1.text = idea?.words[0].word
         wordName2.text = idea?.words[1].word
@@ -100,8 +104,13 @@ class IdeaDetailsViewController: UIViewController {
         }
     }
     @IBAction func registerButtonAction(_ sender: Any) {
-        //update idea
-        switchEnabled(editable: false)
+        let newCategory = categoryManager.findCategoryItem(categoryName: categoryName!)
+        let result = ideaManager.update(idea: idea!, ideaName: ideaTitle!.text!, details: detailsTextView!.text, category: newCategory)
+        if result {
+            switchEnabled(editable: false)
+        } else {
+            print("failure")
+        }
     }
     
     func switchEnabled(editable:Bool) {

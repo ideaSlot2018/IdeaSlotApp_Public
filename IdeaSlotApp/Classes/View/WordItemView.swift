@@ -52,7 +52,6 @@ class WordItemView: UIView {
     override func awakeFromNib() {
         super.awakeFromNib()
         setDropDown(button: categorybutton, dropdown: dropdown)
-        textfield.isEnabled = false
         
         self.isUserInteractionEnabled = true
 //

@@ -195,6 +195,7 @@ extension WordsListViewController: UITableViewDataSource{
         //idea ro word
         if words.ideaFlg == 1 {
             itemView.textfield.font = UIFont.italicSystemFont(ofSize: 25)
+            itemView.textfield.isEnabled = false
             itemView.categorybutton.isEnabled = false
             itemView.wordItemViewTapHandler = { [weak self] in
                 self!.linkedIdea = words.idea.first
