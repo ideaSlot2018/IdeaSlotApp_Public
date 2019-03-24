@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import DropDown
 
 class IdeaDetailsViewController: UIViewController {
     
@@ -54,6 +55,7 @@ class IdeaDetailsViewController: UIViewController {
     var idea:Idea? = nil
     var categoryName: String? = nil
     
+    let dropdown = DropDown()
     let categoryManager = CategoryManager()
     let ideaManager = IdeaManager()
 
@@ -61,6 +63,8 @@ class IdeaDetailsViewController: UIViewController {
         super.viewDidLoad()
         setNavigationBarTitle()
         customBackButton()
+        setDropDown(button: categoryButton, dropdown: dropdown)
+        dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 0)
         
         //bottom border
         addBottomBorder(view: ideaTitle, height: 1.0, color: UIColor.gray.cgColor)
@@ -95,6 +99,7 @@ class IdeaDetailsViewController: UIViewController {
         super.didReceiveMemoryWarning()
     }
     @IBAction func categoryButtonAction(_ sender: Any) {
+        dropdown.show()
     }
     @IBAction func editButtonAction(_ sender: Any) {
         if registerButton.isEnabled {
@@ -120,4 +125,12 @@ class IdeaDetailsViewController: UIViewController {
         registerButton.isEnabled = editable
     }
     
+    //set drop down function
+    func setDropDown(button:UIButton, dropdown:DropDown){
+        dropdown.anchorView = button
+        dropdown.selectionAction = {(index, item) in
+            button.setTitle(item, for: .normal)
+            self.categoryName = item
+        }
+    }
 }
