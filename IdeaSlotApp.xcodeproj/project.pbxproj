@@ -13,6 +13,9 @@
 		CE3D1C2722334EF90014F28F /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D1C2622334EF90014F28F /* CategoryManager.swift */; };
 		CE3D1C2922334F230014F28F /* IdeaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D1C2822334F230014F28F /* IdeaManager.swift */; };
 		CE43D50021BB9C540089764A /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */; };
+		CE47BF1C224740B500F85D5D /* IdeaDeleteAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47BF1B224740B500F85D5D /* IdeaDeleteAlertView.swift */; };
+		CE47BF1E224741F900F85D5D /* IdeaDeleteAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE47BF1D224741F900F85D5D /* IdeaDeleteAlertView.xib */; };
+		CE47BF2022474C2300F85D5D /* IdeaDeleteAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47BF1F22474C2300F85D5D /* IdeaDeleteAlertViewController.swift */; };
 		CE4B2BE2218D627F009A94B2 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */; };
 		CE4BD71522191C5200878860 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BD71422191C5200878860 /* UIView.swift */; };
 		CE5585832115701600E66A6C /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5585822115701600E66A6C /* RealmModel.swift */; };
@@ -81,6 +84,9 @@
 		CE3D1C2622334EF90014F28F /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		CE3D1C2822334F230014F28F /* IdeaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaManager.swift; sourceTree = "<group>"; };
 		CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
+		CE47BF1B224740B500F85D5D /* IdeaDeleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDeleteAlertView.swift; sourceTree = "<group>"; };
+		CE47BF1D224741F900F85D5D /* IdeaDeleteAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaDeleteAlertView.xib; sourceTree = "<group>"; };
+		CE47BF1F22474C2300F85D5D /* IdeaDeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDeleteAlertViewController.swift; sourceTree = "<group>"; };
 		CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = Carthage/Build/iOS/SlideMenuControllerSwift.framework; sourceTree = "<group>"; };
 		CE4BD71422191C5200878860 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
 		CE5585822115701600E66A6C /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
@@ -343,6 +349,7 @@
 				CEFA63FB21C6480600460E88 /* CategoryRegisterFormView.swift */,
 				CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */,
 				CE62C4CB21ECC632003BDE0B /* IdeaRegisterFormView.swift */,
+				CE47BF1B224740B500F85D5D /* IdeaDeleteAlertView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -353,6 +360,7 @@
 				CE79C6A121CA884B00B3BC63 /* CategoryRegisterFormViewController.swift */,
 				CE5B626021E07EF4006D428D /* CategoryDeleteAlertViewController.swift */,
 				CE929FDD22114D4C006634A6 /* IdeaRegisterFormViewController.swift */,
+				CE47BF1F22474C2300F85D5D /* IdeaDeleteAlertViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -381,6 +389,7 @@
 				CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */,
 				CE62C4CD21ECC650003BDE0B /* IdeaRegisterFormView.xib */,
 				CEB1162222224AC50087226B /* IdeaItemCell.xib */,
+				CE47BF1D224741F900F85D5D /* IdeaDeleteAlertView.xib */,
 			);
 			path = Idea;
 			sourceTree = "<group>";
@@ -514,6 +523,7 @@
 				CE7C06F321D9D260002ECE6E /* LaunchScreen.storyboard in Resources */,
 				CEBBC64F21DCA66900DA33BC /* IdeaSlotPickerView.xib in Resources */,
 				CE8B79FE21047601009BD29F /* Assets.xcassets in Resources */,
+				CE47BF1E224741F900F85D5D /* IdeaDeleteAlertView.xib in Resources */,
 				CE8B79FC210475FF009BD29F /* Main.storyboard in Resources */,
 				CEB1162322224AC50087226B /* IdeaItemCell.xib in Resources */,
 			);
@@ -612,6 +622,7 @@
 				CE3D1C2722334EF90014F28F /* CategoryManager.swift in Sources */,
 				CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */,
 				CE4BD71522191C5200878860 /* UIView.swift in Sources */,
+				CE47BF1C224740B500F85D5D /* IdeaDeleteAlertView.swift in Sources */,
 				CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */,
 				CED3DB1F215F5939008B6A0D /* IdeaDetailsViewController.swift in Sources */,
 				CEEDE3ED2143929C00D05F61 /* SlideMenuViewController.swift in Sources */,
@@ -620,6 +631,7 @@
 				CE8B79F7210475FF009BD29F /* AppDelegate.swift in Sources */,
 				CE918FE521995B99001C6B95 /* UIColor.swift in Sources */,
 				CE5A635B212948BC007E4887 /* CategorySeed.swift in Sources */,
+				CE47BF2022474C2300F85D5D /* IdeaDeleteAlertViewController.swift in Sources */,
 				CE5E1F43211FFE8800523D96 /* IdeasListViewController.swift in Sources */,
 				CE988D43215D1F97000B1345 /* IdeaTableViewCell.swift in Sources */,
 				CE3D1C2922334F230014F28F /* IdeaManager.swift in Sources */,
