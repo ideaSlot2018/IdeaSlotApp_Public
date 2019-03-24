@@ -9,6 +9,7 @@
 import UIKit
 import RealmSwift
 import SwipeCellKit
+import PopupWindow
 
 class IdeasListViewController: UIViewController {
     
@@ -51,6 +52,12 @@ class IdeasListViewController: UIViewController {
         default:
             break
         }
+    }
+    
+    func setDeleteAlert(idea:Idea) {
+        let ideaDeleteAlertViewController = IdeaDeleteAlertViewController()
+        ideaDeleteAlertViewController.idea = idea
+        PopupWindowManager.shared.changeKeyWindow(rootViewController: ideaDeleteAlertViewController)
     }
     
 }
@@ -105,14 +112,15 @@ extension IdeasListViewController: SwipeTableViewCellDelegate{
     func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> [SwipeAction]? {
         guard orientation == .right else { return nil }
         
-        let editAction = SwipeAction(style: .default, title: "Delete") { action, indexPath in
-            let result = self.ideaManager.delete(idea: self.ideaEntites![indexPath.row])
+        let deleteAction = SwipeAction(style: .default, title: "Delete") { action, indexPath in
+            self.setDeleteAlert(idea: self.ideaEntites![indexPath.row])
             tableView.reloadData()
         }
-        editAction.image = UIImage(named: "Trash")
-        editAction.backgroundColor = UIColor.AppColor.deleteBackGroundColor
+        deleteAction.transitionDelegate = ScaleTransition.default
+        deleteAction.image = UIImage(named: "Trash")
+        deleteAction.backgroundColor = UIColor.AppColor.deleteBackGroundColor
         
-        return [editAction]
+        return [deleteAction]
     }
     
     func tableView(_ tableView: UITableView, editActionsOptionsForRowAt indexPath: IndexPath, for orientation: SwipeActionsOrientation) -> SwipeOptions {
