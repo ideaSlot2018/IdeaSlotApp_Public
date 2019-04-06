@@ -64,7 +64,7 @@ class Idea: Base {
     @objc dynamic var operatorId1: String? = "Plus"
     //@objc dynamic var operatorId2: String? = ""
     @objc dynamic var details: String? = ""
-    let words = List<Words>(repeating: Words(), count: 2)
+    let words = List<Words>()
     let category = LinkingObjects(fromType: Category.self, property: "ideas")
     @objc dynamic var createdWord: Words? = nil
     
