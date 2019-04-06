@@ -16,7 +16,7 @@ class IdeaDto: Object {
     var categoryName: String? = ""
     var operator1: String? = "Plus"
     var details: String? = nil
-    let words = List<Words>(repeating: Words(), count: 2)
+    var words = [Words](repeating: Words(), count: 2)
 }
 
 class IdeasSlotViewController: UIViewController {
