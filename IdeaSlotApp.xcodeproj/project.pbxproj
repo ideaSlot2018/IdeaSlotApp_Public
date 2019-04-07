@@ -13,6 +13,8 @@
 		CE3D1C2722334EF90014F28F /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D1C2622334EF90014F28F /* CategoryManager.swift */; };
 		CE3D1C2922334F230014F28F /* IdeaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D1C2822334F230014F28F /* IdeaManager.swift */; };
 		CE43D50021BB9C540089764A /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */; };
+		CE4748E2225920DE00BA1766 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4748E1225920DD00BA1766 /* MessageView.swift */; };
+		CE4748E4225920F700BA1766 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4748E3225920F700BA1766 /* MessageView.xib */; };
 		CE47BF1C224740B500F85D5D /* IdeaDeleteAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47BF1B224740B500F85D5D /* IdeaDeleteAlertView.swift */; };
 		CE47BF1E224741F900F85D5D /* IdeaDeleteAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE47BF1D224741F900F85D5D /* IdeaDeleteAlertView.xib */; };
 		CE47BF2022474C2300F85D5D /* IdeaDeleteAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47BF1F22474C2300F85D5D /* IdeaDeleteAlertViewController.swift */; };
@@ -84,6 +86,8 @@
 		CE3D1C2622334EF90014F28F /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
 		CE3D1C2822334F230014F28F /* IdeaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaManager.swift; sourceTree = "<group>"; };
 		CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
+		CE4748E1225920DD00BA1766 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		CE4748E3225920F700BA1766 /* MessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
 		CE47BF1B224740B500F85D5D /* IdeaDeleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDeleteAlertView.swift; sourceTree = "<group>"; };
 		CE47BF1D224741F900F85D5D /* IdeaDeleteAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaDeleteAlertView.xib; sourceTree = "<group>"; };
 		CE47BF1F22474C2300F85D5D /* IdeaDeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDeleteAlertViewController.swift; sourceTree = "<group>"; };
@@ -273,6 +277,7 @@
 		CE78631D2116E5CC0053B87B /* Storyboard */ = {
 			isa = PBXGroup;
 			children = (
+				CE4748E3225920F700BA1766 /* MessageView.xib */,
 				CEBBC64D21DCA21800DA33BC /* Idea */,
 				CEBBC64C21DCA20E00DA33BC /* Category */,
 				CEBBC64B21DCA1F900DA33BC /* Word */,
@@ -346,6 +351,7 @@
 		CE929FDF22114D5A006634A6 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				CE4748E1225920DD00BA1766 /* MessageView.swift */,
 				CEFA63FB21C6480600460E88 /* CategoryRegisterFormView.swift */,
 				CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */,
 				CE62C4CB21ECC632003BDE0B /* IdeaRegisterFormView.swift */,
@@ -515,6 +521,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CE4748E4225920F700BA1766 /* MessageView.xib in Resources */,
 				CE22FC1321DF497500EB51A3 /* CategoryDeleteAlertView.xib in Resources */,
 				CE78EABA219698C600493969 /* WordItemView.xib in Resources */,
 				CEFA63FE21C6481700460E88 /* CategoryRegisterFormView.xib in Resources */,
@@ -618,6 +625,7 @@
 				CE62C4CC21ECC632003BDE0B /* IdeaRegisterFormView.swift in Sources */,
 				CE5585832115701600E66A6C /* RealmModel.swift in Sources */,
 				CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */,
+				CE4748E2225920DE00BA1766 /* MessageView.swift in Sources */,
 				CE929FDE22114D4C006634A6 /* IdeaRegisterFormViewController.swift in Sources */,
 				CE3D1C2722334EF90014F28F /* CategoryManager.swift in Sources */,
 				CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */,

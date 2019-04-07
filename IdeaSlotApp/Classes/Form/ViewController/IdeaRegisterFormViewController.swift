@@ -16,11 +16,13 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         static let maxWidth: CGFloat = 500
         static let landscapeSize: CGSize = CGSize(width: maxWidth, height: 300)
         static let popupOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .bottom, canTapDismiss: true)
+        static let popupMessageOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .top, hasBlur: false)
     }
     
     var ideaDto:IdeaDto? = nil
     let categoryManager = CategoryManager()
     
+    var messageView = MessageView.view()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +45,7 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         //save button tapped
         ideaRegisterFormView.saveButtonTapHandler = { [weak self] in
             guard let me = self else { return }
-            me.showCompletionView(formView: ideaRegisterFormView)
+            me.submit(formView: ideaRegisterFormView)
         }
         
         //close button tapped
@@ -58,27 +60,49 @@ class IdeaRegisterFormViewController: BasePopupViewController {
         }
     }
     
-    private func showCompletionView(formView: IdeaRegisterFormView){
-        let popupItem = PopupItem(view: formView, height: CategoryDeleteAlertView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
+    private func submit(formView: IdeaRegisterFormView){
         
         ideaDto?.ideaName = formView.ideaTitle.text
         ideaDto?.details = formView.detailsTextView.text
         
+
+        let popupItem = PopupItem(view: messageView,
+                                  height: MessageView.Const.height,
+                                  maxWidth: Const.maxWidth,
+                                  popupOption: Const.popupMessageOption)
         let ideaManager = IdeaManager()
         let categoryManager = CategoryManager()
         let category = categoryManager.findCategoryItem(categoryName: ideaDto!.categoryName!)
-        let result:Bool = ideaManager.register(idea: ideaDto!, category: category)
-        if result {
-            transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+
+        if ideaManager.register(idea: ideaDto!, category: category) {
+            messageView.setMessage(title: MessageView.MessageText.infoTitle, message: nil, infoFlg: .info)
+        } else {
+            messageView.setMessage(title: MessageView.MessageText.errorTitle, message: MessageView.MessageText.errorMessage, infoFlg: .error)
+        }
+        transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+            guard let me = self else { return }
+            me.showMessageView()
+        }
+
+    }
+
+    func showMessageView() {
+        let popupItem = PopupItem(view: messageView,
+                                  height: MessageView.Const.height,
+                                  maxWidth: Const.maxWidth,
+                                  popupOption: Const.popupMessageOption)
+        
+        transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+            guard let me = self else { return }
+            me.replacePopupView(with: popupItem)
+            
+            DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + 1.0 ) { [weak self] in
                 guard let me = self else { return }
-                me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction){ _ in
+                me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction) { _ in
                     PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
                 }
             }
-        } else {
-            print("failure")
         }
-        
     }
 
 }

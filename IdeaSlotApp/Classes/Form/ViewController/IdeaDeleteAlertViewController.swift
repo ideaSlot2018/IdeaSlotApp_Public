@@ -16,9 +16,12 @@ class IdeaDeleteAlertViewController: BasePopupViewController {
         static let maxWidth: CGFloat = 500
         static let landscapeSize: CGSize = CGSize(width: maxWidth, height: 300)
         static let popupOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .bottom, canTapDismiss: true)
+        static let popupMessageOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .top, hasBlur: false)
     }
     
     var idea: Idea? = nil
+    var ideaTableView: UITableView!
+    var messageView = MessageView.view()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -45,7 +48,7 @@ class IdeaDeleteAlertViewController: BasePopupViewController {
         //delete button tapped
         ideaDeleteAlertView.deleteButtonTapHandler = { [weak self] in
             guard let me = self else { return }
-            me.showCompletionView(formView: ideaDeleteAlertView)
+            me.submit(formView: ideaDeleteAlertView)
         }
     }
     
@@ -55,22 +58,48 @@ class IdeaDeleteAlertViewController: BasePopupViewController {
         }
     }
     
-    private func showCompletionView(formView: IdeaDeleteAlertView){
-        let popupItem = PopupItem(view: formView, height: CategoryDeleteAlertView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
-        
+    private func submit(formView: IdeaDeleteAlertView){
+        let popupItem = PopupItem(view: messageView,
+                                  height: MessageView.Const.height,
+                                  maxWidth: Const.maxWidth,
+                                  popupOption: Const.popupMessageOption)
+
         //delete Idea
         let ideaManager = IdeaManager()
-        if ideaManager.delete(idea: idea!) {
+        if !ideaManager.delete(idea: idea!) {
+            messageView.setMessage(title: MessageView.MessageText.errorTitle, message: MessageView.MessageText.errorMessage, infoFlg: .error)
+            transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+                guard let me = self else { return }
+                me.showMessageView()
+            }
+        } else {
+            ideaTableView.reloadData()
             transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
                 guard let me = self else { return }
                 me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction){ _ in
                     PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
                 }
             }
-        } else {
-            print("failure")
         }
     }
 
+    func showMessageView() {
+        let popupItem = PopupItem(view: messageView,
+                                  height: MessageView.Const.height,
+                                  maxWidth: Const.maxWidth,
+                                  popupOption: Const.popupMessageOption)
+        
+        transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+            guard let me = self else { return }
+            me.replacePopupView(with: popupItem)
+            
+            DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + 1.0 ) { [weak self] in
+                guard let me = self else { return }
+                me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction) { _ in
+                    PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
+                }
+            }
+        }
+    }
 
 }

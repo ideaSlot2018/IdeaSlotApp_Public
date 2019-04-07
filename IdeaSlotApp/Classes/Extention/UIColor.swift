@@ -33,5 +33,9 @@ extension UIColor{
         //picker
         static let pickerColor = #colorLiteral(red: 0, green: 0.3285208941, blue: 0.5748849511, alpha: 1)
         static let pickerTextColor = #colorLiteral(red: 0.8374180198, green: 0.8374378085, blue: 0.8374271393, alpha: 1)
+        
+        //message
+        static let infoColor = #colorLiteral(red: 0.1764705926, green: 0.4980392158, blue: 0.7568627596, alpha: 0.85)
+        static let errorColor = #colorLiteral(red: 1, green: 0.1491314173, blue: 0, alpha: 0.85)
     }
 }
