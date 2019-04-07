@@ -7,19 +7,59 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04E40C38C434E8DFF5A28DA8 /* Pods_IdeaSlotApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 868B7B11A58E048B54C0A026 /* Pods_IdeaSlotApp.framework */; };
-		1E7E95115086547ACA0F3279 /* Pods_IdeaSlotAppTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7D18BEBFEA3ACB0DA537F216 /* Pods_IdeaSlotAppTests.framework */; };
-		42B41A28E8AC41FF8364AF9D /* Pods_IdeaSlotAppUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8061A756E9784DA8B6D3A6F /* Pods_IdeaSlotAppUITests.framework */; };
+		CE22FC1121DF495D00EB51A3 /* CategoryDeleteAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */; };
+		CE22FC1321DF497500EB51A3 /* CategoryDeleteAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE22FC1221DF497500EB51A3 /* CategoryDeleteAlertView.xib */; };
+		CE3D1C2522334E490014F28F /* WordManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D1C2422334E490014F28F /* WordManager.swift */; };
+		CE3D1C2722334EF90014F28F /* CategoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D1C2622334EF90014F28F /* CategoryManager.swift */; };
+		CE3D1C2922334F230014F28F /* IdeaManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE3D1C2822334F230014F28F /* IdeaManager.swift */; };
+		CE43D50021BB9C540089764A /* SwipeCellKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */; };
+		CE4748E2225920DE00BA1766 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4748E1225920DD00BA1766 /* MessageView.swift */; };
+		CE4748E4225920F700BA1766 /* MessageView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE4748E3225920F700BA1766 /* MessageView.xib */; };
+		CE47BF1C224740B500F85D5D /* IdeaDeleteAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47BF1B224740B500F85D5D /* IdeaDeleteAlertView.swift */; };
+		CE47BF1E224741F900F85D5D /* IdeaDeleteAlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE47BF1D224741F900F85D5D /* IdeaDeleteAlertView.xib */; };
+		CE47BF2022474C2300F85D5D /* IdeaDeleteAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE47BF1F22474C2300F85D5D /* IdeaDeleteAlertViewController.swift */; };
+		CE4B2BE2218D627F009A94B2 /* SlideMenuControllerSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */; };
+		CE4BD71522191C5200878860 /* UIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4BD71422191C5200878860 /* UIView.swift */; };
+		CE5585832115701600E66A6C /* RealmModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5585822115701600E66A6C /* RealmModel.swift */; };
+		CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58047A214420C700BEDA1A /* BaseTableViewCell.swift */; };
+		CE5A635B212948BC007E4887 /* CategorySeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A635A212948BC007E4887 /* CategorySeed.swift */; };
+		CE5A635D21294E99007E4887 /* RealmInitializer.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5A635C21294E99007E4887 /* RealmInitializer.swift */; };
+		CE5B626121E07EF4006D428D /* CategoryDeleteAlertViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5B626021E07EF4006D428D /* CategoryDeleteAlertViewController.swift */; };
+		CE5E1F3F211FFE5600523D96 /* LeftMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E1F3E211FFE5600523D96 /* LeftMenuViewController.swift */; };
+		CE5E1F41211FFE7B00523D96 /* CategoryListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E1F40211FFE7B00523D96 /* CategoryListViewController.swift */; };
+		CE5E1F43211FFE8800523D96 /* IdeasListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE5E1F42211FFE8800523D96 /* IdeasListViewController.swift */; };
+		CE62C4CC21ECC632003BDE0B /* IdeaRegisterFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE62C4CB21ECC632003BDE0B /* IdeaRegisterFormView.swift */; };
+		CE62C4CE21ECC650003BDE0B /* IdeaRegisterFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE62C4CD21ECC650003BDE0B /* IdeaRegisterFormView.xib */; };
+		CE7497272143F48100F51E91 /* UIViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7497262143F48100F51E91 /* UIViewController.swift */; };
+		CE7497292143F7D100F51E91 /* UIApplication.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7497282143F7D100F51E91 /* UIApplication.swift */; };
+		CE78EABA219698C600493969 /* WordItemView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE78EAB9219698C600493969 /* WordItemView.xib */; };
+		CE78EABC21969B0800493969 /* WordItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE78EABB21969B0800493969 /* WordItemView.swift */; };
+		CE79C6A221CA884B00B3BC63 /* CategoryRegisterFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE79C6A121CA884B00B3BC63 /* CategoryRegisterFormViewController.swift */; };
+		CE7C06F321D9D260002ECE6E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE7C06F121D9D260002ECE6E /* LaunchScreen.storyboard */; };
+		CE82D30921A97FA2003BE0B0 /* CategoryItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CE82D30821A97FA2003BE0B0 /* CategoryItemCell.xib */; };
+		CE82D30B21A98082003BE0B0 /* CategoryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE82D30A21A98082003BE0B0 /* CategoryTableViewCell.swift */; };
 		CE8B79F7210475FF009BD29F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B79F6210475FF009BD29F /* AppDelegate.swift */; };
-		CE8B79F9210475FF009BD29F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B79F8210475FF009BD29F /* ViewController.swift */; };
+		CE8B79F9210475FF009BD29F /* WordsListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B79F8210475FF009BD29F /* WordsListViewController.swift */; };
 		CE8B79FC210475FF009BD29F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8B79FA210475FF009BD29F /* Main.storyboard */; };
 		CE8B79FE21047601009BD29F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CE8B79FD21047601009BD29F /* Assets.xcassets */; };
-		CE8B7A0121047601009BD29F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CE8B79FF21047601009BD29F /* LaunchScreen.storyboard */; };
 		CE8B7A0C21047601009BD29F /* IdeaSlotAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B7A0B21047601009BD29F /* IdeaSlotAppTests.swift */; };
 		CE8B7A1721047601009BD29F /* IdeaSlotAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8B7A1621047601009BD29F /* IdeaSlotAppUITests.swift */; };
-		CEE542B72104769000CB5E7F /* ContentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEE542B52104769000CB5E7F /* ContentsViewController.swift */; };
-		CEE542B82104769000CB5E7F /* ContentsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEE542B62104769000CB5E7F /* ContentsViewController.xib */; };
-		CEE542BA210476DF00CB5E7F /* PageMenu.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE542B9210476DF00CB5E7F /* PageMenu.framework */; };
+		CE918FE521995B99001C6B95 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE918FE421995B99001C6B95 /* UIColor.swift */; };
+		CE929FDE22114D4C006634A6 /* IdeaRegisterFormViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE929FDD22114D4C006634A6 /* IdeaRegisterFormViewController.swift */; };
+		CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE988D40215D1919000B1345 /* IdeasSlotViewController.swift */; };
+		CE988D43215D1F97000B1345 /* IdeaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE988D42215D1F97000B1345 /* IdeaTableViewCell.swift */; };
+		CEB1162322224AC50087226B /* IdeaItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEB1162222224AC50087226B /* IdeaItemCell.xib */; };
+		CEBBC64F21DCA66900DA33BC /* IdeaSlotPickerView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */; };
+		CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */; };
+		CEBD041C21EA1DD300491AD7 /* WordSeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEBD041B21EA1DD300491AD7 /* WordSeed.swift */; };
+		CED3DB1F215F5939008B6A0D /* IdeaDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED3DB1E215F5939008B6A0D /* IdeaDetailsViewController.swift */; };
+		CEDB938E21BCEA3F00099D1B /* PopupWindow.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEDB938D21BCEA3F00099D1B /* PopupWindow.framework */; };
+		CEE38EAB2180BAE300BBD07F /* DropDown.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE38EA72180BAE300BBD07F /* DropDown.framework */; };
+		CEE38EAC2180BAE300BBD07F /* Realm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE38EA82180BAE300BBD07F /* Realm.framework */; };
+		CEE38EAD2180BAE300BBD07F /* RealmSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CEE38EA92180BAE300BBD07F /* RealmSwift.framework */; };
+		CEEDE3ED2143929C00D05F61 /* SlideMenuViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEEDE3EC2143929C00D05F61 /* SlideMenuViewController.swift */; };
+		CEFA63FC21C6480600460E88 /* CategoryRegisterFormView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEFA63FB21C6480600460E88 /* CategoryRegisterFormView.swift */; };
+		CEFA63FE21C6481700460E88 /* CategoryRegisterFormView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CEFA63FD21C6481700460E88 /* CategoryRegisterFormView.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,18 +80,42 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0207581EE5B73BBF64470848 /* Pods-IdeaSlotAppUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdeaSlotAppUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IdeaSlotAppUITests/Pods-IdeaSlotAppUITests.release.xcconfig"; sourceTree = "<group>"; };
-		4B041A69785F13272C7D8167 /* Pods-IdeaSlotAppTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdeaSlotAppTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IdeaSlotAppTests/Pods-IdeaSlotAppTests.debug.xcconfig"; sourceTree = "<group>"; };
-		5D8800AC96303D21085DA056 /* Pods-IdeaSlotAppTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdeaSlotAppTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-IdeaSlotAppTests/Pods-IdeaSlotAppTests.release.xcconfig"; sourceTree = "<group>"; };
-		7D18BEBFEA3ACB0DA537F216 /* Pods_IdeaSlotAppTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdeaSlotAppTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		868B7B11A58E048B54C0A026 /* Pods_IdeaSlotApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdeaSlotApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C8061A756E9784DA8B6D3A6F /* Pods_IdeaSlotAppUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_IdeaSlotAppUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDeleteAlertView.swift; sourceTree = "<group>"; };
+		CE22FC1221DF497500EB51A3 /* CategoryDeleteAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryDeleteAlertView.xib; sourceTree = "<group>"; };
+		CE3D1C2422334E490014F28F /* WordManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordManager.swift; sourceTree = "<group>"; };
+		CE3D1C2622334EF90014F28F /* CategoryManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryManager.swift; sourceTree = "<group>"; };
+		CE3D1C2822334F230014F28F /* IdeaManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaManager.swift; sourceTree = "<group>"; };
+		CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwipeCellKit.framework; path = Carthage/Build/iOS/SwipeCellKit.framework; sourceTree = "<group>"; };
+		CE4748E1225920DD00BA1766 /* MessageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		CE4748E3225920F700BA1766 /* MessageView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MessageView.xib; sourceTree = "<group>"; };
+		CE47BF1B224740B500F85D5D /* IdeaDeleteAlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDeleteAlertView.swift; sourceTree = "<group>"; };
+		CE47BF1D224741F900F85D5D /* IdeaDeleteAlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaDeleteAlertView.xib; sourceTree = "<group>"; };
+		CE47BF1F22474C2300F85D5D /* IdeaDeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDeleteAlertViewController.swift; sourceTree = "<group>"; };
+		CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SlideMenuControllerSwift.framework; path = Carthage/Build/iOS/SlideMenuControllerSwift.framework; sourceTree = "<group>"; };
+		CE4BD71422191C5200878860 /* UIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIView.swift; sourceTree = "<group>"; };
+		CE5585822115701600E66A6C /* RealmModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmModel.swift; sourceTree = "<group>"; };
+		CE58047A214420C700BEDA1A /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BaseTableViewCell.swift; sourceTree = "<group>"; };
+		CE5A635A212948BC007E4887 /* CategorySeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategorySeed.swift; sourceTree = "<group>"; };
+		CE5A635C21294E99007E4887 /* RealmInitializer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmInitializer.swift; sourceTree = "<group>"; };
+		CE5B626021E07EF4006D428D /* CategoryDeleteAlertViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryDeleteAlertViewController.swift; sourceTree = "<group>"; };
+		CE5E1F3E211FFE5600523D96 /* LeftMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeftMenuViewController.swift; sourceTree = "<group>"; };
+		CE5E1F40211FFE7B00523D96 /* CategoryListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryListViewController.swift; sourceTree = "<group>"; };
+		CE5E1F42211FFE8800523D96 /* IdeasListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasListViewController.swift; sourceTree = "<group>"; };
+		CE62C4CB21ECC632003BDE0B /* IdeaRegisterFormView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaRegisterFormView.swift; sourceTree = "<group>"; };
+		CE62C4CD21ECC650003BDE0B /* IdeaRegisterFormView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaRegisterFormView.xib; sourceTree = "<group>"; };
+		CE7497262143F48100F51E91 /* UIViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewController.swift; sourceTree = "<group>"; };
+		CE7497282143F7D100F51E91 /* UIApplication.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIApplication.swift; sourceTree = "<group>"; };
+		CE78EAB9219698C600493969 /* WordItemView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WordItemView.xib; sourceTree = "<group>"; };
+		CE78EABB21969B0800493969 /* WordItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordItemView.swift; sourceTree = "<group>"; };
+		CE79C6A121CA884B00B3BC63 /* CategoryRegisterFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryRegisterFormViewController.swift; sourceTree = "<group>"; };
+		CE7C06F221D9D260002ECE6E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		CE82D30821A97FA2003BE0B0 /* CategoryItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CategoryItemCell.xib; sourceTree = "<group>"; };
+		CE82D30A21A98082003BE0B0 /* CategoryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CategoryTableViewCell.swift; sourceTree = "<group>"; };
 		CE8B79F3210475FF009BD29F /* IdeaSlotApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = IdeaSlotApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8B79F6210475FF009BD29F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		CE8B79F8210475FF009BD29F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		CE8B79F8210475FF009BD29F /* WordsListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordsListViewController.swift; sourceTree = "<group>"; };
 		CE8B79FB210475FF009BD29F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		CE8B79FD21047601009BD29F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		CE8B7A0021047601009BD29F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CE8B7A0221047601009BD29F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE8B7A0721047601009BD29F /* IdeaSlotAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdeaSlotAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8B7A0B21047601009BD29F /* IdeaSlotAppTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaSlotAppTests.swift; sourceTree = "<group>"; };
@@ -59,12 +123,22 @@
 		CE8B7A1221047601009BD29F /* IdeaSlotAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IdeaSlotAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CE8B7A1621047601009BD29F /* IdeaSlotAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaSlotAppUITests.swift; sourceTree = "<group>"; };
 		CE8B7A1821047601009BD29F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CEE542B52104769000CB5E7F /* ContentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentsViewController.swift; sourceTree = "<group>"; };
-		CEE542B62104769000CB5E7F /* ContentsViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ContentsViewController.xib; sourceTree = "<group>"; };
-		CEE542B9210476DF00CB5E7F /* PageMenu.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = PageMenu.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		D6766FAB780E1DE48F34DA29 /* Pods-IdeaSlotAppUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdeaSlotAppUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IdeaSlotAppUITests/Pods-IdeaSlotAppUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		FD742A902FE1F85A8C3E7545 /* Pods-IdeaSlotApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdeaSlotApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-IdeaSlotApp/Pods-IdeaSlotApp.release.xcconfig"; sourceTree = "<group>"; };
-		FEB136B2DEB1EE49CE134733 /* Pods-IdeaSlotApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-IdeaSlotApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-IdeaSlotApp/Pods-IdeaSlotApp.debug.xcconfig"; sourceTree = "<group>"; };
+		CE918FE421995B99001C6B95 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
+		CE929FDD22114D4C006634A6 /* IdeaRegisterFormViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaRegisterFormViewController.swift; sourceTree = "<group>"; };
+		CE988D40215D1919000B1345 /* IdeasSlotViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeasSlotViewController.swift; sourceTree = "<group>"; };
+		CE988D42215D1F97000B1345 /* IdeaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaTableViewCell.swift; sourceTree = "<group>"; };
+		CEB1162222224AC50087226B /* IdeaItemCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaItemCell.xib; sourceTree = "<group>"; };
+		CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = IdeaSlotPickerView.xib; sourceTree = "<group>"; };
+		CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaSlotPickerView.swift; sourceTree = "<group>"; };
+		CEBD041B21EA1DD300491AD7 /* WordSeed.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WordSeed.swift; sourceTree = "<group>"; };
+		CED3DB1E215F5939008B6A0D /* IdeaDetailsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdeaDetailsViewController.swift; sourceTree = "<group>"; };
+		CEDB938D21BCEA3F00099D1B /* PopupWindow.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = PopupWindow.framework; path = Carthage/Build/iOS/PopupWindow.framework; sourceTree = "<group>"; };
+		CEE38EA72180BAE300BBD07F /* DropDown.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DropDown.framework; path = Carthage/Build/iOS/DropDown.framework; sourceTree = "<group>"; };
+		CEE38EA82180BAE300BBD07F /* Realm.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Realm.framework; path = Carthage/Build/iOS/Realm.framework; sourceTree = "<group>"; };
+		CEE38EA92180BAE300BBD07F /* RealmSwift.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = RealmSwift.framework; path = Carthage/Build/iOS/RealmSwift.framework; sourceTree = "<group>"; };
+		CEEDE3EC2143929C00D05F61 /* SlideMenuViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SlideMenuViewController.swift; sourceTree = "<group>"; };
+		CEFA63FB21C6480600460E88 /* CategoryRegisterFormView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryRegisterFormView.swift; sourceTree = "<group>"; };
+		CEFA63FD21C6481700460E88 /* CategoryRegisterFormView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoryRegisterFormView.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -72,8 +146,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEE542BA210476DF00CB5E7F /* PageMenu.framework in Frameworks */,
-				04E40C38C434E8DFF5A28DA8 /* Pods_IdeaSlotApp.framework in Frameworks */,
+				CEDB938E21BCEA3F00099D1B /* PopupWindow.framework in Frameworks */,
+				CE43D50021BB9C540089764A /* SwipeCellKit.framework in Frameworks */,
+				CE4B2BE2218D627F009A94B2 /* SlideMenuControllerSwift.framework in Frameworks */,
+				CEE38EAB2180BAE300BBD07F /* DropDown.framework in Frameworks */,
+				CEE38EAC2180BAE300BBD07F /* Realm.framework in Frameworks */,
+				CEE38EAD2180BAE300BBD07F /* RealmSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -81,7 +159,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1E7E95115086547ACA0F3279 /* Pods_IdeaSlotAppTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,24 +166,134 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				42B41A28E8AC41FF8364AF9D /* Pods_IdeaSlotAppUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5912F3B9D5D5E2BBE04E4DBE /* Pods */ = {
+		CE3D1C2322334E090014F28F /* Manager */ = {
 			isa = PBXGroup;
 			children = (
-				FEB136B2DEB1EE49CE134733 /* Pods-IdeaSlotApp.debug.xcconfig */,
-				FD742A902FE1F85A8C3E7545 /* Pods-IdeaSlotApp.release.xcconfig */,
-				4B041A69785F13272C7D8167 /* Pods-IdeaSlotAppTests.debug.xcconfig */,
-				5D8800AC96303D21085DA056 /* Pods-IdeaSlotAppTests.release.xcconfig */,
-				D6766FAB780E1DE48F34DA29 /* Pods-IdeaSlotAppUITests.debug.xcconfig */,
-				0207581EE5B73BBF64470848 /* Pods-IdeaSlotAppUITests.release.xcconfig */,
+				CE3D1C2422334E490014F28F /* WordManager.swift */,
+				CE3D1C2622334EF90014F28F /* CategoryManager.swift */,
+				CE3D1C2822334F230014F28F /* IdeaManager.swift */,
 			);
-			name = Pods;
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		CE5585842115739E00E66A6C /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				CE8B79F6210475FF009BD29F /* AppDelegate.swift */,
+				CE5804762144206B00BEDA1A /* TableViewCell */,
+				CE7E126D21D9186C002C98CE /* Form */,
+				CE558587211573E000E66A6C /* ViewController */,
+				CE558586211573D600E66A6C /* View */,
+				CE7497252143F44900F51E91 /* Extention */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		CE558585211573B400E66A6C /* Others */ = {
+			isa = PBXGroup;
+			children = (
+				CE8B7A0221047601009BD29F /* Info.plist */,
+			);
+			path = Others;
+			sourceTree = "<group>";
+		};
+		CE558586211573D600E66A6C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE78EABB21969B0800493969 /* WordItemView.swift */,
+				CEBBC65021DCA98200DA33BC /* IdeaSlotPickerView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE558587211573E000E66A6C /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE5E1F3E211FFE5600523D96 /* LeftMenuViewController.swift */,
+				CE8B79F8210475FF009BD29F /* WordsListViewController.swift */,
+				CE5E1F40211FFE7B00523D96 /* CategoryListViewController.swift */,
+				CE5E1F42211FFE8800523D96 /* IdeasListViewController.swift */,
+				CE988D40215D1919000B1345 /* IdeasSlotViewController.swift */,
+				CED3DB1E215F5939008B6A0D /* IdeaDetailsViewController.swift */,
+				CEEDE3EC2143929C00D05F61 /* SlideMenuViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CE5804762144206B00BEDA1A /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				CE82D30A21A98082003BE0B0 /* CategoryTableViewCell.swift */,
+				CE58047A214420C700BEDA1A /* BaseTableViewCell.swift */,
+				CE988D42215D1F97000B1345 /* IdeaTableViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		CE7497252143F44900F51E91 /* Extention */ = {
+			isa = PBXGroup;
+			children = (
+				CE918FE421995B99001C6B95 /* UIColor.swift */,
+				CE7497282143F7D100F51E91 /* UIApplication.swift */,
+				CE7497262143F48100F51E91 /* UIViewController.swift */,
+				CE4BD71422191C5200878860 /* UIView.swift */,
+			);
+			path = Extention;
+			sourceTree = "<group>";
+		};
+		CE78631A2116E54C0053B87B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				CE5585822115701600E66A6C /* RealmModel.swift */,
+				CEBD041B21EA1DD300491AD7 /* WordSeed.swift */,
+				CE5A635A212948BC007E4887 /* CategorySeed.swift */,
+				CE5A635C21294E99007E4887 /* RealmInitializer.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		CE78631B2116E5570053B87B /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				CE8B79FD21047601009BD29F /* Assets.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		CE78631C2116E5C60053B87B /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				CE78631D2116E5CC0053B87B /* Storyboard */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		CE78631D2116E5CC0053B87B /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				CE4748E3225920F700BA1766 /* MessageView.xib */,
+				CEBBC64D21DCA21800DA33BC /* Idea */,
+				CEBBC64C21DCA20E00DA33BC /* Category */,
+				CEBBC64B21DCA1F900DA33BC /* Word */,
+				CE7C06F121D9D260002ECE6E /* LaunchScreen.storyboard */,
+				CE8B79FA210475FF009BD29F /* Main.storyboard */,
+			);
+			path = Storyboard;
+			sourceTree = "<group>";
+		};
+		CE7E126D21D9186C002C98CE /* Form */ = {
+			isa = PBXGroup;
+			children = (
+				CE929FE122114D74006634A6 /* ViewController */,
+				CE929FDF22114D5A006634A6 /* View */,
+			);
+			path = Form;
 			sourceTree = "<group>";
 		};
 		CE8B79EA210475FF009BD29F = {
@@ -116,7 +303,6 @@
 				CE8B7A0A21047601009BD29F /* IdeaSlotAppTests */,
 				CE8B7A1521047601009BD29F /* IdeaSlotAppUITests */,
 				CE8B79F4210475FF009BD29F /* Products */,
-				5912F3B9D5D5E2BBE04E4DBE /* Pods */,
 				F44F1094BD83EC84BD744B8A /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -134,14 +320,12 @@
 		CE8B79F5210475FF009BD29F /* IdeaSlotApp */ = {
 			isa = PBXGroup;
 			children = (
-				CE8B79F6210475FF009BD29F /* AppDelegate.swift */,
-				CE8B79F8210475FF009BD29F /* ViewController.swift */,
-				CEE542B52104769000CB5E7F /* ContentsViewController.swift */,
-				CEE542B62104769000CB5E7F /* ContentsViewController.xib */,
-				CE8B79FA210475FF009BD29F /* Main.storyboard */,
-				CE8B79FD21047601009BD29F /* Assets.xcassets */,
-				CE8B79FF21047601009BD29F /* LaunchScreen.storyboard */,
-				CE8B7A0221047601009BD29F /* Info.plist */,
+				CE5585842115739E00E66A6C /* Classes */,
+				CE3D1C2322334E090014F28F /* Manager */,
+				CE78631A2116E54C0053B87B /* Model */,
+				CE558585211573B400E66A6C /* Others */,
+				CE78631B2116E5570053B87B /* Resource */,
+				CE78631C2116E5C60053B87B /* UI */,
 			);
 			path = IdeaSlotApp;
 			sourceTree = "<group>";
@@ -164,13 +348,67 @@
 			path = IdeaSlotAppUITests;
 			sourceTree = "<group>";
 		};
+		CE929FDF22114D5A006634A6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CE4748E1225920DD00BA1766 /* MessageView.swift */,
+				CEFA63FB21C6480600460E88 /* CategoryRegisterFormView.swift */,
+				CE22FC1021DF495D00EB51A3 /* CategoryDeleteAlertView.swift */,
+				CE62C4CB21ECC632003BDE0B /* IdeaRegisterFormView.swift */,
+				CE47BF1B224740B500F85D5D /* IdeaDeleteAlertView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CE929FE122114D74006634A6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE79C6A121CA884B00B3BC63 /* CategoryRegisterFormViewController.swift */,
+				CE5B626021E07EF4006D428D /* CategoryDeleteAlertViewController.swift */,
+				CE929FDD22114D4C006634A6 /* IdeaRegisterFormViewController.swift */,
+				CE47BF1F22474C2300F85D5D /* IdeaDeleteAlertViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CEBBC64B21DCA1F900DA33BC /* Word */ = {
+			isa = PBXGroup;
+			children = (
+				CE78EAB9219698C600493969 /* WordItemView.xib */,
+			);
+			path = Word;
+			sourceTree = "<group>";
+		};
+		CEBBC64C21DCA20E00DA33BC /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				CE82D30821A97FA2003BE0B0 /* CategoryItemCell.xib */,
+				CEFA63FD21C6481700460E88 /* CategoryRegisterFormView.xib */,
+				CE22FC1221DF497500EB51A3 /* CategoryDeleteAlertView.xib */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
+		CEBBC64D21DCA21800DA33BC /* Idea */ = {
+			isa = PBXGroup;
+			children = (
+				CEBBC64E21DCA66900DA33BC /* IdeaSlotPickerView.xib */,
+				CE62C4CD21ECC650003BDE0B /* IdeaRegisterFormView.xib */,
+				CEB1162222224AC50087226B /* IdeaItemCell.xib */,
+				CE47BF1D224741F900F85D5D /* IdeaDeleteAlertView.xib */,
+			);
+			path = Idea;
+			sourceTree = "<group>";
+		};
 		F44F1094BD83EC84BD744B8A /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CEE542B9210476DF00CB5E7F /* PageMenu.framework */,
-				868B7B11A58E048B54C0A026 /* Pods_IdeaSlotApp.framework */,
-				7D18BEBFEA3ACB0DA537F216 /* Pods_IdeaSlotAppTests.framework */,
-				C8061A756E9784DA8B6D3A6F /* Pods_IdeaSlotAppUITests.framework */,
+				CEDB938D21BCEA3F00099D1B /* PopupWindow.framework */,
+				CE43D4FF21BB9C540089764A /* SwipeCellKit.framework */,
+				CE4B2BE1218D627F009A94B2 /* SlideMenuControllerSwift.framework */,
+				CEE38EA72180BAE300BBD07F /* DropDown.framework */,
+				CEE38EA82180BAE300BBD07F /* Realm.framework */,
+				CEE38EA92180BAE300BBD07F /* RealmSwift.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -182,11 +420,10 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CE8B7A1B21047601009BD29F /* Build configuration list for PBXNativeTarget "IdeaSlotApp" */;
 			buildPhases = (
-				C80839B7AB596A06341C0D15 /* [CP] Check Pods Manifest.lock */,
 				CE8B79EF210475FF009BD29F /* Sources */,
 				CE8B79F0210475FF009BD29F /* Frameworks */,
 				CE8B79F1210475FF009BD29F /* Resources */,
-				86670C5C78E4D201E329BAEB /* [CP] Embed Pods Frameworks */,
+				CEE38EAF2180BB0900BBD07F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -247,6 +484,7 @@
 				TargetAttributes = {
 					CE8B79F2210475FF009BD29F = {
 						CreatedOnToolsVersion = 9.4.1;
+						LastSwiftMigration = 0940;
 					};
 					CE8B7A0621047601009BD29F = {
 						CreatedOnToolsVersion = 9.4.1;
@@ -283,10 +521,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CEE542B82104769000CB5E7F /* ContentsViewController.xib in Resources */,
-				CE8B7A0121047601009BD29F /* LaunchScreen.storyboard in Resources */,
+				CE4748E4225920F700BA1766 /* MessageView.xib in Resources */,
+				CE22FC1321DF497500EB51A3 /* CategoryDeleteAlertView.xib in Resources */,
+				CE78EABA219698C600493969 /* WordItemView.xib in Resources */,
+				CEFA63FE21C6481700460E88 /* CategoryRegisterFormView.xib in Resources */,
+				CE82D30921A97FA2003BE0B0 /* CategoryItemCell.xib in Resources */,
+				CE62C4CE21ECC650003BDE0B /* IdeaRegisterFormView.xib in Resources */,
+				CE7C06F321D9D260002ECE6E /* LaunchScreen.storyboard in Resources */,
+				CEBBC64F21DCA66900DA33BC /* IdeaSlotPickerView.xib in Resources */,
 				CE8B79FE21047601009BD29F /* Assets.xcassets in Resources */,
+				CE47BF1E224741F900F85D5D /* IdeaDeleteAlertView.xib in Resources */,
 				CE8B79FC210475FF009BD29F /* Main.storyboard in Resources */,
+				CEB1162322224AC50087226B /* IdeaItemCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,24 +571,6 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		86670C5C78E4D201E329BAEB /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-IdeaSlotApp/Pods-IdeaSlotApp-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/PageMenu/PageMenu.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/PageMenu.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-IdeaSlotApp/Pods-IdeaSlotApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		9BBA414AE026AB0C0ACD60FA /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -361,23 +589,28 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		C80839B7AB596A06341C0D15 /* [CP] Check Pods Manifest.lock */ = {
+		CEE38EAF2180BB0900BBD07F /* ShellScript */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
+			inputFileListPaths = (
 			);
-			name = "[CP] Check Pods Manifest.lock";
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Realm.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/RealmSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SlideMenuControllerSwift.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DropDown.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/SwipeCellKit.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/PopupWindow.framework",
+			);
+			outputFileListPaths = (
+			);
 			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-IdeaSlotApp-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
+			shellScript = "# Type a script or drag a script file from your workspace to insert its path.\n/usr/local/bin/carthage copy-frameworks\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -386,9 +619,39 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CE8B79F9210475FF009BD29F /* ViewController.swift in Sources */,
+				CE3D1C2522334E490014F28F /* WordManager.swift in Sources */,
+				CE7497292143F7D100F51E91 /* UIApplication.swift in Sources */,
+				CE8B79F9210475FF009BD29F /* WordsListViewController.swift in Sources */,
+				CE62C4CC21ECC632003BDE0B /* IdeaRegisterFormView.swift in Sources */,
+				CE5585832115701600E66A6C /* RealmModel.swift in Sources */,
+				CEBBC65121DCA98200DA33BC /* IdeaSlotPickerView.swift in Sources */,
+				CE4748E2225920DE00BA1766 /* MessageView.swift in Sources */,
+				CE929FDE22114D4C006634A6 /* IdeaRegisterFormViewController.swift in Sources */,
+				CE3D1C2722334EF90014F28F /* CategoryManager.swift in Sources */,
+				CE988D41215D1919000B1345 /* IdeasSlotViewController.swift in Sources */,
+				CE4BD71522191C5200878860 /* UIView.swift in Sources */,
+				CE47BF1C224740B500F85D5D /* IdeaDeleteAlertView.swift in Sources */,
+				CE58047D214420C700BEDA1A /* BaseTableViewCell.swift in Sources */,
+				CED3DB1F215F5939008B6A0D /* IdeaDetailsViewController.swift in Sources */,
+				CEEDE3ED2143929C00D05F61 /* SlideMenuViewController.swift in Sources */,
+				CE5B626121E07EF4006D428D /* CategoryDeleteAlertViewController.swift in Sources */,
+				CE5E1F41211FFE7B00523D96 /* CategoryListViewController.swift in Sources */,
 				CE8B79F7210475FF009BD29F /* AppDelegate.swift in Sources */,
-				CEE542B72104769000CB5E7F /* ContentsViewController.swift in Sources */,
+				CE918FE521995B99001C6B95 /* UIColor.swift in Sources */,
+				CE5A635B212948BC007E4887 /* CategorySeed.swift in Sources */,
+				CE47BF2022474C2300F85D5D /* IdeaDeleteAlertViewController.swift in Sources */,
+				CE5E1F43211FFE8800523D96 /* IdeasListViewController.swift in Sources */,
+				CE988D43215D1F97000B1345 /* IdeaTableViewCell.swift in Sources */,
+				CE3D1C2922334F230014F28F /* IdeaManager.swift in Sources */,
+				CE5E1F3F211FFE5600523D96 /* LeftMenuViewController.swift in Sources */,
+				CE79C6A221CA884B00B3BC63 /* CategoryRegisterFormViewController.swift in Sources */,
+				CE22FC1121DF495D00EB51A3 /* CategoryDeleteAlertView.swift in Sources */,
+				CE82D30B21A98082003BE0B0 /* CategoryTableViewCell.swift in Sources */,
+				CE5A635D21294E99007E4887 /* RealmInitializer.swift in Sources */,
+				CE7497272143F48100F51E91 /* UIViewController.swift in Sources */,
+				CEFA63FC21C6480600460E88 /* CategoryRegisterFormView.swift in Sources */,
+				CEBD041C21EA1DD300491AD7 /* WordSeed.swift in Sources */,
+				CE78EABC21969B0800493969 /* WordItemView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -424,20 +687,20 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		CE7C06F121D9D260002ECE6E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				CE7C06F221D9D260002ECE6E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		CE8B79FA210475FF009BD29F /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
 				CE8B79FB210475FF009BD29F /* Base */,
 			);
 			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		CE8B79FF21047601009BD29F /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				CE8B7A0021047601009BD29F /* Base */,
-			);
-			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -559,43 +822,59 @@
 		};
 		CE8B7A1C21047601009BD29F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FEB136B2DEB1EE49CE134733 /* Pods-IdeaSlotApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = IdeaSlotApp/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = IdeaSlotApp/Others/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = grief137.IdeaSlotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
 		CE8B7A1D21047601009BD29F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = FD742A902FE1F85A8C3E7545 /* Pods-IdeaSlotApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				INFOPLIST_FILE = IdeaSlotApp/Info.plist;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
+				INFOPLIST_FILE = IdeaSlotApp/Others/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = grief137.IdeaSlotApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_INSTALL_OBJC_HEADER = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "";
+				SWIFT_PRECOMPILE_BRIDGING_HEADER = NO;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
 		CE8B7A1F21047601009BD29F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4B041A69785F13272C7D8167 /* Pods-IdeaSlotAppTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -616,7 +895,6 @@
 		};
 		CE8B7A2021047601009BD29F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D8800AC96303D21085DA056 /* Pods-IdeaSlotAppTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -637,7 +915,6 @@
 		};
 		CE8B7A2221047601009BD29F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = D6766FAB780E1DE48F34DA29 /* Pods-IdeaSlotAppUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -657,7 +934,6 @@
 		};
 		CE8B7A2321047601009BD29F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0207581EE5B73BBF64470848 /* Pods-IdeaSlotAppUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

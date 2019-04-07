@@ -1,0 +1,5 @@
+github "dekatotoro/SlideMenuControllerSwift"
+github "SwipeCellKit/SwipeCellKit"
+github "realm/realm-cocoa"
+github "AssistoLab/DropDown" == 2.3.4
+github "shin8484/PopupWindow"

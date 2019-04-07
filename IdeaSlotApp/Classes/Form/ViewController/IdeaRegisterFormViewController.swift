@@ -1,0 +1,108 @@
+//
+//  IdeaRegisterFormViewController.swift
+//  IdeaSlotApp
+//
+//  Created by yuta akazawa on 2019/02/11.
+//  Copyright © 2019年 yuta akazawa. All rights reserved.
+//
+
+import UIKit
+import PopupWindow
+
+class IdeaRegisterFormViewController: BasePopupViewController {
+    enum Const {
+        static let popupDuration: TimeInterval = 0.3
+        static let transformDuration: TimeInterval = 0.4
+        static let maxWidth: CGFloat = 500
+        static let landscapeSize: CGSize = CGSize(width: maxWidth, height: 300)
+        static let popupOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .bottom, canTapDismiss: true)
+        static let popupMessageOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .top, hasBlur: false)
+    }
+    
+    var ideaDto:IdeaDto? = nil
+    let categoryManager = CategoryManager()
+    
+    var messageView = MessageView.view()
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        var ideaRegisterFormView = IdeaRegisterFormView()
+        ideaRegisterFormView = UINib(nibName: "IdeaRegisterFormView", bundle: Bundle(for: type(of: self))).instantiate(withOwner: self, options: nil).first! as! IdeaRegisterFormView
+        ideaRegisterFormView.wordText1.text = ideaDto?.words[0].word
+        ideaRegisterFormView.wordText2.text = ideaDto?.words[1].word
+        ideaRegisterFormView.operatorName.text = ideaDto?.operator1
+        ideaRegisterFormView.dropdown.dataSource = categoryManager.arrayCategoryList(listFlg: 0)
+
+        let popupItem = PopupItem(view: ideaRegisterFormView, height: IdeaRegisterFormView.Const.height, maxWidth: Const.maxWidth, landscapeSize: Const.landscapeSize, popupOption: Const.popupOption)
+        configurePopupItem(popupItem)
+        
+        //category drop dwon tapped
+        ideaRegisterFormView.categoryButtonTapHandler = { [weak self] in
+            self!.ideaDto?.categoryName = ideaRegisterFormView.categoryName!
+        }
+        
+        //save button tapped
+        ideaRegisterFormView.saveButtonTapHandler = { [weak self] in
+            guard let me = self else { return }
+            me.submit(formView: ideaRegisterFormView)
+        }
+        
+        //close button tapped
+        ideaRegisterFormView.closeButtonTapHandler = { [weak self] in
+            self?.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: .bottom) { _ in}
+        }
+    }
+    
+    override func tapPopupContainerView(_ gestureRecognizer: UITapGestureRecognizer) {
+        if gestureRecognizer.state == .ended && canTapDismiss {
+            dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: .bottom) { _ in }
+        }
+    }
+    
+    private func submit(formView: IdeaRegisterFormView){
+        
+        ideaDto?.ideaName = formView.ideaTitle.text
+        ideaDto?.details = formView.detailsTextView.text
+        
+
+        let popupItem = PopupItem(view: messageView,
+                                  height: MessageView.Const.height,
+                                  maxWidth: Const.maxWidth,
+                                  popupOption: Const.popupMessageOption)
+        let ideaManager = IdeaManager()
+        let categoryManager = CategoryManager()
+        let category = categoryManager.findCategoryItem(categoryName: ideaDto!.categoryName!)
+
+        if ideaManager.register(idea: ideaDto!, category: category) {
+            messageView.setMessage(title: MessageView.MessageText.infoTitle, message: nil, infoFlg: .info)
+        } else {
+            messageView.setMessage(title: MessageView.MessageText.errorTitle, message: MessageView.MessageText.errorMessage, infoFlg: .error)
+        }
+        transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+            guard let me = self else { return }
+            me.showMessageView()
+        }
+
+    }
+
+    func showMessageView() {
+        let popupItem = PopupItem(view: messageView,
+                                  height: MessageView.Const.height,
+                                  maxWidth: Const.maxWidth,
+                                  popupOption: Const.popupMessageOption)
+        
+        transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+            guard let me = self else { return }
+            me.replacePopupView(with: popupItem)
+            
+            DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + 1.0 ) { [weak self] in
+                guard let me = self else { return }
+                me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction) { _ in
+                    PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
+                }
+            }
+        }
+    }
+
+}
