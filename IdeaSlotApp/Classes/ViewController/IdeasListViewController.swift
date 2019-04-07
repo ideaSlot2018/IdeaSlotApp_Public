@@ -57,6 +57,7 @@ class IdeasListViewController: UIViewController {
     func setDeleteAlert(idea:Idea) {
         let ideaDeleteAlertViewController = IdeaDeleteAlertViewController()
         ideaDeleteAlertViewController.idea = idea
+        ideaDeleteAlertViewController.ideaTableView = self.tableView
         PopupWindowManager.shared.changeKeyWindow(rootViewController: ideaDeleteAlertViewController)
     }
     

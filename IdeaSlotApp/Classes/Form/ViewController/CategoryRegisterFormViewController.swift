@@ -16,10 +16,12 @@ class CategoryRegisterFormViewController: BasePopupViewController {
         static let maxWidth: CGFloat = 500
         static let landscapeSize: CGSize = CGSize(width: maxWidth, height: 300)
         static let popupOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .bottom, canTapDismiss: true)
+        static let popupMessageOption = PopupOption(shapeType: .roundedCornerTop(cornerSize: 8), viewType: .toast, direction: .top, hasBlur: false)
     }
     
     var category: Category? = nil
     var categoryTableView: UITableView!
+    var messageView = MessageView.view()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,7 +38,7 @@ class CategoryRegisterFormViewController: BasePopupViewController {
         //register button tapped
         categoryRegisterFormView.registerButtonTapHandler = { [weak self] in
             guard let me = self else { return }
-            me.showCompletionView(formView: categoryRegisterFormView)
+            me.submit(formView: categoryRegisterFormView)
         }
         
         //close button tapped
@@ -51,9 +53,12 @@ class CategoryRegisterFormViewController: BasePopupViewController {
         }
     }
 
-    private func showCompletionView(formView: CategoryRegisterFormView) {
-        let popupItem = PopupItem(view: formView, height: CategoryRegisterFormView.Const.height, maxWidth: Const.maxWidth, popupOption: Const.popupOption)
-        
+    private func submit(formView: CategoryRegisterFormView) {
+        let popupItem = PopupItem(view: messageView,
+                                  height: MessageView.Const.height,
+                                  maxWidth: Const.maxWidth,
+                                  popupOption: Const.popupMessageOption)
+
         //Register Category
         var result:Bool = false
         let categoryManager = CategoryManager()
@@ -65,15 +70,35 @@ class CategoryRegisterFormViewController: BasePopupViewController {
         }
         
         if result {
+            messageView.setMessage(title: MessageView.MessageText.infoTitle, message: nil, infoFlg: .info)
             categoryTableView.reloadData()
-            transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+        }else{
+            messageView.setMessage(title: MessageView.MessageText.errorTitle, message: MessageView.MessageText.errorMessage, infoFlg: .error)
+        }
+        transformPopupView(duration: Const.popupDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+            guard let me = self else { return }
+            me.showMessageView()
+        }
+
+    }
+    
+    func showMessageView() {
+        let popupItem = PopupItem(view: messageView,
+                                  height: MessageView.Const.height,
+                                  maxWidth: Const.maxWidth,
+                                  popupOption: Const.popupMessageOption)
+        
+        transformPopupView(duration: Const.transformDuration, curve: .easeInOut, popupItem: popupItem) { [weak self] _ in
+            guard let me = self else { return }
+            me.replacePopupView(with: popupItem)
+            
+            DispatchQueue.main.asyncAfter( deadline: DispatchTime.now() + 1.0 ) { [weak self] in
                 guard let me = self else { return }
                 me.dismissPopupView(duration: Const.popupDuration, curve: .easeInOut, direction: popupItem.popupOption.direction) { _ in
                     PopupWindowManager.shared.changeKeyWindow(rootViewController: nil)
                 }
             }
-        }else{
-            print("failure")
         }
-    }    
+    }
+
 }
